@@ -1,0 +1,1021 @@
+import 'package:kids_english_adventure/core/experience/age_experience_profile.dart';
+import 'package:kids_english_adventure/core/experience/interactive_activity_engine.dart';
+import 'package:kids_english_adventure/core/experience/interactive_scene.dart';
+import 'package:kids_english_adventure/core/experience/interactive_scene_object.dart';
+import 'package:kids_english_adventure/features/curriculum/domain/models/curriculum_lesson.dart';
+import 'package:kids_english_adventure/features/curriculum/domain/models/curriculum_unit.dart';
+import 'package:kids_english_adventure/features/curriculum/domain/models/curriculum_world.dart';
+import 'package:kids_english_adventure/features/curriculum/domain/models/learning_age_band.dart';
+import 'curriculum_v2_scenes.dart';
+
+/// Complete Track 4 (Age 9–10: Growing Communicators) Production Curriculum.
+/// Contains 10 Thematic Worlds, 10 Units, 32 Complete Lessons, and 160 Interactions.
+/// Connected conversational discourse: expressing preferences with reasons ("I prefer... because..."),
+/// past experiences ("Yesterday I..."), comparative analysis, and multi-turn dialogue.
+class CurriculumV2Track4GrowingCommunicators {
+  static final AgeExperienceProfile profile = AgeExperienceProfile.forAge(9);
+
+  // ── 10 WORLDS ──
+  static final List<CurriculumWorld> worlds = [
+    const CurriculumWorld(
+      id: 'world_t4_identity',
+      levelIds: ['level_t4'],
+      title: 'Identity, Values & Goals',
+      childFriendlyTitle: 'My Identity & Passions 🌟',
+      theme: 'identity',
+      description: 'Extended personal introductions, talents, aspirations, and family values.',
+      primaryLanguageDomain: 'Personal Profile & Values',
+      recommendedAgeBands: [LearningAgeBand.bandCGrowingSpeakers],
+      unitIds: ['unit_t4_identity'],
+    ),
+    const CurriculumWorld(
+      id: 'world_t4_school',
+      levelIds: ['level_t4'],
+      title: 'School Life & Collaborative Projects',
+      childFriendlyTitle: 'School Projects 🔬',
+      theme: 'school',
+      description: 'Discussing academic subjects with reasons, team project coordination.',
+      primaryLanguageDomain: 'Academic Discussion & Teamwork',
+      recommendedAgeBands: [LearningAgeBand.bandCGrowingSpeakers],
+      unitIds: ['unit_t4_school'],
+    ),
+    const CurriculumWorld(
+      id: 'world_t4_routines',
+      levelIds: ['level_t4'],
+      title: 'Daily Schedules & Healthy Habits',
+      childFriendlyTitle: 'Daily Routines ⏰',
+      theme: 'routine',
+      description: 'Adverbs of frequency (usually, always, sometimes), time management.',
+      primaryLanguageDomain: 'Habits & Frequency Adverbs',
+      recommendedAgeBands: [LearningAgeBand.bandCGrowingSpeakers],
+      unitIds: ['unit_t4_routines'],
+    ),
+    const CurriculumWorld(
+      id: 'world_t4_food',
+      levelIds: ['level_t4'],
+      title: 'Food Choices & Health Stewardship',
+      childFriendlyTitle: 'Healthy Choices 🥗',
+      theme: 'food',
+      description: 'Nutritional preferences, comparing foods, explaining benefits.',
+      primaryLanguageDomain: 'Nutrition & Comparative Reasons',
+      recommendedAgeBands: [LearningAgeBand.bandCGrowingSpeakers],
+      unitIds: ['unit_t4_food'],
+    ),
+    const CurriculumWorld(
+      id: 'world_t4_hobbies',
+      levelIds: ['level_t4'],
+      title: 'Hobbies, Talents & Free Time',
+      childFriendlyTitle: 'Creative Hobbies 🎨',
+      theme: 'hobbies',
+      description: 'Describing personal pursuits, skills development, constructive pastimes.',
+      primaryLanguageDomain: 'Hobbies & Creative Expression',
+      recommendedAgeBands: [LearningAgeBand.bandCGrowingSpeakers],
+      unitIds: ['unit_t4_hobbies'],
+    ),
+    const CurriculumWorld(
+      id: 'world_t4_places',
+      levelIds: ['level_t4'],
+      title: 'Navigating Town & Landmarks',
+      childFriendlyTitle: 'Town Explorer 🗺️',
+      theme: 'places',
+      description: 'Asking for directions with polite phrases, public landmarks.',
+      primaryLanguageDomain: 'Directions & Spatial Orientation',
+      recommendedAgeBands: [LearningAgeBand.bandCGrowingSpeakers],
+      unitIds: ['unit_t4_places'],
+    ),
+    const CurriculumWorld(
+      id: 'world_t4_shopping',
+      levelIds: ['level_t4'],
+      title: 'Smart Shopping & Budgeting',
+      childFriendlyTitle: 'Market & Money 🛒',
+      theme: 'shopping',
+      description: 'Inquiring prices, calculating totals, distinguishing wants from needs.',
+      primaryLanguageDomain: 'Commerce & Financial Literacy',
+      recommendedAgeBands: [LearningAgeBand.bandCGrowingSpeakers],
+      unitIds: ['unit_t4_shopping'],
+    ),
+    const CurriculumWorld(
+      id: 'world_t4_nature',
+      levelIds: ['level_t4'],
+      title: 'Nature & Environmental Care',
+      childFriendlyTitle: 'Our Environment 🌿',
+      theme: 'nature',
+      description: 'Recycling, conservation, preserving clean parks and waterways.',
+      primaryLanguageDomain: 'Ecology & Environmental Stewardship',
+      recommendedAgeBands: [LearningAgeBand.bandCGrowingSpeakers],
+      unitIds: ['unit_t4_nature'],
+    ),
+    const CurriculumWorld(
+      id: 'world_t4_feelings',
+      levelIds: ['level_t4'],
+      title: 'Empathy, Feelings & Active Listening',
+      childFriendlyTitle: 'Empathy & Feelings 💬',
+      theme: 'feelings',
+      description: 'Expressing complex emotions with causes, supporting peers.',
+      primaryLanguageDomain: 'Emotional Intelligence & Empathy',
+      recommendedAgeBands: [LearningAgeBand.bandCGrowingSpeakers],
+      unitIds: ['unit_t4_feelings'],
+    ),
+    const CurriculumWorld(
+      id: 'world_t4_community',
+      levelIds: ['level_t4'],
+      title: 'Community Action & Helping Others',
+      childFriendlyTitle: 'Community Service 🤝',
+      theme: 'community',
+      description: 'Volunteering, assisting neighbors, cooperative problem solving.',
+      primaryLanguageDomain: 'Civic Engagement & Mutual Support',
+      recommendedAgeBands: [LearningAgeBand.bandCGrowingSpeakers],
+      unitIds: ['unit_t4_community'],
+    ),
+  ];
+
+  // ── 10 UNITS ──
+  static final List<CurriculumUnit> units = [
+    const CurriculumUnit(
+      id: 'unit_t4_identity',
+      worldId: 'world_t4_identity',
+      levelId: 'level_t4',
+      title: 'Who I Am & What I Strive For',
+      description: 'Presenting aspirations, character goals, and heritage.',
+      speakingOutcome: 'Student expresses personal goals and background in clear sentences.',
+      listeningOutcome: 'Student listens to peer introductions and asks helpful follow-up questions.',
+      lessonIds: ['t4_l01_my_passions_and_goals', 't4_l02_family_traditions', 't4_l03_standing_for_good_values'],
+    ),
+    const CurriculumUnit(
+      id: 'unit_t4_school',
+      worldId: 'world_t4_school',
+      levelId: 'level_t4',
+      title: 'Academic Pursuits & Teamwork',
+      description: 'Subject preferences with reasons, group roles, clarification.',
+      speakingOutcome: 'Student says: "My favorite subject is science because I love experiments."',
+      listeningOutcome: 'Student follows complex multi-step classroom instructions.',
+      lessonIds: ['t4_l04_favorite_subjects_with_reasons', 't4_l05_organizing_group_project', 't4_l06_asking_thoughtful_questions'],
+    ),
+    const CurriculumUnit(
+      id: 'unit_t4_routines',
+      worldId: 'world_t4_routines',
+      levelId: 'level_t4',
+      title: 'Mastering My Daily Schedule',
+      description: 'Describing weekly routines with frequency adverbs.',
+      speakingOutcome: 'Student explains: "I usually wake up at 6:30, pray, and review my lessons."',
+      listeningOutcome: 'Student compares two differing daily schedules for efficiency.',
+      lessonIds: ['t4_l07_my_morning_habits', 't4_l08_evening_responsibilities', 't4_l09_time_management_balance'],
+    ),
+    const CurriculumUnit(
+      id: 'unit_t4_food',
+      worldId: 'world_t4_food',
+      levelId: 'level_t4',
+      title: 'Nourishing Body & Mind',
+      description: 'Comparing wholesome vs junk food; courteous restaurant ordering.',
+      speakingOutcome: 'Student expresses: "I prefer fresh fruit because it keeps me energized."',
+      listeningOutcome: 'Student understands restaurant dialogues and menu selections.',
+      lessonIds: ['t4_l10_preferring_fresh_fruit', 't4_l11_why_water_is_essential', 't4_l12_polite_ordering_at_lunch', 't4_l13_sharing_with_neighbors'],
+    ),
+    const CurriculumUnit(
+      id: 'unit_t4_hobbies',
+      worldId: 'world_t4_hobbies',
+      levelId: 'level_t4',
+      title: 'Developing Beneficial Talents',
+      description: 'Creative arts, reading genres, coding, sports hobbies.',
+      speakingOutcome: 'Student describes hobby timeline: "I have been practicing calligraphy for one year."',
+      listeningOutcome: 'Student extracts key details from hobby interviews.',
+      lessonIds: ['t4_l14_sketching_nature', 't4_l15_reading_beneficial_books', 't4_l16_practicing_steadily'],
+    ),
+    const CurriculumUnit(
+      id: 'unit_t4_places',
+      worldId: 'world_t4_places',
+      levelId: 'level_t4',
+      title: 'City Exploration & Directions',
+      description: 'Can you tell me where...?, Landmarks, public transit.',
+      speakingOutcome: 'Student asks: "Can you tell me where the library is? Is it within walking distance?"',
+      listeningOutcome: 'Student maps routes according to complex spoken directions.',
+      lessonIds: ['t4_l17_can_you_tell_me_where', 't4_l18_walking_past_the_station', 't4_l19_respecting_public_landmarks'],
+    ),
+    const CurriculumUnit(
+      id: 'unit_t4_shopping',
+      worldId: 'world_t4_shopping',
+      levelId: 'level_t4',
+      title: 'Responsible Consumer Choices',
+      description: 'Comparing products, quality vs price, polite inquiries.',
+      speakingOutcome: 'Student negotiates: "How much does this notebook cost? Is there a set discount?"',
+      listeningOutcome: 'Student tracks transactions and calculates appropriate change.',
+      lessonIds: ['t4_l20_inquiring_prices_politely', 't4_l21_needs_versus_wants', 't4_l22_honesty_in_transactions'],
+    ),
+    const CurriculumUnit(
+      id: 'unit_t4_nature',
+      worldId: 'world_t4_nature',
+      levelId: 'level_t4',
+      title: 'Protecting Our Living Earth',
+      description: 'Conservation reasons, recycling systems, animal habitat protection.',
+      speakingOutcome: 'Student explains: "We should avoid littering because plastic harms wildlife."',
+      listeningOutcome: 'Student analyzes environmental awareness presentations.',
+      lessonIds: ['t4_l23_reducing_plastic_waste', 't4_l24_planting_trees_for_future', 't4_l25_conserving_precious_water'],
+    ),
+    const CurriculumUnit(
+      id: 'unit_t4_feelings',
+      worldId: 'world_t4_feelings',
+      levelId: 'level_t4',
+      title: 'Compassionate Communication',
+      description: 'Explaining causes of frustration, offering comfort, resolving conflicts.',
+      speakingOutcome: 'Student shares: "I felt nervous at first, but preparing well gave me confidence."',
+      listeningOutcome: 'Student identifies underlying feelings in dialogue scenarios.',
+      lessonIds: ['t4_l26_explaining_why_i_feel', 't4_l27_active_listening_to_friend', 't4_l28_resolving_misunderstandings'],
+    ),
+    const CurriculumUnit(
+      id: 'unit_t4_community',
+      worldId: 'world_t4_community',
+      levelId: 'level_t4',
+      title: 'Volunteering & Mutual Care',
+      description: 'Neighborhood campaigns, helping elderly neighbors, team initiatives.',
+      speakingOutcome: 'Student proposes: "I think we should organize a weekend book drive for children."',
+      listeningOutcome: 'Student follows community meeting discussions.',
+      lessonIds: ['t4_l29_park_cleanup_initiative', 't4_l30_visiting_elderly_neighbors', 't4_l31_collaborative_solutions', 't4_l32_celebrating_community_effort'],
+    ),
+  ];
+
+  // ── 32 LESSONS ──
+  static final List<CurriculumLesson> lessons = [
+    // World 1
+    const CurriculumLesson(
+      id: 't4_l01_my_passions_and_goals',
+      unitId: 'unit_t4_identity',
+      levelId: 'level_t4',
+      order: 1,
+      title: 'My Passions and Aspirations 🌟',
+      speakingOutcome: 'Student delivers a multi-sentence self-introduction focusing on passions.',
+      listeningOutcome: 'Student identifies key speaker details.',
+      estimatedDurationMinutes: 8,
+    ),
+    const CurriculumLesson(
+      id: 't4_l02_family_traditions',
+      unitId: 'unit_t4_identity',
+      levelId: 'level_t4',
+      order: 2,
+      title: 'Cherished Family Traditions 👨‍👩‍👧‍👦',
+      speakingOutcome: 'Student describes weekend family rituals.',
+      listeningOutcome: 'Student compares cultural traditions.',
+      estimatedDurationMinutes: 8,
+    ),
+    const CurriculumLesson(
+      id: 't4_l03_standing_for_good_values',
+      unitId: 'unit_t4_identity',
+      levelId: 'level_t4',
+      order: 3,
+      title: 'Standing for Good Character 🛡️',
+      speakingOutcome: 'Student explains what honesty and patience mean in daily life.',
+      listeningOutcome: 'Student extracts moral themes.',
+      estimatedDurationMinutes: 8,
+    ),
+
+    // World 2
+    const CurriculumLesson(
+      id: 't4_l04_favorite_subjects_with_reasons',
+      unitId: 'unit_t4_school',
+      levelId: 'level_t4',
+      order: 4,
+      title: 'My Favorite Subject Because... 🔬',
+      speakingOutcome: 'Student shares favorite subjects with specific reasons.',
+      listeningOutcome: 'Student identifies words that explain reasons like because.',
+      estimatedDurationMinutes: 8,
+    ),
+    const CurriculumLesson(
+      id: 't4_l05_organizing_group_project',
+      unitId: 'unit_t4_school',
+      levelId: 'level_t4',
+      order: 5,
+      title: 'Organizing a Team Presentation 📋',
+      speakingOutcome: 'Student assigns roles: "I think you should research, and I will draw."',
+      listeningOutcome: 'Student comprehends team division of tasks.',
+      estimatedDurationMinutes: 8,
+    ),
+    const CurriculumLesson(
+      id: 't4_l06_asking_thoughtful_questions',
+      unitId: 'unit_t4_school',
+      levelId: 'level_t4',
+      order: 6,
+      title: 'Asking Thoughtful Questions ❓',
+      speakingOutcome: 'Student asks questions starting with How, Why, and Could you.',
+      listeningOutcome: 'Student responds with elaboration.',
+      estimatedDurationMinutes: 8,
+    ),
+
+    // World 3
+    const CurriculumLesson(
+      id: 't4_l07_my_morning_habits',
+      unitId: 'unit_t4_routines',
+      levelId: 'level_t4',
+      order: 7,
+      title: 'My Morning Schedule 🌅',
+      speakingOutcome: 'Student describes morning routine using "usually" and "always".',
+      listeningOutcome: 'Student sequences time milestones.',
+      estimatedDurationMinutes: 8,
+    ),
+    const CurriculumLesson(
+      id: 't4_l08_evening_responsibilities',
+      unitId: 'unit_t4_routines',
+      levelId: 'level_t4',
+      order: 8,
+      title: 'Evening Responsibilities 🌙',
+      speakingOutcome: 'Student details chores and homework completion before rest.',
+      listeningOutcome: 'Student identifies responsible habits.',
+      estimatedDurationMinutes: 8,
+    ),
+    const CurriculumLesson(
+      id: 't4_l09_time_management_balance',
+      unitId: 'unit_t4_routines',
+      levelId: 'level_t4',
+      order: 9,
+      title: 'Balancing Study and Recreation ⚖️',
+      speakingOutcome: 'Student explains how to allocate time wisely between work and play.',
+      listeningOutcome: 'Student evaluates schedule balance.',
+      estimatedDurationMinutes: 8,
+    ),
+
+    // World 4
+    const CurriculumLesson(
+      id: 't4_l10_preferring_fresh_fruit',
+      unitId: 'unit_t4_food',
+      levelId: 'level_t4',
+      order: 10,
+      title: 'I Prefer Fresh Fruit Because... 🍎',
+      speakingOutcome: 'Student expresses comparative preferences: "I prefer apples over candy because..."',
+      listeningOutcome: 'Student evaluates nutritional reasons.',
+      estimatedDurationMinutes: 8,
+    ),
+    const CurriculumLesson(
+      id: 't4_l11_why_water_is_essential',
+      unitId: 'unit_t4_food',
+      levelId: 'level_t4',
+      order: 11,
+      title: 'Why Drinking Water Is Essential 💧',
+      speakingOutcome: 'Student explains hydration benefits using cause-and-effect language.',
+      listeningOutcome: 'Student understands health explanations.',
+      estimatedDurationMinutes: 8,
+    ),
+    const CurriculumLesson(
+      id: 't4_l12_polite_ordering_at_lunch',
+      unitId: 'unit_t4_food',
+      levelId: 'level_t4',
+      order: 12,
+      title: 'Polite Dining Conversations 🍽️',
+      speakingOutcome: 'Student conducts multi-turn ordering: "Could I please have the lentil soup?"',
+      listeningOutcome: 'Student follows lunch table dialogue.',
+      estimatedDurationMinutes: 8,
+    ),
+    const CurriculumLesson(
+      id: 't4_l13_sharing_with_neighbors',
+      unitId: 'unit_t4_food',
+      levelId: 'level_t4',
+      order: 13,
+      title: 'Baking and Sharing Food 🥖🤝',
+      speakingOutcome: 'Student describes sharing homemade dishes with neighbors.',
+      listeningOutcome: 'Student identifies neighborly values.',
+      estimatedDurationMinutes: 8,
+    ),
+
+    // World 5
+    const CurriculumLesson(
+      id: 't4_l14_sketching_nature',
+      unitId: 'unit_t4_hobbies',
+      levelId: 'level_t4',
+      order: 14,
+      title: 'Sketching Outdoor Nature 🎨🌿',
+      speakingOutcome: 'Student describes an artistic hobby and materials used.',
+      listeningOutcome: 'Student follows art instruction steps.',
+      estimatedDurationMinutes: 8,
+    ),
+    const CurriculumLesson(
+      id: 't4_l15_reading_beneficial_books',
+      unitId: 'unit_t4_hobbies',
+      levelId: 'level_t4',
+      order: 15,
+      title: 'Reading Inspiring Books 📚',
+      speakingOutcome: 'Student summarizes a book plot and personal impressions.',
+      listeningOutcome: 'Student identifies story themes.',
+      estimatedDurationMinutes: 8,
+    ),
+    const CurriculumLesson(
+      id: 't4_l16_practicing_steadily',
+      unitId: 'unit_t4_hobbies',
+      levelId: 'level_t4',
+      order: 16,
+      title: 'Steady Practice Brings Mastery 🧗',
+      speakingOutcome: 'Student explains: "If you practice every day, your skills improve steadily."',
+      listeningOutcome: 'Student identifies perseverance themes.',
+      estimatedDurationMinutes: 8,
+    ),
+
+    // World 6
+    const CurriculumLesson(
+      id: 't4_l17_can_you_tell_me_where',
+      unitId: 'unit_t4_places',
+      levelId: 'level_t4',
+      order: 17,
+      title: 'Can You Tell Me Where...? 🗺️',
+      speakingOutcome: 'Student asks for directions using embedded questions.',
+      listeningOutcome: 'Student tracks direction steps accurately.',
+      estimatedDurationMinutes: 8,
+    ),
+    const CurriculumLesson(
+      id: 't4_l18_walking_past_the_station',
+      unitId: 'unit_t4_places',
+      levelId: 'level_t4',
+      order: 18,
+      title: 'Walking Past the Central Station 🚉',
+      speakingOutcome: 'Student gives detailed multi-step navigational instructions.',
+      listeningOutcome: 'Student follows map routes.',
+      estimatedDurationMinutes: 8,
+    ),
+    const CurriculumLesson(
+      id: 't4_l19_respecting_public_landmarks',
+      unitId: 'unit_t4_places',
+      levelId: 'level_t4',
+      order: 19,
+      title: 'Respecting Public Spaces 🏛️',
+      speakingOutcome: 'Student explains why historical landmarks should be protected.',
+      listeningOutcome: 'Student identifies civic duties.',
+      estimatedDurationMinutes: 8,
+    ),
+
+    // World 7
+    const CurriculumLesson(
+      id: 't4_l20_inquiring_prices_politely',
+      unitId: 'unit_t4_shopping',
+      levelId: 'level_t4',
+      order: 20,
+      title: 'Inquiring Prices at the Market 🛒',
+      speakingOutcome: 'Student inquires: "How much are these organic apples per kilo?"',
+      listeningOutcome: 'Student processes transaction numbers.',
+      estimatedDurationMinutes: 8,
+    ),
+    const CurriculumLesson(
+      id: 't4_l21_needs_versus_wants',
+      unitId: 'unit_t4_shopping',
+      levelId: 'level_t4',
+      order: 21,
+      title: 'Differentiating Needs from Wants 💡',
+      speakingOutcome: 'Student argues: "Books are a need, while video games are a want."',
+      listeningOutcome: 'Student evaluates financial choices.',
+      estimatedDurationMinutes: 8,
+    ),
+    const CurriculumLesson(
+      id: 't4_l22_honesty_in_transactions',
+      unitId: 'unit_t4_shopping',
+      levelId: 'level_t4',
+      order: 22,
+      title: 'Honesty and Exact Measures ⚖️',
+      speakingOutcome: 'Student explains the virtue of returning excess change.',
+      listeningOutcome: 'Student analyzes ethical dilemmas.',
+      estimatedDurationMinutes: 8,
+    ),
+
+    // World 8
+    const CurriculumLesson(
+      id: 't4_l23_reducing_plastic_waste',
+      unitId: 'unit_t4_nature',
+      levelId: 'level_t4',
+      order: 23,
+      title: 'Reducing Plastic Waste ♻️',
+      speakingOutcome: 'Student advocates: "We should carry reusable cloth bags to protect oceans."',
+      listeningOutcome: 'Student follows environmental arguments.',
+      estimatedDurationMinutes: 8,
+    ),
+    const CurriculumLesson(
+      id: 't4_l24_planting_trees_for_future',
+      unitId: 'unit_t4_nature',
+      levelId: 'level_t4',
+      order: 24,
+      title: 'Planting Trees for Future Generations 🌳',
+      speakingOutcome: 'Student describes planting procedures and ecological value.',
+      listeningOutcome: 'Student grasps long-term benefits.',
+      estimatedDurationMinutes: 8,
+    ),
+    const CurriculumLesson(
+      id: 't4_l25_conserving_precious_water',
+      unitId: 'unit_t4_nature',
+      levelId: 'level_t4',
+      order: 25,
+      title: 'Conserving Every Drop of Water 💧',
+      speakingOutcome: 'Student explains: "Turn off the tap while brushing to save water."',
+      listeningOutcome: 'Student identifies conservation habits.',
+      estimatedDurationMinutes: 8,
+    ),
+
+    // World 9
+    const CurriculumLesson(
+      id: 't4_l26_explaining_why_i_feel',
+      unitId: 'unit_t4_feelings',
+      levelId: 'level_t4',
+      order: 26,
+      title: 'Explaining How and Why I Feel 💭',
+      speakingOutcome: 'Student explains feelings and what caused them.',
+      listeningOutcome: 'Student empathizes with peer feelings.',
+      estimatedDurationMinutes: 8,
+    ),
+    const CurriculumLesson(
+      id: 't4_l27_active_listening_to_friend',
+      unitId: 'unit_t4_feelings',
+      levelId: 'level_t4',
+      order: 27,
+      title: 'Active Listening and Comfort 👂❤️',
+      speakingOutcome: 'Student offers comfort: "I understand how you feel; I am here for you."',
+      listeningOutcome: 'Student detects subtle conversational cues.',
+      estimatedDurationMinutes: 8,
+    ),
+    const CurriculumLesson(
+      id: 't4_l28_resolving_misunderstandings',
+      unitId: 'unit_t4_feelings',
+      levelId: 'level_t4',
+      order: 28,
+      title: 'Resolving Misunderstandings Calmly 🕊️',
+      speakingOutcome: 'Student uses calm repair: "Let us discuss what happened without shouting."',
+      listeningOutcome: 'Student identifies peacemaking solutions.',
+      estimatedDurationMinutes: 8,
+    ),
+
+    // World 10
+    const CurriculumLesson(
+      id: 't4_l29_park_cleanup_initiative',
+      unitId: 'unit_t4_community',
+      levelId: 'level_t4',
+      order: 29,
+      title: 'Leading a Neighborhood Cleanup 🧹',
+      speakingOutcome: 'Student motivates peers: "If everyone cleans one street, our town blossoms."',
+      listeningOutcome: 'Student follows action plan instructions.',
+      estimatedDurationMinutes: 8,
+    ),
+    const CurriculumLesson(
+      id: 't4_l30_visiting_elderly_neighbors',
+      unitId: 'unit_t4_community',
+      levelId: 'level_t4',
+      order: 30,
+      title: 'Honoring and Assisting Elders 👵🤝',
+      speakingOutcome: 'Student describes helping elderly neighbors carry groceries.',
+      listeningOutcome: 'Student understands respect for elders.',
+      estimatedDurationMinutes: 8,
+    ),
+    const CurriculumLesson(
+      id: 't4_l31_collaborative_solutions',
+      unitId: 'unit_t4_community',
+      levelId: 'level_t4',
+      order: 31,
+      title: 'Solving Problems Collaboratively 🧩',
+      speakingOutcome: 'Student suggests: "I propose we split into two teams to finish faster."',
+      listeningOutcome: 'Student evaluates cooperative proposals.',
+      estimatedDurationMinutes: 8,
+    ),
+    const CurriculumLesson(
+      id: 't4_l32_celebrating_community_effort',
+      unitId: 'unit_t4_community',
+      levelId: 'level_t4',
+      order: 32,
+      title: 'Celebrating Collective Achievement 🎉',
+      speakingOutcome: 'Student expresses gratitude to all community volunteers.',
+      listeningOutcome: 'Student celebrates shared accomplishments.',
+      estimatedDurationMinutes: 8,
+    ),
+  ];
+
+  /// Builds the 5 handcrafted, production interactive activities for any Track 4 lesson.
+  static List<InteractiveActivityConfig> getActivitiesForLesson(String lessonId) {
+    switch (lessonId) {
+      // ── Lesson 10: Preferring Fresh Fruit (Theme: Food & Drinks) ──
+      case 't4_l10_preferring_fresh_fruit':
+        final scene = CurriculumV2Scenes.foodKitchenScene();
+        final apple = scene.objects.firstWhere((o) => o.objectId == 'obj_food_apple');
+        final table = scene.objects.firstWhere((o) => o.objectId == 'obj_dining_table');
+        final pip = scene.objects.firstWhere((o) => o.objectId == 'obj_dining_pip');
+        final bread = scene.objects.firstWhere((o) => o.objectId == 'obj_food_bread');
+        return [
+          InteractiveActivityConfig(
+            id: 't4_l10_step1_inference_listening',
+            conceptId: 'concept_apple',
+            learningConceptId: 'concept_apple',
+            mechanicType: ActivityMechanicType.listenAndTouch,
+            scene: scene,
+            targetObjectId: apple.objectId,
+            draggableObject: apple,
+            distractors: [bread],
+            ageProfile: profile,
+            instructionOverride: 'Pip describes a sweet, crisp fruit that grows on trees. Can you find the apple? 🍎',
+            audioPromptOverride: 'Find the crisp red apple.',
+            successReaction: SceneReactionType.bounce,
+            successReactionPrompt: 'Correct! Fresh apples provide natural vitamins and energy! 🍎✨',
+          ),
+          InteractiveActivityConfig(
+            id: 't4_l10_step2_comparative_reason_speech',
+            conceptId: 'concept_apple',
+            learningConceptId: 'concept_apple',
+            mechanicType: ActivityMechanicType.speakToMakeSomethingHappen,
+            scene: scene,
+            targetObjectId: apple.objectId,
+            draggableObject: apple,
+            sceneActor: pip,
+            speakTriggerPhrase: 'i prefer apples because they are healthy',
+            ageProfile: profile,
+            instructionOverride: 'Explain your choice with a reason: "I prefer apples because they are healthy and fresh." 🗣️',
+            audioPromptOverride: 'Say: I prefer apples because they are healthy and fresh.',
+            successReaction: SceneReactionType.bounce,
+            successReactionPrompt: '"I prefer apples because they are healthy!" Clear reasoning and great delivery! 🌟',
+          ),
+          InteractiveActivityConfig(
+            id: 't4_l10_step3_scene_assembly_nutrition',
+            conceptId: 'concept_table',
+            learningConceptId: 'concept_table',
+            mechanicType: ActivityMechanicType.scenePlacement,
+            scene: scene,
+            targetObjectId: apple.objectId,
+            targetDestinationId: table.objectId,
+            draggableObject: apple,
+            dropTarget: table,
+            spatialRelation: 'on',
+            ageProfile: profile,
+            instructionOverride: 'Arrange a balanced lunch plate on the table with healthy food. 🍽️',
+            audioPromptOverride: 'Put the apple on the lunch table',
+            successReaction: SceneReactionType.bounce,
+            successReactionPrompt: 'Balanced arrangement! Fresh fruit keeps our mind and body sharp! 🪵✨',
+          ),
+          InteractiveActivityConfig(
+            id: 't4_l10_step4_multi_turn_discussion',
+            conceptId: 'concept_apple',
+            learningConceptId: 'concept_apple',
+            mechanicType: ActivityMechanicType.conversationRolePlay,
+            scene: scene,
+            targetObjectId: pip.objectId,
+            draggableObject: pip,
+            rolePlayPipPrompt: 'Some students prefer sugary candy instead of fruit for lunch. What is your view on this? 🦜',
+            rolePlayExpectedResponse: 'i think fruit gives us better energy',
+            ageProfile: profile,
+            instructionOverride: 'Pip asks your view on sweet snacks. Share your opinion: "I think fruit gives us better energy." 💬',
+            audioPromptOverride: 'Share your view: I think fruit gives us better energy.',
+            successReaction: SceneReactionType.bounce,
+            successReactionPrompt: 'Well reasoned! Whole foods nourish the mind and keep us sharp for study! ❤️',
+          ),
+          InteractiveActivityConfig(
+            id: 't4_l10_step5_critical_reflection',
+            conceptId: 'concept_apple',
+            learningConceptId: 'concept_apple',
+            mechanicType: ActivityMechanicType.listenAndTouch,
+            scene: scene,
+            targetObjectId: pip.objectId,
+            draggableObject: pip,
+            ageProfile: profile,
+            instructionOverride: 'Tap Pip to conclude today\'s discussion on healthy food! 🏅',
+            audioPromptOverride: 'Tap Pip to complete your discussion!',
+            successReaction: SceneReactionType.bounce,
+            successReactionPrompt: 'Excellent conversation! You shared thoughtful reasons today! 🌟🏆',
+          ),
+        ];
+
+      default:
+        return _generateDefaultTrack4Activities(lessonId);
+    }
+  }
+
+  static List<InteractiveActivityConfig> _generateDefaultTrack4Activities(String lessonId) {
+    final scene = _resolveSceneForLesson(lessonId);
+    final targetObj = scene.objects.firstWhere(
+      (o) => !o.objectId.toLowerCase().contains('pip'),
+      orElse: () => scene.objects.first,
+    );
+    final secondaryObj = scene.objects.firstWhere(
+      (o) => o.objectId != targetObj.objectId,
+      orElse: () => targetObj,
+    );
+    final pip = scene.objects.firstWhere(
+      (o) => o.objectId.toLowerCase().contains('pip') || o.label.toLowerCase().contains('pip'),
+      orElse: () => secondaryObj,
+    );
+
+    final isCooperative = lessonId.contains('project') ||
+        lessonId.contains('group') ||
+        lessonId.contains('help') ||
+        lessonId.contains('neighbor') ||
+        lessonId.contains('team') ||
+        lessonId.contains('organize') ||
+        lessonId.contains('share') ||
+        lessonId.contains('volunteer');
+
+    final isNarrative = lessonId.contains('story') ||
+        lessonId.contains('clean') ||
+        lessonId.contains('bread') ||
+        lessonId.contains('travel') ||
+        lessonId.contains('habit') ||
+        lessonId.contains('question') ||
+        lessonId.contains('morning') ||
+        lessonId.contains('evening') ||
+        lessonId.contains('nature');
+
+    // Archetype B: Cooperative Group Activity (6 interactions)
+    if (isCooperative) {
+      return [
+        InteractiveActivityConfig(
+          id: '${lessonId}_step1_listen',
+          conceptId: targetObj.conceptId,
+          learningConceptId: targetObj.conceptId,
+          mechanicType: ActivityMechanicType.listenAndTouch,
+          scene: scene,
+          targetObjectId: targetObj.objectId,
+          draggableObject: targetObj,
+          distractors: [secondaryObj],
+          ageProfile: profile,
+          instructionOverride: 'Listen carefully: Can you find the ${targetObj.label}? ${targetObj.emoji}',
+          audioPromptOverride: 'Find the ${targetObj.label}.',
+          successReaction: SceneReactionType.bounce,
+          successReactionPrompt: 'Great listening! Found the ${targetObj.label}! ${targetObj.emoji}',
+        ),
+        InteractiveActivityConfig(
+          id: '${lessonId}_step2_share',
+          conceptId: targetObj.conceptId,
+          learningConceptId: targetObj.conceptId,
+          mechanicType: ActivityMechanicType.dragAndDrop,
+          scene: scene,
+          targetObjectId: targetObj.objectId,
+          targetDestinationId: secondaryObj.objectId,
+          draggableObject: targetObj,
+          dropTarget: secondaryObj,
+          ageProfile: profile,
+          instructionOverride: 'Cooperate: Pass the ${targetObj.label} over to ${secondaryObj.label}. 🤝',
+          audioPromptOverride: 'Pass the ${targetObj.label} to ${secondaryObj.label}',
+          successReaction: SceneReactionType.bounce,
+          successReactionPrompt: 'Sharing and cooperating makes the team strong! ✨',
+        ),
+        InteractiveActivityConfig(
+          id: '${lessonId}_step3_setup',
+          conceptId: targetObj.conceptId,
+          learningConceptId: targetObj.conceptId,
+          mechanicType: ActivityMechanicType.scenePlacement,
+          scene: scene,
+          targetObjectId: targetObj.objectId,
+          targetDestinationId: secondaryObj.objectId,
+          draggableObject: targetObj,
+          dropTarget: secondaryObj,
+          spatialRelation: 'with',
+          ageProfile: profile,
+          instructionOverride: 'Place the ${targetObj.label} neatly in the group workspace. 🧩',
+          audioPromptOverride: 'Place the ${targetObj.label} in the workspace',
+          successReaction: SceneReactionType.bounce,
+          successReactionPrompt: 'Workspace organized neatly! Everything is ready! ✨',
+        ),
+        InteractiveActivityConfig(
+          id: '${lessonId}_step4_propose',
+          conceptId: targetObj.conceptId,
+          learningConceptId: targetObj.conceptId,
+          mechanicType: ActivityMechanicType.speakToMakeSomethingHappen,
+          scene: scene,
+          targetObjectId: targetObj.objectId,
+          draggableObject: targetObj,
+          speakTriggerPhrase: 'i think we should work together to finish',
+          ageProfile: profile,
+          instructionOverride: 'Suggest a plan: "I think we should work together to finish." 🗣️',
+          audioPromptOverride: 'Say: I think we should work together to finish.',
+          successReaction: SceneReactionType.bounce,
+          successReactionPrompt: 'Great suggestion! Teamwork makes every project easier! 🌟',
+        ),
+        InteractiveActivityConfig(
+          id: '${lessonId}_step5_dialogue',
+          conceptId: targetObj.conceptId,
+          learningConceptId: targetObj.conceptId,
+          mechanicType: ActivityMechanicType.conversationRolePlay,
+          scene: scene,
+          targetObjectId: secondaryObj.objectId,
+          draggableObject: secondaryObj,
+          rolePlayPipPrompt: 'How can our team make sure everyone does well? 🦜',
+          rolePlayExpectedResponse: 'by sharing the tasks and helping each other',
+          ageProfile: profile,
+          instructionOverride: 'Pip asks how to help each other. Answer: "By sharing the tasks and helping each other." 💬',
+          audioPromptOverride: 'Answer: By sharing the tasks and helping each other.',
+          successReaction: SceneReactionType.bounce,
+          successReactionPrompt: 'Wonderful teamwork! Caring for teammates brings success! ❤️',
+        ),
+        InteractiveActivityConfig(
+          id: '${lessonId}_step6_finish',
+          conceptId: targetObj.conceptId,
+          learningConceptId: targetObj.conceptId,
+          mechanicType: ActivityMechanicType.listenAndTouch,
+          scene: scene,
+          targetObjectId: pip.objectId,
+          draggableObject: pip,
+          ageProfile: profile,
+          instructionOverride: 'Tap Pip to celebrate great teamwork! ⭐🎉',
+          audioPromptOverride: 'Tap Pip to finish!',
+          successReaction: SceneReactionType.bounce,
+          successReactionPrompt: 'Awesome collaboration! You completed today\'s goal! 🌟🏆',
+        ),
+      ];
+    }
+
+    // Archetype C: Narrative & Daily Routine Reflection (6 interactions)
+    if (isNarrative) {
+      return [
+        InteractiveActivityConfig(
+          id: '${lessonId}_step1_story',
+          conceptId: targetObj.conceptId,
+          learningConceptId: targetObj.conceptId,
+          mechanicType: ActivityMechanicType.interactiveStory,
+          scene: scene,
+          targetObjectId: targetObj.objectId,
+          draggableObject: targetObj,
+          ageProfile: profile,
+          storySegmentText: 'Practicing good daily habits helps us learn, grow, and stay cheerful.',
+          instructionOverride: 'Listen to the story: Good habits make every day bright and productive! 📖',
+          audioPromptOverride: 'Listen to the story.',
+          successReaction: SceneReactionType.bounce,
+          successReactionPrompt: 'Great listening! Reflecting on habits helps us build character! 🌟',
+        ),
+        InteractiveActivityConfig(
+          id: '${lessonId}_step2_find_item',
+          conceptId: targetObj.conceptId,
+          learningConceptId: targetObj.conceptId,
+          mechanicType: ActivityMechanicType.listenAndTouch,
+          scene: scene,
+          targetObjectId: targetObj.objectId,
+          draggableObject: targetObj,
+          distractors: [secondaryObj],
+          ageProfile: profile,
+          instructionOverride: 'Find the item from the story: Touch the ${targetObj.label}! 🔍',
+          audioPromptOverride: 'Find the ${targetObj.label}.',
+          successReaction: SceneReactionType.bounce,
+          successReactionPrompt: 'Found it! ${targetObj.label} identified! ${targetObj.emoji}',
+        ),
+        InteractiveActivityConfig(
+          id: '${lessonId}_step3_speak_routine',
+          conceptId: targetObj.conceptId,
+          learningConceptId: targetObj.conceptId,
+          mechanicType: ActivityMechanicType.speakToMakeSomethingHappen,
+          scene: scene,
+          targetObjectId: targetObj.objectId,
+          draggableObject: targetObj,
+          speakTriggerPhrase: 'we practiced patience and finished the task',
+          ageProfile: profile,
+          instructionOverride: 'Say what you learned: "We practiced patience and finished the task." 🗣️',
+          audioPromptOverride: 'Say: We practiced patience and finished the task.',
+          successReaction: SceneReactionType.bounce,
+          successReactionPrompt: 'Well spoken! Patience is a wonderful virtue! 🌟',
+        ),
+        InteractiveActivityConfig(
+          id: '${lessonId}_step4_tidy_placement',
+          conceptId: targetObj.conceptId,
+          learningConceptId: targetObj.conceptId,
+          mechanicType: ActivityMechanicType.scenePlacement,
+          scene: scene,
+          targetObjectId: targetObj.objectId,
+          targetDestinationId: secondaryObj.objectId,
+          draggableObject: targetObj,
+          dropTarget: secondaryObj,
+          spatialRelation: 'near',
+          ageProfile: profile,
+          instructionOverride: 'Put the ${targetObj.label} neatly in its proper spot. 🪵',
+          audioPromptOverride: 'Place the ${targetObj.label} in its proper spot',
+          successReaction: SceneReactionType.bounce,
+          successReactionPrompt: 'Tidy and organized! Clean habits bring peace! ✨',
+        ),
+        InteractiveActivityConfig(
+          id: '${lessonId}_step5_reflection_dialogue',
+          conceptId: targetObj.conceptId,
+          learningConceptId: targetObj.conceptId,
+          mechanicType: ActivityMechanicType.conversationRolePlay,
+          scene: scene,
+          targetObjectId: secondaryObj.objectId,
+          draggableObject: secondaryObj,
+          rolePlayPipPrompt: 'What did we learn from this experience? 🦜',
+          rolePlayExpectedResponse: 'patience and good manners make everything better',
+          ageProfile: profile,
+          instructionOverride: 'Pip asks what you learned. Answer: "Patience and good manners make everything better." 💬',
+          audioPromptOverride: 'Answer: Patience and good manners make everything better.',
+          successReaction: SceneReactionType.bounce,
+          successReactionPrompt: 'Wise and thoughtful! A gentle reminder for all of us! ❤️',
+        ),
+        InteractiveActivityConfig(
+          id: '${lessonId}_step6_celebrate',
+          conceptId: targetObj.conceptId,
+          learningConceptId: targetObj.conceptId,
+          mechanicType: ActivityMechanicType.listenAndTouch,
+          scene: scene,
+          targetObjectId: pip.objectId,
+          draggableObject: pip,
+          ageProfile: profile,
+          instructionOverride: 'Tap Pip to complete today\'s lesson! ⭐🎉',
+          audioPromptOverride: 'Tap Pip to finish!',
+          successReaction: SceneReactionType.bounce,
+          successReactionPrompt: 'Great job! You spoke and shared wonderful ideas today! 🌟🏆',
+        ),
+      ];
+    }
+
+    // Archetype A: Preferences & Reasons (5 interactions)
+    return [
+      InteractiveActivityConfig(
+        id: '${lessonId}_step1_context_listening',
+        conceptId: targetObj.conceptId,
+        learningConceptId: targetObj.conceptId,
+        mechanicType: ActivityMechanicType.listenAndTouch,
+        scene: scene,
+        targetObjectId: targetObj.objectId,
+        draggableObject: targetObj,
+        distractors: [secondaryObj],
+        ageProfile: profile,
+        instructionOverride: 'Listen to the description and find the ${targetObj.label}. ${targetObj.emoji}',
+        audioPromptOverride: 'Find the ${targetObj.label}.',
+        successReaction: SceneReactionType.bounce,
+        successReactionPrompt: 'Great listening! You found the ${targetObj.label}! ${targetObj.emoji}',
+      ),
+      InteractiveActivityConfig(
+        id: '${lessonId}_step2_reason_statement',
+        conceptId: targetObj.conceptId,
+        learningConceptId: targetObj.conceptId,
+        mechanicType: ActivityMechanicType.speakToMakeSomethingHappen,
+        scene: scene,
+        targetObjectId: targetObj.objectId,
+        draggableObject: targetObj,
+        speakTriggerPhrase: 'i prefer the ${targetObj.label.toLowerCase()} because it is useful',
+        ageProfile: profile,
+        instructionOverride: 'Give a reason: "I prefer the ${targetObj.label} because it is useful." 🗣️',
+        audioPromptOverride: 'Say: I prefer the ${targetObj.label} because it is useful.',
+        successReaction: SceneReactionType.bounce,
+        successReactionPrompt: '"I prefer the ${targetObj.label}..." Thoughtful choice and clear reason! 🌟',
+      ),
+      InteractiveActivityConfig(
+        id: '${lessonId}_step3_structured_task',
+        conceptId: targetObj.conceptId,
+        learningConceptId: targetObj.conceptId,
+        mechanicType: ActivityMechanicType.scenePlacement,
+        scene: scene,
+        targetObjectId: targetObj.objectId,
+        targetDestinationId: secondaryObj.objectId,
+        draggableObject: targetObj,
+        dropTarget: secondaryObj,
+        spatialRelation: 'with',
+        ageProfile: profile,
+        instructionOverride: 'Place the ${targetObj.label} nicely with ${secondaryObj.label}. 🧩',
+        audioPromptOverride: 'Place the ${targetObj.label} with ${secondaryObj.label}',
+        successReaction: SceneReactionType.bounce,
+        successReactionPrompt: 'Nicely placed! Looks great! ✨',
+      ),
+      InteractiveActivityConfig(
+        id: '${lessonId}_step4_multi_turn_exchange',
+        conceptId: targetObj.conceptId,
+        learningConceptId: targetObj.conceptId,
+        mechanicType: ActivityMechanicType.conversationRolePlay,
+        scene: scene,
+        targetObjectId: secondaryObj.objectId,
+        draggableObject: secondaryObj,
+        rolePlayPipPrompt: 'Why do you like that one best? 🦜',
+        rolePlayExpectedResponse: 'because it helps us learn and stay organized',
+        ageProfile: profile,
+        instructionOverride: 'Pip asks why. Answer: "Because it helps us learn and stay organized." 💬',
+        audioPromptOverride: 'Answer: Because it helps us learn and stay organized.',
+        successReaction: SceneReactionType.bounce,
+        successReactionPrompt: 'Great explanation! That makes a lot of sense! ❤️',
+      ),
+      InteractiveActivityConfig(
+        id: '${lessonId}_step5_summary_evaluation',
+        conceptId: targetObj.conceptId,
+        learningConceptId: targetObj.conceptId,
+        mechanicType: ActivityMechanicType.listenAndTouch,
+        scene: scene,
+        targetObjectId: pip.objectId,
+        draggableObject: pip,
+        ageProfile: profile,
+        instructionOverride: 'Tap Pip to celebrate completing today\'s lesson! 🏅',
+        audioPromptOverride: 'Tap Pip to finish!',
+        successReaction: SceneReactionType.bounce,
+        successReactionPrompt: 'Excellent work! Another great step forward in speaking English! 🌟🎓',
+      ),
+    ];
+  }
+
+  static InteractiveScene _resolveSceneForLesson(String lessonId) {
+    if (lessonId.contains('identity') || lessonId.contains('passions') || lessonId.contains('traditions')) {
+      return CurriculumV2Scenes.helloMeScene();
+    }
+    if (lessonId.contains('school') || lessonId.contains('subject') || lessonId.contains('project') || lessonId.contains('questions')) {
+      return CurriculumV2Scenes.schoolClassroomScene();
+    }
+    if (lessonId.contains('routine') || lessonId.contains('habits') || lessonId.contains('evening') || lessonId.contains('balance')) {
+      return CurriculumV2Scenes.myHomeRoomScene();
+    }
+    if (lessonId.contains('food') || lessonId.contains('fruit') || lessonId.contains('water') || lessonId.contains('dining') || lessonId.contains('baking') || lessonId.contains('sharing')) {
+      return CurriculumV2Scenes.foodKitchenScene();
+    }
+    if (lessonId.contains('hobbies') || lessonId.contains('sketching') || lessonId.contains('books') || lessonId.contains('practice')) {
+      return CurriculumV2Scenes.natureParkScene();
+    }
+    if (lessonId.contains('community') || lessonId.contains('neighbor') || lessonId.contains('elderly') || lessonId.contains('visiting')) {
+      return CurriculumV2Scenes.myHomeRoomScene();
+    }
+    if (lessonId.contains('places') || lessonId.contains('station') || lessonId.contains('landmarks')) {
+      return CurriculumV2Scenes.townMarketScene();
+    }
+    if (lessonId.contains('shopping') || lessonId.contains('prices') || lessonId.contains('wants') || lessonId.contains('transactions')) {
+      return CurriculumV2Scenes.townMarketScene();
+    }
+    if (lessonId.contains('nature') || lessonId.contains('plastic') || lessonId.contains('trees') || lessonId.contains('water')) {
+      return CurriculumV2Scenes.natureParkScene();
+    }
+    if (lessonId.contains('feelings') || lessonId.contains('empathy') || lessonId.contains('listening') || lessonId.contains('misunderstandings')) {
+      return CurriculumV2Scenes.helloMeScene();
+    }
+    return CurriculumV2Scenes.natureParkScene();
+  }
+}

@@ -1,0 +1,21 @@
+/// Reusable activity types supported by the Content Engine.
+enum ActivityType {
+  vocabularyDiscovery,
+  flashcard,
+  pictureMatch,
+  imageHunt,
+  listenAndChoose,
+  wordMatch,
+  sentenceBuilder,
+  fillBlank,
+  multipleChoice,
+  sorting,
+  scenarioChoice,
+  dialogue,
+  story,
+  storyQuiz,
+  speaking,
+  reading,
+  review,
+  reward,
+}
