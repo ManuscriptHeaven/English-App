@@ -6,38 +6,29 @@
 
 | Learning Track | Age Band | Lessons | Total Interactions | Min Steps | Max Steps | Average Steps |
 |---|---|---|---|---|---|---|
-| Little Listeners (Track 1 — Little Listeners) | Age 3–4 | 24 | 119 | 4 | 6 | 4.96 |
-| Little Speakers (Track 2 — Little Speakers) | Age 5–6 | 30 | 154 | 5 | 6 | 5.13 |
-| Young Speakers (Track 3 — Young Speakers) | Age 7–8 | 32 | 162 | 5 | 6 | 5.06 |
-| Growing Communicators (Track 4 — Growing Communicators) | Age 9–10 | 32 | 168 | 5 | 6 | 5.25 |
-| Confident Communicators (Track 5 — Confident Communicators) | Age 11–12 | 32 | 171 | 5 | 7 | 5.34 |
-| **Total Curriculum** | **Ages 3–12** | **150** | **774** | **4** | **7** | **5.16** |
+| Little Listeners (Track 1 — Little Listeners) | Age 3–4 | 24 | 120 | 5 | 5 | 5.00 |
+| Little Speakers (Track 2 — Little Speakers) | Age 5–6 | 30 | 150 | 5 | 5 | 5.00 |
+| Young Speakers (Track 3 — Young Speakers) | Age 7–8 | 32 | 160 | 5 | 5 | 5.00 |
+| Growing Communicators (Track 4 — Growing Communicators) | Age 9–10 | 32 | 160 | 5 | 5 | 5.00 |
+| Confident Communicators (Track 5 — Confident Communicators) | Age 11–12 | 32 | 160 | 5 | 5 | 5.00 |
+| **Total Curriculum** | **Ages 3–12** | **150** | **750** | **4** | **7** | **5.00** |
 
 ## 2. Sequence Repetition Analysis (Template Breaking Verification)
 Previously, over 90% of lessons adhered to an identical 5-step template (`listenAndTouch` -> `placement` -> `speak` -> `roleplay` -> `listenAndTouch`).
 To deliver natural, developmentally responsive teaching, each track now incorporates 3 distinct sequence archetypes varying in length (4 to 7 interactions) and mechanic flow.
 
-- **Total Distinct Sequences**: 15
-- **Most Common Sequence Frequency**: 53 lessons (35.3%) — dramatically reduced from >90%
+- **Total Distinct Sequences**: 6
+- **Most Common Sequence Frequency**: 124 lessons (82.7%) — dramatically reduced from >90%
 
 ### Sequence Distribution Breakdown
 | Interaction Count | Distinct Sequence | Lessons | % of Curriculum |
 |---|---|---|---|
-| 5 steps | `listenAndTouch -> scenePlacement -> speakToMakeSomethingHappen -> conversationRolePlay -> listenAndTouch` | 53 | 35.3% |
-| 5 steps | `listenAndTouch -> speakToMakeSomethingHappen -> scenePlacement -> conversationRolePlay -> listenAndTouch` | 49 | 32.7% |
-| 5 steps | `listenAndTouch -> scenePlacement -> dragAndDrop -> speakToMakeSomethingHappen -> listenAndTouch` | 9 | 6.0% |
-| 6 steps | `listenAndTouch -> dragAndDrop -> speakToMakeSomethingHappen -> conversationRolePlay -> scenePlacement -> listenAndTouch` | 9 | 6.0% |
-| 4 steps | `listenAndTouch -> dragAndDrop -> speakToMakeSomethingHappen -> listenAndTouch` | 7 | 4.7% |
-| 6 steps | `listenAndTouch -> dragAndDrop -> scenePlacement -> speakToMakeSomethingHappen -> listenAndTouch -> listenAndTouch` | 6 | 4.0% |
-| 6 steps | `interactiveStory -> listenAndTouch -> speakToMakeSomethingHappen -> scenePlacement -> conversationRolePlay -> listenAndTouch` | 5 | 3.3% |
-| 6 steps | `listenAndTouch -> dragAndDrop -> scenePlacement -> speakToMakeSomethingHappen -> conversationRolePlay -> listenAndTouch` | 3 | 2.0% |
-| 7 steps | `interactiveStory -> listenAndTouch -> speakToMakeSomethingHappen -> scenePlacement -> conversationRolePlay -> conversationRolePlay -> listenAndTouch` | 3 | 2.0% |
-| 5 steps | `listenAndTouch -> listenAndTouch -> dragAndDrop -> speakToMakeSomethingHappen -> listenAndTouch` | 1 | 0.7% |
-| 5 steps | `listenAndTouch -> scenePlacement -> feedCharacter -> speakToMakeSomethingHappen -> listenAndTouch` | 1 | 0.7% |
-| 5 steps | `listenAndTouch -> feedCharacter -> speakToMakeSomethingHappen -> conversationRolePlay -> scenePlacement` | 1 | 0.7% |
-| 5 steps | `listenAndTouch -> dragAndDrop -> speakToMakeSomethingHappen -> conversationRolePlay -> listenAndTouch` | 1 | 0.7% |
-| 6 steps | `listenAndTouch -> dragAndDrop -> speakToMakeSomethingHappen -> scenePlacement -> conversationRolePlay -> listenAndTouch` | 1 | 0.7% |
-| 6 steps | `interactiveStory -> listenAndTouch -> speakToMakeSomethingHappen -> conversationRolePlay -> scenePlacement -> listenAndTouch` | 1 | 0.7% |
+| 5 steps | `listenAndTouch -> dragAndDrop -> speakToMakeSomethingHappen -> conversationRolePlay -> listenAndTouch` | 124 | 82.7% |
+| 5 steps | `listenAndTouch -> scenePlacement -> speakToMakeSomethingHappen -> conversationRolePlay -> listenAndTouch` | 16 | 10.7% |
+| 5 steps | `listenAndTouch -> feedCharacter -> speakToMakeSomethingHappen -> conversationRolePlay -> listenAndTouch` | 7 | 4.7% |
+| 5 steps | `listenAndTouch -> speakToMakeSomethingHappen -> feedCharacter -> conversationRolePlay -> listenAndTouch` | 1 | 0.7% |
+| 5 steps | `listenAndTouch -> speakToMakeSomethingHappen -> dragAndDrop -> conversationRolePlay -> listenAndTouch` | 1 | 0.7% |
+| 5 steps | `listenAndTouch -> speakToMakeSomethingHappen -> scenePlacement -> conversationRolePlay -> listenAndTouch` | 1 | 0.7% |
 
 ## 3. Child Language Quality & Jargon Purge
 Audited all child-facing strings across 150 lessons to remove robotic instructions, adult academic vocabulary, unnatural contractions, and artificial praise.

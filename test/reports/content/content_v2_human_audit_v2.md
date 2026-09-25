@@ -4,7 +4,7 @@
 
 ## Executive Inventory Snapshot
 - **Total Production Lessons**: 150
-- **Total Interactive Interactions**: 774 (minimum threshold: >= 750)
+- **Total Interactive Interactions**: 750 (minimum threshold: >= 750)
 - **Total Thematic Worlds**: 48
 - **Total Instructional Units**: 48
 - **Curated Stories**: 10
@@ -27,24 +27,25 @@ Every interaction is transcribed unsummarized, showing exact child-facing prompt
 
 | Step | Mechanic | Child-Facing Instruction | Audio Cue | Target / Speak Trigger | Success Reaction |
 |---|---|---|---|---|---|
-| Step 1 | `listenAndTouch` | Hello! Pip is waving to you! Touch Pip! 👋🦜 | Hello! Touch Pip! | `obj_pip_greeter` | Hello friend! So happy to see you! 🦜✨ |
-| Step 2 | `listenAndTouch` | Touch the mirror! Look at your smile! 🪞 | Touch the mirror | `obj_avatar_mirror` | Look at you! Wonderful smile! 🪞✨ |
-| Step 3 | `dragAndDrop` | Bring Pip to the mirror to say hello! 🦜🪞 | Bring Pip to the mirror | `obj_pip_greeter` | Pip says: "Hello, wonderful friend!" 🦜👋 |
-| Step 4 | `speakToMakeSomethingHappen` | Can you say Hello? Or tap Pip! 👋 | Hello! Can you say Hello? | `hello` | Hello! Beautiful greeting! 🌟 |
-| Step 5 | `listenAndTouch` | Touch Pip to celebrate our first greeting! 🦜🎉 | Touch Pip to celebrate! | `obj_pip_greeter` | Yay! We said hello! Adventure starts! 🌟⭐ |
+| Step 1 | `listenAndTouch` | Hello! Pip is waving to you! Touch Pip! 👋🦜 | Hello | `obj_pip_greeter` | Hello friend! Pip is so happy to see you! 🦜👋 |
+| Step 2 | `dragAndDrop` | Bring Pip to the mirror to say hello! 🦜🪞 | Move the Pip | `obj_pip_greeter` | Look at you! You are wonderful! 🪞✨ |
+| Step 3 | `speakToMakeSomethingHappen` | Can you say Hello? Or tap Pip! 👋 | hello | `hello` | Wonderful! You said "hello"! 🌟🎉 |
+| Step 4 | `conversationRolePlay` | Pip waves: "Hello friend!" Say: "Hello!" 💬 | Pip waves: "Hello friend!" | `hello` | Pip smiles: "hello! Excellent!" 🦜❤️ |
+| Step 5 | `listenAndTouch` | Touch Pip to celebrate our first greeting! 🦜🎉 | Tap to finish! | `obj_pip_greeter` | MashaAllah! You learned Hello! 🌟⭐ |
 
 #### Lesson: Touch Your Nose! 👃 (`t1_l04_touch_your_nose`)
 - **Unit**: `unit_t1_body` | **Estimated Duration**: ~3 mins
 - **Speaking Target**: Child echoes "Nose".
 - **Listening Target**: Child touches nose in response to audio.
-- **Interaction Count**: 4 steps
+- **Interaction Count**: 5 steps
 
 | Step | Mechanic | Child-Facing Instruction | Audio Cue | Target / Speak Trigger | Success Reaction |
 |---|---|---|---|---|---|
-| Step 1 | `listenAndTouch` | Eyes! Touch the Eyes! 👀 | Touch the Eyes | `obj_body_eyes` | Awesome! You found the Eyes! 👀 |
-| Step 2 | `dragAndDrop` | Move with Pip! Drag the Eyes! 🏃 | Move the Eyes | `obj_body_eyes` | Fun moves! Way to go! 🌟 |
-| Step 3 | `speakToMakeSomethingHappen` | Say Eyes! Or tap to hear it! 🗣️ | Say Eyes! | `eyes` | Eyes! Great voice! 🌟 |
-| Step 4 | `listenAndTouch` | Give Pip a high-five! Touch Pip! 🦜✋ | Give Pip a high five! | `obj_body_eyes` | Yay! High-five! Great playing! ⭐🎉 |
+| Step 1 | `listenAndTouch` | Where is the nose? Touch the nose! 👃✨ | Nose | `obj_body_nose` | Touch your nose! 👃✨ |
+| Step 2 | `dragAndDrop` | Bring clean hands gently to touch the nose! 👃🙌 | Move the Hands | `obj_body_hands` | Touch your nose! 👃✨ |
+| Step 3 | `speakToMakeSomethingHappen` | Can you say "Nose"? Or tap the nose! 👃🎙️ | nose | `nose` | Wonderful! You said "nose"! 🌟🎉 |
+| Step 4 | `conversationRolePlay` | Pip touches nose: "Where is your nose?" Say: "Nose!" 💬 | Pip points: "Touch your nose!" | `nose` | Pip smiles: "nose! Excellent!" 🦜❤️ |
+| Step 5 | `listenAndTouch` | Touch your nose to celebrate our wonderful senses! 🌟 | Tap to finish! | `obj_body_nose` | MashaAllah! You learned Nose! 🌟⭐ |
 
 #### Lesson: Red Ball & Basket 🔴 (`t1_l07_red_apple_basket`)
 - **Unit**: `unit_t1_colors` | **Estimated Duration**: ~3 mins
@@ -54,41 +55,39 @@ Every interaction is transcribed unsummarized, showing exact child-facing prompt
 
 | Step | Mechanic | Child-Facing Instruction | Audio Cue | Target / Speak Trigger | Success Reaction |
 |---|---|---|---|---|---|
-| Step 1 | `listenAndTouch` | Look! Where is the Red Ball? Touch it! 🔴 | Where is the Red Ball? Touch it | `obj_color_red_ball` | You found the Red Ball! 🔴 |
-| Step 2 | `scenePlacement` | Put the Red Ball next to the Red Basket! 🪵 | Put the Red Ball next to the Red Basket | `obj_color_red_ball` | Neat and tidy! Looks great! ✨ |
-| Step 3 | `dragAndDrop` | Move the Red Ball into place! 🚀 | Move the Red Ball | `obj_color_red_ball` | Nicely moved! 🔴 |
-| Step 4 | `speakToMakeSomethingHappen` | Can you say Red Ball? 🔴 | Can you say Red Ball? | `red ball` | Red Ball! Beautiful speaking! 🌟 |
-| Step 5 | `listenAndTouch` | Touch the star to celebrate! ⭐🎉 | Touch the star to celebrate! | `obj_color_red_ball` | Super work! You did it! ⭐🎉 |
+| Step 1 | `listenAndTouch` | Where is the bright red ball? Touch it! 🔴🍎 | Red Ball | `obj_color_red_ball` | Bright red! Like a sweet red apple! 🔴🍎 |
+| Step 2 | `dragAndDrop` | Put the red ball inside the matching red basket! 🔴🧺 | Move the Red Ball | `obj_color_red_ball` | Red ball in the red basket! Perfect! 🧺🔴 |
+| Step 3 | `speakToMakeSomethingHappen` | Can you say "Red"? Bright red! 🔴🎙️ | red | `red` | Wonderful! You said "red"! 🌟🎉 |
+| Step 4 | `conversationRolePlay` | Pip asks: "What color is the red ball?" Say: "Red!" 💬 | Pip holds the red ball: "What color is this?" | `red` | Pip smiles: "red! Excellent!" 🦜❤️ |
+| Step 5 | `listenAndTouch` | Touch the red basket to celebrate color sorting! 🌟 | Tap to finish! | `obj_color_red_ball` | MashaAllah! You learned Red Ball! 🌟⭐ |
 
 #### Lesson: Gentle Cat Purrs 🐱 (`t1_l10_friendly_cat`)
 - **Unit**: `unit_t1_animals` | **Estimated Duration**: ~3 mins
 - **Speaking Target**: Child imitates "Meow".
 - **Listening Target**: Child recognizes cat and pets softly.
-- **Interaction Count**: 6 steps
+- **Interaction Count**: 5 steps
 
 | Step | Mechanic | Child-Facing Instruction | Audio Cue | Target / Speak Trigger | Success Reaction |
 |---|---|---|---|---|---|
-| Step 1 | `listenAndTouch` | Listen to Pip: Find the Cat! 🐱 | Find the Cat | `obj_animal_cat` | You found the sweet Cat! 🐱 |
-| Step 2 | `dragAndDrop` | Bring the Cat here gently! 🤝 | Bring the Cat here | `obj_animal_cat` | So gentle and kind! 🐱✨ |
-| Step 3 | `scenePlacement` | Put the Cat in a cozy spot! 🏡 | Put the Cat in a cozy spot | `obj_animal_cat` | Cozy and safe! Wonderful job! 🐱❤️ |
-| Step 4 | `speakToMakeSomethingHappen` | Can you say Cat? Or make the sound! 🗣️ | Can you say Cat? | `cat` | Cat! You said it! 🌟 |
-| Step 5 | `listenAndTouch` | Gently pat the Cat! 🐾❤️ | Gently pat the Cat | `obj_animal_cat` | Purr purr! Happy and loved! 🐱 |
-| Step 6 | `listenAndTouch` | Touch Pip to celebrate! 🦜🎉 | Touch Pip to celebrate! | `obj_animal_dog` | Hooray! Great caring friend! ⭐🎉 |
+| Step 1 | `listenAndTouch` | Listen to the gentle purr! Touch the soft cat! 🐱❤️ | Cat | `obj_animal_cat` | Meow! The friendly cat purrs softly! 🐱❤️ |
+| Step 2 | `dragAndDrop` | Bring the cat over to the fresh clean bowl! 🐱🥣 | Move the Cat | `obj_animal_cat` | Clean refreshing water for our animal friends! 🥣💧 |
+| Step 3 | `speakToMakeSomethingHappen` | Can you make the cat sound? Say "Meow"! 🐱🎙️ | meow | `meow` | Wonderful! You said "meow"! 🌟🎉 |
+| Step 4 | `conversationRolePlay` | Pip pets the cat: "What does the cat say?" Say: "Meow!" 💬 | Pip pets the cat: "What does the gentle cat say?" | `meow` | Pip smiles: "meow! Excellent!" 🦜❤️ |
+| Step 5 | `listenAndTouch` | Touch the cat to celebrate being kind to animals! 🌟 | Tap to finish! | `obj_animal_cat` | MashaAllah! You learned Cat! 🌟⭐ |
 
 #### Lesson: Cool Water, Please 💧 (`t1_l14_cool_clean_water`)
 - **Unit**: `unit_t1_food` | **Estimated Duration**: ~3 mins
 - **Speaking Target**: Child says "Water".
 - **Listening Target**: Child offers water cup to thirsty character.
-- **Interaction Count**: 6 steps
+- **Interaction Count**: 5 steps
 
 | Step | Mechanic | Child-Facing Instruction | Audio Cue | Target / Speak Trigger | Success Reaction |
 |---|---|---|---|---|---|
-| Step 1 | `listenAndTouch` | Listen to Pip: Find the Apple! 🍎 | Find the Apple | `obj_food_apple` | You found the sweet Apple! 🍎 |
-| Step 2 | `dragAndDrop` | Bring the Apple here gently! 🤝 | Bring the Apple here | `obj_food_apple` | So gentle and kind! 🍎✨ |
-| Step 3 | `scenePlacement` | Put the Apple in a cozy spot! 🏡 | Put the Apple in a cozy spot | `obj_food_apple` | Cozy and safe! Wonderful job! 🍎❤️ |
-| Step 4 | `speakToMakeSomethingHappen` | Can you say Apple? Or make the sound! 🗣️ | Can you say Apple? | `apple` | Apple! You said it! 🌟 |
-| Step 5 | `listenAndTouch` | Gently pat the Apple! 🐾❤️ | Gently pat the Apple | `obj_food_apple` | Purr purr! Happy and loved! 🍎 |
-| Step 6 | `listenAndTouch` | Touch Pip to celebrate! 🦜🎉 | Touch Pip to celebrate! | `obj_food_banana` | Hooray! Great caring friend! ⭐🎉 |
+| Step 1 | `listenAndTouch` | Refreshing and clean! Touch the glass of water! 💧🥤 | Water | `obj_food_water` | Refreshing clean water! Sit down to drink! 💧🥤 |
+| Step 2 | `feedCharacter` | Pip is thirsty! Offer the cool clean water to Pip! 💧🦜 | Move the Water | `obj_food_water` | Pip says: "Thank you! JazakAllahu khayran!" 🦜❤️ |
+| Step 3 | `speakToMakeSomethingHappen` | Can you say "Water"? Pure clean water! 💧🎙️ | water | `water` | Wonderful! You said "water"! 🌟🎉 |
+| Step 4 | `conversationRolePlay` | Pip chirps: "Thirsty! What should I drink?" Say: "Water!" 💬 | Pip is thirsty: "What should we drink when thirsty?" | `water` | Pip smiles: "water! Excellent!" 🦜❤️ |
+| Step 5 | `listenAndTouch` | Touch the water to celebrate staying fresh and hydrated! 🌟 | Tap to finish! | `obj_food_water` | MashaAllah! You learned Water! 🌟⭐ |
 
 ### Track Little Speakers (Age 5–6) — Track 2 — Little Speakers
 - **Age Band Focus**: Vocabulary to phrases to first functional sentences. Minimal text, high visual support, polite functional expressions.
@@ -101,11 +100,11 @@ Every interaction is transcribed unsummarized, showing exact child-facing prompt
 
 | Step | Mechanic | Child-Facing Instruction | Audio Cue | Target / Speak Trigger | Success Reaction |
 |---|---|---|---|---|---|
-| Step 1 | `listenAndTouch` | Listen carefully: "I see the Pip." Touch it! 🦜 | I see the Pip. Touch it! | `obj_pip_greeter` | Excellent! You found the Pip! 🦜 |
-| Step 2 | `scenePlacement` | Put the Pip nicely with Happy! ✨ | Put the Pip with Happy | `obj_pip_greeter` | Clean and tidy! Placed perfectly! ✨ |
-| Step 3 | `speakToMakeSomethingHappen` | Say the full phrase: "This is my Pip!" 🗣️ | Say: This is my Pip! | `this is my pip` | Super! "This is my Pip!" Great speaking! 🌟 |
-| Step 4 | `conversationRolePlay` | Pip asks: "Do you like the Pip?" Answer: "Yes, I like it!" 💬 | Do you like the Pip? Say: Yes, I like it! | `yes i like it` | "Yes, I like it!" What a nice chat! ❤️ |
-| Step 5 | `listenAndTouch` | Touch the star to complete your lesson! ⭐🎉 | Touch the star to complete! | `obj_pip_greeter` | Lesson complete! You are becoming a great speaker! 🌟🏆 |
+| Step 1 | `listenAndTouch` | Show your feelings! Touch the happy smiling face! 😊✨ | Happy Face | `obj_happy_face` | I am happy! Big smile! 😊✨ |
+| Step 2 | `dragAndDrop` | Share your happiness! Bring the smile to Pip! 🦜😊 | Move the Happy | `obj_happy_face` | Hello friend! Pip is so happy to see you! 🦜👋 |
+| Step 3 | `speakToMakeSomethingHappen` | Speak in a complete sentence: "I am happy today!" 🎙️ | i am happy today | `i am happy today` | Wonderful! You said "i am happy today"! 🌟🎉 |
+| Step 4 | `conversationRolePlay` | Pip asks: "How are you feeling today?" Say: "I am happy today!" 💬 | Pip asks: "How are you feeling today?" | `i am happy today` | Pip smiles: "i am happy today! Excellent!" 🦜❤️ |
+| Step 5 | `listenAndTouch` | Touch Pip to celebrate joyful communication! 🌟 | Tap to finish! | `obj_happy_face` | MashaAllah! You learned Happy Face! 🌟⭐ |
 
 #### Lesson: This Is My Mother 👩 (`t2_l04_this_is_my_mother`)
 - **Unit**: `unit_t2_family` | **Estimated Duration**: ~5 mins
@@ -115,11 +114,11 @@ Every interaction is transcribed unsummarized, showing exact child-facing prompt
 
 | Step | Mechanic | Child-Facing Instruction | Audio Cue | Target / Speak Trigger | Success Reaction |
 |---|---|---|---|---|---|
-| Step 1 | `listenAndTouch` | Listen carefully: "I see the Door." Touch it! 🚪 | I see the Door. Touch it! | `obj_room_door` | Excellent! You found the Door! 🚪 |
-| Step 2 | `scenePlacement` | Put the Door nicely with Bed! ✨ | Put the Door with Bed | `obj_room_door` | Clean and tidy! Placed perfectly! ✨ |
-| Step 3 | `speakToMakeSomethingHappen` | Say the full phrase: "This is my Door!" 🗣️ | Say: This is my Door! | `this is my door` | Super! "This is my Door!" Great speaking! 🌟 |
-| Step 4 | `conversationRolePlay` | Pip asks: "Do you like the Door?" Answer: "Yes, I like it!" 💬 | Do you like the Door? Say: Yes, I like it! | `yes i like it` | "Yes, I like it!" What a nice chat! ❤️ |
-| Step 5 | `listenAndTouch` | Touch the star to complete your lesson! ⭐🎉 | Touch the star to complete! | `obj_room_door` | Lesson complete! You are becoming a great speaker! 🌟🏆 |
+| Step 1 | `listenAndTouch` | Touch the loving family portrait! 👩❤️ | Mother | `obj_avatar_smile` | A big warm smile! 😄✨ |
+| Step 2 | `dragAndDrop` | Introduce mother warmly to Pip! 👩🦜 | Move the Smile | `obj_avatar_smile` | Hello friend! Pip is so happy to see you! 🦜👋 |
+| Step 3 | `speakToMakeSomethingHappen` | Say with respect and kindness: "This is my mother." 🎙️ | this is my mother | `this is my mother` | Wonderful! You said "this is my mother"! 🌟🎉 |
+| Step 4 | `conversationRolePlay` | Pip asks: "Who is this?" Say: "This is my mother." 💬 | Pip asks: "Who takes care of you with love?" | `this is my mother` | Pip smiles: "this is my mother! Excellent!" 🦜❤️ |
+| Step 5 | `listenAndTouch` | Touch the smile to celebrate honoring parents! 🌟 | Tap to finish! | `obj_avatar_smile` | MashaAllah! You learned Mother! 🌟⭐ |
 
 #### Lesson: I Like Apples! 🍎 (`t2_l07_i_like_apples`)
 - **Unit**: `unit_t2_food` | **Estimated Duration**: ~5 mins
@@ -129,11 +128,11 @@ Every interaction is transcribed unsummarized, showing exact child-facing prompt
 
 | Step | Mechanic | Child-Facing Instruction | Audio Cue | Target / Speak Trigger | Success Reaction |
 |---|---|---|---|---|---|
-| Step 1 | `listenAndTouch` | Listen carefully: "I see the Apple." Touch it! 🍎 | I see the Apple. Touch it! | `obj_food_apple` | Excellent! You found the Apple! 🍎 |
-| Step 2 | `scenePlacement` | Put the Apple nicely with Banana! ✨ | Put the Apple with Banana | `obj_food_apple` | Clean and tidy! Placed perfectly! ✨ |
-| Step 3 | `speakToMakeSomethingHappen` | Say the full phrase: "This is my Apple!" 🗣️ | Say: This is my Apple! | `this is my apple` | Super! "This is my Apple!" Great speaking! 🌟 |
-| Step 4 | `conversationRolePlay` | Pip asks: "Do you like the Apple?" Answer: "Yes, I like it!" 💬 | Do you like the Apple? Say: Yes, I like it! | `yes i like it` | "Yes, I like it!" What a nice chat! ❤️ |
-| Step 5 | `listenAndTouch` | Touch the star to complete your lesson! ⭐🎉 | Touch the star to complete! | `obj_food_apple` | Lesson complete! You are becoming a great speaker! 🌟🏆 |
+| Step 1 | `listenAndTouch` | Sweet and crunchy! Touch the red apple! 🍎✨ | Apple | `obj_food_apple` | Crisp red apple! Say Bismillah before eating! 🍎✨ |
+| Step 2 | `scenePlacement` | Place the red apple on the dining table! 🍎🪵 | Move the Apple | `obj_food_apple` | Placed neatly on the clean dining table! ✨ |
+| Step 3 | `speakToMakeSomethingHappen` | Speak in a complete sentence: "I like red apples!" 🎙️ | i like red apples | `i like red apples` | Wonderful! You said "i like red apples"! 🌟🎉 |
+| Step 4 | `conversationRolePlay` | Pip asks: "Do you like apples?" Say: "I like red apples!" 💬 | Pip asks: "What fruit do you enjoy eating?" | `i like red apples` | Pip smiles: "i like red apples! Excellent!" 🦜❤️ |
+| Step 5 | `listenAndTouch` | Touch the apple to celebrate healthy fruit choices! 🌟 | Tap to finish! | `obj_food_apple` | MashaAllah! You learned Apple! 🌟⭐ |
 
 #### Lesson: Where Is My Ball? ⚽🔍 (`t2_l10_where_is_my_ball`)
 - **Unit**: `unit_t2_home` | **Estimated Duration**: ~5 mins
@@ -143,11 +142,11 @@ Every interaction is transcribed unsummarized, showing exact child-facing prompt
 
 | Step | Mechanic | Child-Facing Instruction | Audio Cue | Target / Speak Trigger | Success Reaction |
 |---|---|---|---|---|---|
-| Step 1 | `listenAndTouch` | Look and listen: Can you find the Door? 🚪 | Find the Door. | `obj_room_door` | You found the Door! 🚪 |
-| Step 2 | `dragAndDrop` | Move the Door over here! 🚪 | Move the Door | `obj_room_door` | Nicely moved! 🚪✨ |
-| Step 3 | `speakToMakeSomethingHappen` | Say it clearly: "This is a Door!" 🗣️ | Say: This is a Door! | `this is a door` | Awesome! "This is a Door!" 🌟 |
-| Step 4 | `conversationRolePlay` | Pip asks: "Do you see the Door?" Answer: "Yes, I see it!" 💬 | Answer: Yes, I see it! | `yes i see it` | "Yes, I see it!" Great chat! ❤️ |
-| Step 5 | `listenAndTouch` | Touch Pip to finish your lesson! ⭐🎉 | Touch Pip to finish! | `obj_room_bed` | Great job! You are becoming a wonderful speaker! 🌟🏆 |
+| Step 1 | `listenAndTouch` | Look around the playroom! Touch the ball! ⚽🔍 | Ball | `obj_toy_ball` | Roll the ball! Playing together and taking turns! ⚽🤝 |
+| Step 2 | `dragAndDrop` | Roll the ball safely into the toy box! ⚽📦 | Move the Ball | `obj_toy_ball` | Tidying up toys after playing! Clean and organized! 📦⭐ |
+| Step 3 | `speakToMakeSomethingHappen` | Ask the question clearly: "Where is the ball?" 🎙️ | where is the ball | `where is the ball` | Wonderful! You said "where is the ball"! 🌟🎉 |
+| Step 4 | `conversationRolePlay` | Pip searches: "Where is the ball?" Say: "Here it is!" 💬 | Pip searches: "Looking for our favorite toy!" | `here it is` | Pip smiles: "here it is! Excellent!" 🦜❤️ |
+| Step 5 | `listenAndTouch` | Touch the ball to celebrate asking good questions! 🌟 | Tap to finish! | `obj_toy_ball` | MashaAllah! You learned Ball! 🌟⭐ |
 
 #### Lesson: The Big Friendly Dog 🐶 (`t2_l14_the_big_dog`)
 - **Unit**: `unit_t2_animals` | **Estimated Duration**: ~5 mins
@@ -157,11 +156,11 @@ Every interaction is transcribed unsummarized, showing exact child-facing prompt
 
 | Step | Mechanic | Child-Facing Instruction | Audio Cue | Target / Speak Trigger | Success Reaction |
 |---|---|---|---|---|---|
-| Step 1 | `listenAndTouch` | Listen carefully: "I see the Cat." Touch it! 🐱 | I see the Cat. Touch it! | `obj_animal_cat` | Excellent! You found the Cat! 🐱 |
-| Step 2 | `scenePlacement` | Put the Cat nicely with Dog! ✨ | Put the Cat with Dog | `obj_animal_cat` | Clean and tidy! Placed perfectly! ✨ |
-| Step 3 | `speakToMakeSomethingHappen` | Say the full phrase: "This is my Cat!" 🗣️ | Say: This is my Cat! | `this is my cat` | Super! "This is my Cat!" Great speaking! 🌟 |
-| Step 4 | `conversationRolePlay` | Pip asks: "Do you like the Cat?" Answer: "Yes, I like it!" 💬 | Do you like the Cat? Say: Yes, I like it! | `yes i like it` | "Yes, I like it!" What a nice chat! ❤️ |
-| Step 5 | `listenAndTouch` | Touch the star to complete your lesson! ⭐🎉 | Touch the star to complete! | `obj_animal_cat` | Lesson complete! You are becoming a great speaker! 🌟🏆 |
+| Step 1 | `listenAndTouch` | Wagging its tail! Touch the big friendly dog! 🐶🐾 | Big Dog | `obj_animal_dog` | Woof woof! The loyal dog wags its tail! 🐶🐾 |
+| Step 2 | `dragAndDrop` | Walk the dog to the fresh water bowl! 🐶🥣 | Move the Dog | `obj_animal_dog` | Clean refreshing water for our animal friends! 🥣💧 |
+| Step 3 | `speakToMakeSomethingHappen` | Describe the dog in a sentence: "This is a big dog." 🎙️ | this is a big dog | `this is a big dog` | Wonderful! You said "this is a big dog"! 🌟🎉 |
+| Step 4 | `conversationRolePlay` | Pip points: "What is this?" Say: "This is a big dog." 💬 | Pip greets the dog: "Look at the happy pet!" | `this is a big dog` | Pip smiles: "this is a big dog! Excellent!" 🦜❤️ |
+| Step 5 | `listenAndTouch` | Touch the dog to celebrate caring for domestic animals! 🌟 | Tap to finish! | `obj_animal_dog` | MashaAllah! You learned Big Dog! 🌟⭐ |
 
 ### Track Young Speakers (Age 7–8) — Track 3 — Young Speakers
 - **Age Band Focus**: Build real beginner spoken English. Complete sentence patterns, wh-questions, functional polite language in school, home, and play.
@@ -174,11 +173,11 @@ Every interaction is transcribed unsummarized, showing exact child-facing prompt
 
 | Step | Mechanic | Child-Facing Instruction | Audio Cue | Target / Speak Trigger | Success Reaction |
 |---|---|---|---|---|---|
-| Step 1 | `listenAndTouch` | Listen carefully: Where is the Pip? Touch the Pip! 🦜 | Where is the Pip? Touch it! | `obj_pip_greeter` | Great listening! You found the Pip! 🦜 |
-| Step 2 | `scenePlacement` | Place the Pip near the Happy. 🧩 | Place the Pip near the Happy | `obj_pip_greeter` | Great job placing it in the right spot! ✨ |
-| Step 3 | `speakToMakeSomethingHappen` | Speak a complete sentence: "There is a Pip here." 🗣️ | Say: There is a Pip here. | `there is a pip` | Awesome! "There is a Pip here!" Full sentence spoken! 🌟 |
-| Step 4 | `conversationRolePlay` | Pip asks: "Where is the Pip?" Answer: "It is right here!" 💬 | Answer: It is right here! | `it is right here` | "It is right here!" Great response! Very helpful! ❤️ |
-| Step 5 | `listenAndTouch` | Touch Pip to celebrate finishing your lesson! ⭐🎉 | Touch Pip to finish! | `obj_pip_greeter` | Hooray! Fantastic work today! 🌟🎉 |
+| Step 1 | `listenAndTouch` | Identify and select the Mirror. 🌟 | Mirror | `obj_avatar_mirror` | Look at you! You are wonderful! 🪞✨ |
+| Step 2 | `dragAndDrop` | Arrange the Pip with the Mirror. ✨ | Move the Pip | `obj_pip_greeter` | Look at you! You are wonderful! 🪞✨ |
+| Step 3 | `speakToMakeSomethingHappen` | Clearly articulate: "my name is and i am seven years old" 🎙️ | my name is and i am seven years old | `my name is and i am seven years old` | Wonderful! You said "my name is and i am seven years old"! 🌟🎉 |
+| Step 4 | `conversationRolePlay` | Pip greets you: "Tell me your name and your age!" Respond: "my name is and i am seven" 💬 | Pip greets you: "Tell me your name and your age!" | `my name is and i am seven` | Pip smiles: "my name is and i am seven! Excellent!" 🦜❤️ |
+| Step 5 | `listenAndTouch` | Well done! Confirm your progress on Mirror! 🏅 | Tap to finish! | `obj_avatar_mirror` | MashaAllah! You learned Mirror! 🌟⭐ |
 
 #### Lesson: There Is a Lamp 💡🪵 (`t3_l04_there_is_a_lamp`)
 - **Unit**: `unit_t3_home` | **Estimated Duration**: ~6 mins
@@ -188,26 +187,25 @@ Every interaction is transcribed unsummarized, showing exact child-facing prompt
 
 | Step | Mechanic | Child-Facing Instruction | Audio Cue | Target / Speak Trigger | Success Reaction |
 |---|---|---|---|---|---|
-| Step 1 | `listenAndTouch` | Listen carefully: Where is the Door? Touch the Door! 🚪 | Where is the Door? Touch it! | `obj_room_door` | Great listening! You found the Door! 🚪 |
-| Step 2 | `scenePlacement` | Place the Door near the Bed. 🧩 | Place the Door near the Bed | `obj_room_door` | Great job placing it in the right spot! ✨ |
-| Step 3 | `speakToMakeSomethingHappen` | Speak a complete sentence: "There is a Door here." 🗣️ | Say: There is a Door here. | `there is a door` | Awesome! "There is a Door here!" Full sentence spoken! 🌟 |
-| Step 4 | `conversationRolePlay` | Pip asks: "Where is the Door?" Answer: "It is right here!" 💬 | Answer: It is right here! | `it is right here` | "It is right here!" Great response! Very helpful! ❤️ |
-| Step 5 | `listenAndTouch` | Touch Pip to celebrate finishing your lesson! ⭐🎉 | Touch Pip to finish! | `obj_room_bed` | Hooray! Fantastic work today! 🌟🎉 |
+| Step 1 | `listenAndTouch` | Identify and select the Desk Lamp. 🌟 | Desk Lamp | `obj_room_light` | The room is bright and welcoming! 💡✨ |
+| Step 2 | `dragAndDrop` | Arrange the Book with the Table. ✨ | Move the Book | `obj_room_book` | Clean study table! 🪵✨ |
+| Step 3 | `speakToMakeSomethingHappen` | Clearly articulate: "there is a lamp on the table" 🎙️ | there is a lamp on the table | `there is a lamp on the table` | Wonderful! You said "there is a lamp on the table"! 🌟🎉 |
+| Step 4 | `conversationRolePlay` | Pip points: "What is on the study desk?" Respond: "there is a lamp" 💬 | Pip points: "What is on the study desk?" | `there is a lamp` | Pip smiles: "there is a lamp! Excellent!" 🦜❤️ |
+| Step 5 | `listenAndTouch` | Well done! Confirm your progress on Desk Lamp! 🏅 | Tap to finish! | `obj_room_light` | MashaAllah! You learned Desk Lamp! 🌟⭐ |
 
 #### Lesson: Can You Help Me, Please? 🤝 (`t3_l07_can_you_help_me`)
 - **Unit**: `unit_t3_school` | **Estimated Duration**: ~6 mins
 - **Speaking Target**: Child asks for help politely with full question structure.
 - **Listening Target**: Child recognizes help requests.
-- **Interaction Count**: 6 steps
+- **Interaction Count**: 5 steps
 
 | Step | Mechanic | Child-Facing Instruction | Audio Cue | Target / Speak Trigger | Success Reaction |
 |---|---|---|---|---|---|
-| Step 1 | `listenAndTouch` | Listen carefully: Where is the Pip? Touch it! 🦜 | Where is the Pip? Touch it! | `obj_pip_greeter` | Great listening! You found the Pip! 🦜 |
-| Step 2 | `dragAndDrop` | Move the Pip over to Happy. 🤝 | Move the Pip to Happy | `obj_pip_greeter` | Nicely moved! Great job! ✨ |
-| Step 3 | `speakToMakeSomethingHappen` | Say what you did: "I put the Pip here." 🗣️ | Say: I put the Pip here. | `i put the pip here` | Great speaking! Full sentence complete! 🌟 |
-| Step 4 | `scenePlacement` | Place the Pip gently near Happy. 🧩 | Place the Pip near Happy | `obj_pip_greeter` | Placed in the right spot! Looks wonderful! ✨ |
-| Step 5 | `conversationRolePlay` | Pip asks: "Is everything in its place?" Answer: "Yes, everything is ready!" 💬 | Answer: Yes, everything is ready! | `yes everything is ready` | Super! "Yes, everything is ready!" Polite and clear! ❤️ |
-| Step 6 | `listenAndTouch` | Touch Pip to celebrate finishing your lesson! ⭐🎉 | Touch Pip to finish! | `obj_pip_greeter` | Hooray! Outstanding progress today! 🌟🏆 |
+| Step 1 | `listenAndTouch` | Identify and select the Classroom Desk. 🌟 | Classroom Desk | `obj_school_desk` | A neat student desk ready for study! 🪑✨ |
+| Step 2 | `dragAndDrop` | Arrange the Book with the Desk. ✨ | Move the Book | `obj_school_book` | A neat student desk ready for study! 🪑✨ |
+| Step 3 | `speakToMakeSomethingHappen` | Clearly articulate: "can you help me please" 🎙️ | can you help me please | `can you help me please` | Wonderful! You said "can you help me please"! 🌟🎉 |
+| Step 4 | `conversationRolePlay` | Pip needs a hand: "Ask your classmate politely for help!" Respond: "can you help me please" 💬 | Pip needs a hand: "Ask your classmate politely for help!" | `can you help me please` | Pip smiles: "can you help me please! Excellent!" 🦜❤️ |
+| Step 5 | `listenAndTouch` | Well done! Confirm your progress on Classroom Desk! 🏅 | Tap to finish! | `obj_school_desk` | MashaAllah! You learned Classroom Desk! 🌟⭐ |
 
 #### Lesson: Can I Have Some Water, Please? 💧 (`t3_l10_can_i_have_water_please`)
 - **Unit**: `unit_t3_food` | **Estimated Duration**: ~6 mins
@@ -217,11 +215,11 @@ Every interaction is transcribed unsummarized, showing exact child-facing prompt
 
 | Step | Mechanic | Child-Facing Instruction | Audio Cue | Target / Speak Trigger | Success Reaction |
 |---|---|---|---|---|---|
-| Step 1 | `listenAndTouch` | Pip says: "Playing in the sun makes us thirsty!" Can you find the water? 💧 | Find the fresh water. | `obj_food_water` | Clean water is the best drink for our health! 💧✨ |
-| Step 2 | `speakToMakeSomethingHappen` | Speak the complete polite request: "Can I have some water, please?" 🗣️ | Can you say: Can I have some water, please? | `can i have some water please` | "Can I have some water, please?" Beautiful complete sentence! 🌟 |
-| Step 3 | `scenePlacement` | Good etiquette: Place the glass of water gently on the table. 🍽️💧 | Place the glass of water on the table | `obj_food_water` | Perfect placement! Drinking with good manners is wonderful! 🪵✨ |
-| Step 4 | `conversationRolePlay` | Pip offers lemon with your water. Respond politely: "Yes, please! Thank you!" 💬 | Respond politely: Yes, please! Thank you! | `yes please thank you` | "Yes, please! Thank you!" Excellent polite manners! ❤️ |
-| Step 5 | `listenAndTouch` | Remember to say "Alhamdulillah" after finishing your drink. Tap the table to complete! 🤲⭐ | Tap the table to finish with gratitude! | `obj_dining_table` | Alhamdulillah for clean water! Mastery earned! 🌟🏆 |
+| Step 1 | `listenAndTouch` | Identify and select the Fresh Water. 🌟 | Fresh Water | `obj_food_water` | Refreshing clean water! Sit down to drink! 💧🥤 |
+| Step 2 | `speakToMakeSomethingHappen` | Articulate clearly: "can i have some water please" 🎙️ | can i have some water please | `can i have some water please` | Pip says: "Thank you! JazakAllahu khayran!" 🦜❤️ |
+| Step 3 | `feedCharacter` | Feed the Water to Pip! 🍎🦜 | can i have some water please | `obj_food_water` | Pip says: "Thank you! JazakAllahu khayran!" 🦜❤️ |
+| Step 4 | `conversationRolePlay` | Pip serves dinner: "Would you like some refreshing water?" Respond: "yes please thank you" 💬 | Pip serves dinner: "Would you like some refreshing water?" | `yes please thank you` | Pip smiles: "yes please thank you! Excellent!" 🦜❤️ |
+| Step 5 | `listenAndTouch` | Well done! Confirm your progress on Fresh Water! 🏅 | Tap to finish! | `obj_food_water` | MashaAllah! You learned Fresh Water! 🌟⭐ |
 
 #### Lesson: Birds Can Fly High 🐦 (`t3_l14_the_bird_can_fly`)
 - **Unit**: `unit_t3_animals` | **Estimated Duration**: ~6 mins
@@ -231,11 +229,11 @@ Every interaction is transcribed unsummarized, showing exact child-facing prompt
 
 | Step | Mechanic | Child-Facing Instruction | Audio Cue | Target / Speak Trigger | Success Reaction |
 |---|---|---|---|---|---|
-| Step 1 | `listenAndTouch` | Listen carefully: Where is the Cat? Touch the Cat! 🐱 | Where is the Cat? Touch it! | `obj_animal_cat` | Great listening! You found the Cat! 🐱 |
-| Step 2 | `scenePlacement` | Place the Cat near the Dog. 🧩 | Place the Cat near the Dog | `obj_animal_cat` | Great job placing it in the right spot! ✨ |
-| Step 3 | `speakToMakeSomethingHappen` | Speak a complete sentence: "There is a Cat here." 🗣️ | Say: There is a Cat here. | `there is a cat` | Awesome! "There is a Cat here!" Full sentence spoken! 🌟 |
-| Step 4 | `conversationRolePlay` | Pip asks: "Where is the Cat?" Answer: "It is right here!" 💬 | Answer: It is right here! | `it is right here` | "It is right here!" Great response! Very helpful! ❤️ |
-| Step 5 | `listenAndTouch` | Touch Pip to celebrate finishing your lesson! ⭐🎉 | Touch Pip to finish! | `obj_animal_dog` | Hooray! Fantastic work today! 🌟🎉 |
+| Step 1 | `listenAndTouch` | Identify and select the Bird. 🌟 | Bird | `obj_animal_bird` | Chirp chirp! Beautiful little bird! 🐦✨ |
+| Step 2 | `dragAndDrop` | Arrange the Bird with the Clean Bowl. ✨ | Move the Bird | `obj_animal_bird` | Clean refreshing water for our animal friends! 🥣💧 |
+| Step 3 | `speakToMakeSomethingHappen` | Clearly articulate: "the bird can fly high in the sky" 🎙️ | the bird can fly high in the sky | `the bird can fly high in the sky` | Wonderful! You said "the bird can fly high in the sky"! 🌟🎉 |
+| Step 4 | `conversationRolePlay` | Pip points upward: "What can the bird do?" Respond: "the bird can fly" 💬 | Pip points upward: "What can the bird do?" | `the bird can fly` | Pip smiles: "the bird can fly! Excellent!" 🦜❤️ |
+| Step 5 | `listenAndTouch` | Well done! Confirm your progress on Bird! 🏅 | Tap to finish! | `obj_animal_bird` | MashaAllah! You learned Bird! 🌟⭐ |
 
 ### Track Growing Communicators (Age 9–10) — Track 4 — Growing Communicators
 - **Age Band Focus**: Move from beginner sentences into real conversation. Multi-turn dialogues, simple reasons, describing experiences, authentic non-toddler UI.
@@ -248,11 +246,11 @@ Every interaction is transcribed unsummarized, showing exact child-facing prompt
 
 | Step | Mechanic | Child-Facing Instruction | Audio Cue | Target / Speak Trigger | Success Reaction |
 |---|---|---|---|---|---|
-| Step 1 | `listenAndTouch` | Listen to the description and find the Happy. 😊 | Find the Happy. | `obj_happy_face` | Great listening! You found the Happy! 😊 |
-| Step 2 | `speakToMakeSomethingHappen` | Give a reason: "I prefer the Happy because it is useful." 🗣️ | Say: I prefer the Happy because it is useful. | `i prefer the happy because it is useful` | "I prefer the Happy..." Thoughtful choice and clear reason! 🌟 |
-| Step 3 | `scenePlacement` | Place the Happy nicely with Pip. 🧩 | Place the Happy with Pip | `obj_happy_face` | Nicely placed! Looks great! ✨ |
-| Step 4 | `conversationRolePlay` | Pip asks why. Answer: "Because it helps us learn and stay organized." 💬 | Answer: Because it helps us learn and stay organized. | `because it helps us learn and stay organized` | Great explanation! That makes a lot of sense! ❤️ |
-| Step 5 | `listenAndTouch` | Tap Pip to celebrate completing today's lesson! 🏅 | Tap Pip to finish! | `obj_pip_greeter` | Excellent work! Another great step forward in speaking English! 🌟🎓 |
+| Step 1 | `listenAndTouch` | Examine the scene and locate the Mirror. 🌟 | Mirror | `obj_avatar_mirror` | Look at you! You are wonderful! 🪞✨ |
+| Step 2 | `dragAndDrop` | Position the Happy with the Mirror. ✨ | Move the Happy | `obj_happy_face` | Look at you! You are wonderful! 🪞✨ |
+| Step 3 | `speakToMakeSomethingHappen` | Express this perspective: "i want to be an author because i love writing" 🎙️ | i want to be an author because i love writing | `i want to be an author because i love writing` | Wonderful! You said "i want to be an author because i love writing"! 🌟🎉 |
+| Step 4 | `conversationRolePlay` | Pip asks: "What is your greatest passion and dream?" Propose: "i want to write books that inspire people" 💬 | Pip asks: "What is your greatest passion and dream?" | `i want to write books that inspire people` | Pip smiles: "i want to write books that inspire people! Excellent!" 🦜❤️ |
+| Step 5 | `listenAndTouch` | Objective achieved! Complete module for Mirror! 🏆 | Tap to finish! | `obj_avatar_mirror` | MashaAllah! You learned Mirror! 🌟⭐ |
 
 #### Lesson: My Favorite Subject Because... 🔬 (`t4_l04_favorite_subjects_with_reasons`)
 - **Unit**: `unit_t4_school` | **Estimated Duration**: ~8 mins
@@ -262,26 +260,25 @@ Every interaction is transcribed unsummarized, showing exact child-facing prompt
 
 | Step | Mechanic | Child-Facing Instruction | Audio Cue | Target / Speak Trigger | Success Reaction |
 |---|---|---|---|---|---|
-| Step 1 | `listenAndTouch` | Listen to the description and find the Whiteboard. 📋 | Find the Whiteboard. | `obj_school_board` | Great listening! You found the Whiteboard! 📋 |
-| Step 2 | `speakToMakeSomethingHappen` | Give a reason: "I prefer the Whiteboard because it is useful." 🗣️ | Say: I prefer the Whiteboard because it is useful. | `i prefer the whiteboard because it is useful` | "I prefer the Whiteboard..." Thoughtful choice and clear reason! 🌟 |
-| Step 3 | `scenePlacement` | Place the Whiteboard nicely with Desk. 🧩 | Place the Whiteboard with Desk | `obj_school_board` | Nicely placed! Looks great! ✨ |
-| Step 4 | `conversationRolePlay` | Pip asks why. Answer: "Because it helps us learn and stay organized." 💬 | Answer: Because it helps us learn and stay organized. | `because it helps us learn and stay organized` | Great explanation! That makes a lot of sense! ❤️ |
-| Step 5 | `listenAndTouch` | Tap Pip to celebrate completing today's lesson! 🏅 | Tap Pip to finish! | `obj_school_desk` | Excellent work! Another great step forward in speaking English! 🌟🎓 |
+| Step 1 | `listenAndTouch` | Examine the scene and locate the Microscope. 🌟 | Microscope | `obj_school_science_microscope` | Observe details carefully through the scientific lens! 🔬✨ |
+| Step 2 | `dragAndDrop` | Position the Microscope with the Desk. ✨ | Move the Microscope | `obj_school_science_microscope` | A neat student desk ready for study! 🪑✨ |
+| Step 3 | `speakToMakeSomethingHappen` | Express this perspective: "science is my favorite subject because we explore nature" 🎙️ | science is my favorite subject because we explore nature | `science is my favorite subject because we explore nature` | Wonderful! You said "science is my favorite subject because we explore nature"! 🌟🎉 |
+| Step 4 | `conversationRolePlay` | Teacher asks: "Which school subject do you like best and why?" Propose: "science is my favorite subject because we explore nature" 💬 | Teacher asks: "Which school subject do you like best and why?" | `science is my favorite subject because we explore nature` | Pip smiles: "science is my favorite subject because we explore nature! Excellent!" 🦜❤️ |
+| Step 5 | `listenAndTouch` | Objective achieved! Complete module for Microscope! 🏆 | Tap to finish! | `obj_school_science_microscope` | MashaAllah! You learned Microscope! 🌟⭐ |
 
 #### Lesson: My Morning Schedule 🌅 (`t4_l07_my_morning_habits`)
 - **Unit**: `unit_t4_routines` | **Estimated Duration**: ~8 mins
 - **Speaking Target**: Student describes morning routine using "usually" and "always".
 - **Listening Target**: Student sequences time milestones.
-- **Interaction Count**: 6 steps
+- **Interaction Count**: 5 steps
 
 | Step | Mechanic | Child-Facing Instruction | Audio Cue | Target / Speak Trigger | Success Reaction |
 |---|---|---|---|---|---|
-| Step 1 | `interactiveStory` | Listen to the story: Good habits make every day bright and productive! 📖 | Listen to the story. | `obj_room_door` | Great listening! Reflecting on habits helps us build character! 🌟 |
-| Step 2 | `listenAndTouch` | Find the item from the story: Touch the Door! 🔍 | Find the Door. | `obj_room_door` | Found it! Door identified! 🚪 |
-| Step 3 | `speakToMakeSomethingHappen` | Say what you learned: "We practiced patience and finished the task." 🗣️ | Say: We practiced patience and finished the task. | `we practiced patience and finished the task` | Well spoken! Patience is a wonderful virtue! 🌟 |
-| Step 4 | `scenePlacement` | Put the Door neatly in its proper spot. 🪵 | Place the Door in its proper spot | `obj_room_door` | Tidy and organized! Clean habits bring peace! ✨ |
-| Step 5 | `conversationRolePlay` | Pip asks what you learned. Answer: "Patience and good manners make everything better." 💬 | Answer: Patience and good manners make everything better. | `patience and good manners make everything better` | Wise and thoughtful! A gentle reminder for all of us! ❤️ |
-| Step 6 | `listenAndTouch` | Tap Pip to complete today's lesson! ⭐🎉 | Tap Pip to finish! | `obj_room_bed` | Great job! You spoke and shared wonderful ideas today! 🌟🏆 |
+| Step 1 | `listenAndTouch` | Examine the scene and locate the Toothbrush. 🌟 | Toothbrush | `obj_hygiene_brush` | Brush teeth morning and night! 🪥✨ |
+| Step 2 | `dragAndDrop` | Position the Toothbrush with the Table. ✨ | Move the Toothbrush | `obj_hygiene_brush` | Clean study table! 🪵✨ |
+| Step 3 | `speakToMakeSomethingHappen` | Express this perspective: "i usually wake up early and brush my teeth" 🎙️ | i usually wake up early and brush my teeth | `i usually wake up early and brush my teeth` | Wonderful! You said "i usually wake up early and brush my teeth"! 🌟🎉 |
+| Step 4 | `conversationRolePlay` | Pip asks: "What is your morning routine before school starts?" Propose: "i usually wake up early and brush my teeth" 💬 | Pip asks: "What is your morning routine before school starts?" | `i usually wake up early and brush my teeth` | Pip smiles: "i usually wake up early and brush my teeth! Excellent!" 🦜❤️ |
+| Step 5 | `listenAndTouch` | Objective achieved! Complete module for Toothbrush! 🏆 | Tap to finish! | `obj_hygiene_brush` | MashaAllah! You learned Toothbrush! 🌟⭐ |
 
 #### Lesson: I Prefer Fresh Fruit Because... 🍎 (`t4_l10_preferring_fresh_fruit`)
 - **Unit**: `unit_t4_food` | **Estimated Duration**: ~8 mins
@@ -291,26 +288,25 @@ Every interaction is transcribed unsummarized, showing exact child-facing prompt
 
 | Step | Mechanic | Child-Facing Instruction | Audio Cue | Target / Speak Trigger | Success Reaction |
 |---|---|---|---|---|---|
-| Step 1 | `listenAndTouch` | Pip describes a sweet, crisp fruit that grows on trees. Can you find the apple? 🍎 | Find the crisp red apple. | `obj_food_apple` | Correct! Fresh apples provide natural vitamins and energy! 🍎✨ |
-| Step 2 | `speakToMakeSomethingHappen` | Explain your choice with a reason: "I prefer apples because they are healthy and fresh." 🗣️ | Say: I prefer apples because they are healthy and fresh. | `i prefer apples because they are healthy` | "I prefer apples because they are healthy!" Clear reasoning and great delivery! 🌟 |
-| Step 3 | `scenePlacement` | Arrange a balanced lunch plate on the table with healthy food. 🍽️ | Put the apple on the lunch table | `obj_food_apple` | Balanced arrangement! Fresh fruit keeps our mind and body sharp! 🪵✨ |
-| Step 4 | `conversationRolePlay` | Pip asks your view on sweet snacks. Share your opinion: "I think fruit gives us better energy." 💬 | Share your view: I think fruit gives us better energy. | `i think fruit gives us better energy` | Well reasoned! Whole foods nourish the mind and keep us sharp for study! ❤️ |
-| Step 5 | `listenAndTouch` | Tap Pip to conclude today's discussion on healthy food! 🏅 | Tap Pip to complete your discussion! | `obj_dining_pip` | Excellent conversation! You shared thoughtful reasons today! 🌟🏆 |
+| Step 1 | `listenAndTouch` | Examine the scene and locate the Fresh Apple. 🌟 | Fresh Apple | `obj_food_apple` | Crisp red apple! Say Bismillah before eating! 🍎✨ |
+| Step 2 | `speakToMakeSomethingHappen` | Express this perspective: "i prefer fresh apples because they are healthy" 🎙️ | i prefer fresh apples because they are healthy | `i prefer fresh apples because they are healthy` | Placed neatly on the clean dining plate! 🍽️✨ |
+| Step 3 | `dragAndDrop` | Place the Apple by the Plate! ✨ | i prefer fresh apples because they are healthy | `obj_food_apple` | Placed neatly on the clean dining plate! 🍽️✨ |
+| Step 4 | `conversationRolePlay` | Host asks: "Why do you prefer fresh fruit for a snack?" Propose: "i prefer fresh apples because they are healthy" 💬 | Host asks: "Why do you prefer fresh fruit for a snack?" | `i prefer fresh apples because they are healthy` | Pip smiles: "i prefer fresh apples because they are healthy! Excellent!" 🦜❤️ |
+| Step 5 | `listenAndTouch` | Objective achieved! Complete module for Fresh Apple! 🏆 | Tap to finish! | `obj_food_apple` | MashaAllah! You learned Fresh Apple! 🌟⭐ |
 
 #### Lesson: Sketching Outdoor Nature 🎨🌿 (`t4_l14_sketching_nature`)
 - **Unit**: `unit_t4_hobbies` | **Estimated Duration**: ~8 mins
 - **Speaking Target**: Student describes an artistic hobby and materials used.
 - **Listening Target**: Student follows art instruction steps.
-- **Interaction Count**: 6 steps
+- **Interaction Count**: 5 steps
 
 | Step | Mechanic | Child-Facing Instruction | Audio Cue | Target / Speak Trigger | Success Reaction |
 |---|---|---|---|---|---|
-| Step 1 | `interactiveStory` | Listen to the story: Good habits make every day bright and productive! 📖 | Listen to the story. | `obj_park_tree` | Great listening! Reflecting on habits helps us build character! 🌟 |
-| Step 2 | `listenAndTouch` | Find the item from the story: Touch the Big Tree! 🔍 | Find the Big Tree. | `obj_park_tree` | Found it! Big Tree identified! 🌳 |
-| Step 3 | `speakToMakeSomethingHappen` | Say what you learned: "We practiced patience and finished the task." 🗣️ | Say: We practiced patience and finished the task. | `we practiced patience and finished the task` | Well spoken! Patience is a wonderful virtue! 🌟 |
-| Step 4 | `scenePlacement` | Put the Big Tree neatly in its proper spot. 🪵 | Place the Big Tree in its proper spot | `obj_park_tree` | Tidy and organized! Clean habits bring peace! ✨ |
-| Step 5 | `conversationRolePlay` | Pip asks what you learned. Answer: "Patience and good manners make everything better." 💬 | Answer: Patience and good manners make everything better. | `patience and good manners make everything better` | Wise and thoughtful! A gentle reminder for all of us! ❤️ |
-| Step 6 | `listenAndTouch` | Tap Pip to complete today's lesson! ⭐🎉 | Tap Pip to finish! | `obj_park_flower` | Great job! You spoke and shared wonderful ideas today! 🌟🏆 |
+| Step 1 | `listenAndTouch` | Examine the scene and locate the Purple Crayon. 🌟 | Purple Crayon | `obj_color_purple_crayon` | Purple crayon for colorful art! 🖍️🎨 |
+| Step 2 | `dragAndDrop` | Position the Purple Crayon with the Blue Basket. ✨ | Move the Purple Crayon | `obj_color_purple_crayon` | Blue block in the blue basket! Super! 🧺🟦 |
+| Step 3 | `speakToMakeSomethingHappen` | Express this perspective: "i enjoy sketching outdoor landscapes with colors" 🎙️ | i enjoy sketching outdoor landscapes with colors | `i enjoy sketching outdoor landscapes with colors` | Wonderful! You said "i enjoy sketching outdoor landscapes with colors"! 🌟🎉 |
+| Step 4 | `conversationRolePlay` | Art teacher asks: "What artistic hobby inspires your creativity?" Propose: "i enjoy sketching outdoor landscapes with colors" 💬 | Art teacher asks: "What artistic hobby inspires your creativity?" | `i enjoy sketching outdoor landscapes with colors` | Pip smiles: "i enjoy sketching outdoor landscapes with colors! Excellent!" 🦜❤️ |
+| Step 5 | `listenAndTouch` | Objective achieved! Complete module for Purple Crayon! 🏆 | Tap to finish! | `obj_color_purple_crayon` | MashaAllah! You learned Purple Crayon! 🌟⭐ |
 
 ### Track Confident Communicators (Age 11–12) — Track 5 — Confident Communicators
 - **Age Band Focus**: Confident practical spoken English. Nuanced opinions, past/present/future usage in context, collaborative scenarios, problem solving.
@@ -323,11 +319,11 @@ Every interaction is transcribed unsummarized, showing exact child-facing prompt
 
 | Step | Mechanic | Child-Facing Instruction | Audio Cue | Target / Speak Trigger | Success Reaction |
 |---|---|---|---|---|---|
-| Step 1 | `listenAndTouch` | Listen to the clues and find the Happy. 😊 | Find the Happy. | `obj_happy_face` | Great listening! You found the Happy! 😊 |
-| Step 2 | `speakToMakeSomethingHappen` | Share your view: "In my opinion, the Happy is very important." 🗣️ | Say: In my opinion, the Happy is very important. | `in my opinion the happy is very important` | "In my opinion..." Thoughtful and articulate opinion! 🌟 |
-| Step 3 | `scenePlacement` | Put the Happy in place with Pip. 🧩 | Place the Happy with Pip | `obj_happy_face` | Placed in the right spot! Context complete! ✨ |
-| Step 4 | `conversationRolePlay` | Pip asks why. Answer: "Because it helps people and makes things better." 💬 | Answer: Because it helps people and makes things better. | `because it helps people and makes things better` | Very thoughtful reasoning! That makes a lot of sense! ❤️ |
-| Step 5 | `listenAndTouch` | Tap Pip to complete today's discussion! ⭐🎓 | Tap Pip to finish! | `obj_pip_greeter` | Wonderful job today! Great speaking and thoughtful ideas! 🌟🏆 |
+| Step 1 | `listenAndTouch` | Analyze the setting and designate the Mirror. 🌟 | Mirror | `obj_avatar_mirror` | Look at you! You are wonderful! 🪞✨ |
+| Step 2 | `dragAndDrop` | Align the Happy toward the Mirror. ✨ | Move the Happy | `obj_happy_face` | Look at you! You are wonderful! 🪞✨ |
+| Step 3 | `speakToMakeSomethingHappen` | Articulate the core principle: "my guiding principle is to act with integrity in all situations" 🎙️ | my guiding principle is to act with integrity in all situations | `my guiding principle is to act with integrity in all situations` | Wonderful! You said "my guiding principle is to act with integrity in all situations"! 🌟🎉 |
+| Step 4 | `conversationRolePlay` | Pip asks: "What core principle guides your daily decisions?" Discuss: "my guiding principle is to act with integrity in all situations" 💬 | Pip asks: "What core principle guides your daily decisions?" | `my guiding principle is to act with integrity in all situations` | Pip smiles: "my guiding principle is to act with integrity in all situations! Excellent!" 🦜❤️ |
+| Step 5 | `listenAndTouch` | Mastery accomplished! Solidify insight on Mirror! 🎖️ | Tap to finish! | `obj_avatar_mirror` | MashaAllah! You learned Mirror! 🌟⭐ |
 
 #### Lesson: Evaluating Scientific Data 🔬 (`t5_l04_evaluating_scientific_evidence`)
 - **Unit**: `unit_t5_school` | **Estimated Duration**: ~10 mins
@@ -337,26 +333,25 @@ Every interaction is transcribed unsummarized, showing exact child-facing prompt
 
 | Step | Mechanic | Child-Facing Instruction | Audio Cue | Target / Speak Trigger | Success Reaction |
 |---|---|---|---|---|---|
-| Step 1 | `listenAndTouch` | Listen to the clues and find the Whiteboard. 📋 | Find the Whiteboard. | `obj_school_board` | Great listening! You found the Whiteboard! 📋 |
-| Step 2 | `speakToMakeSomethingHappen` | Share your view: "In my opinion, the Whiteboard is very important." 🗣️ | Say: In my opinion, the Whiteboard is very important. | `in my opinion the whiteboard is very important` | "In my opinion..." Thoughtful and articulate opinion! 🌟 |
-| Step 3 | `scenePlacement` | Put the Whiteboard in place with Desk. 🧩 | Place the Whiteboard with Desk | `obj_school_board` | Placed in the right spot! Context complete! ✨ |
-| Step 4 | `conversationRolePlay` | Pip asks why. Answer: "Because it helps people and makes things better." 💬 | Answer: Because it helps people and makes things better. | `because it helps people and makes things better` | Very thoughtful reasoning! That makes a lot of sense! ❤️ |
-| Step 5 | `listenAndTouch` | Tap Pip to complete today's discussion! ⭐🎓 | Tap Pip to finish! | `obj_school_desk` | Wonderful job today! Great speaking and thoughtful ideas! 🌟🏆 |
+| Step 1 | `listenAndTouch` | Analyze the setting and designate the Microscope. 🌟 | Microscope | `obj_school_science_microscope` | Observe details carefully through the scientific lens! 🔬✨ |
+| Step 2 | `dragAndDrop` | Align the Microscope toward the Desk. ✨ | Move the Microscope | `obj_school_science_microscope` | A neat student desk ready for study! 🪑✨ |
+| Step 3 | `speakToMakeSomethingHappen` | Articulate the core principle: "correlation does not imply causation in scientific experiments" 🎙️ | correlation does not imply causation in scientific experiments | `correlation does not imply causation in scientific experiments` | Wonderful! You said "correlation does not imply causation in scientific experiments"! 🌟🎉 |
+| Step 4 | `conversationRolePlay` | Teacher asks: "How do you evaluate scientific evidence objectively?" Discuss: "correlation does not imply causation in scientific experiments" 💬 | Teacher asks: "How do you evaluate scientific evidence objectively?" | `correlation does not imply causation in scientific experiments` | Pip smiles: "correlation does not imply causation in scientific experiments! Excellent!" 🦜❤️ |
+| Step 5 | `listenAndTouch` | Mastery accomplished! Solidify insight on Microscope! 🎖️ | Tap to finish! | `obj_school_science_microscope` | MashaAllah! You learned Microscope! 🌟⭐ |
 
 #### Lesson: Consultation Over Conflict 🤝 (`t5_l07_consultation_over_conflict`)
 - **Unit**: `unit_t5_friendship` | **Estimated Duration**: ~10 mins
 - **Speaking Target**: Student demonstrates how mutual Shura resolves deadlocks.
 - **Listening Target**: Student detects conflict de-escalation strategies.
-- **Interaction Count**: 6 steps
+- **Interaction Count**: 5 steps
 
 | Step | Mechanic | Child-Facing Instruction | Audio Cue | Target / Speak Trigger | Success Reaction |
 |---|---|---|---|---|---|
-| Step 1 | `listenAndTouch` | Listen to the situation: Find the Happy. 😊 | Listen to the situation and select the Happy. | `obj_happy_face` | Great listening! Found the Happy! 😊 |
-| Step 2 | `dragAndDrop` | Work together: Move the Happy over to Pip to share. 🤝 | Move the Happy to share with Pip | `obj_happy_face` | Cooperation makes solving problems easier! ✨ |
-| Step 3 | `speakToMakeSomethingHappen` | Suggest a helpful idea: "Why don't we share and work together?" 🗣️ | Suggest: Why don't we share and work together? | `why do we not share and work together` | Great suggestion! Working together is always the best solution! 🌟 |
-| Step 4 | `conversationRolePlay` | Pip asks how to resolve it fairly. Answer: "We listen with respect and find common ground." 💬 | Answer: We listen with respect and find common ground. | `we listen with respect and find common ground` | Very wise! Listening with respect helps everyone feel valued! ❤️ |
-| Step 5 | `scenePlacement` | Put the Happy neatly beside Pip. 🧩 | Place the Happy beside Pip | `obj_happy_face` | Everything is in order! Great teamwork! ✨ |
-| Step 6 | `listenAndTouch` | Tap Pip to celebrate solving this problem together! ⭐🎉 | Tap Pip to finish! | `obj_pip_greeter` | Hooray! Outstanding communication and problem solving! 🌟🏆 |
+| Step 1 | `listenAndTouch` | Analyze the setting and designate the Pip. 🌟 | Pip | `obj_pip_greeter` | Hello friend! Pip is so happy to see you! 🦜👋 |
+| Step 2 | `dragAndDrop` | Align the Happy toward the Pip. ✨ | Move the Happy | `obj_happy_face` | Hello friend! Pip is so happy to see you! 🦜👋 |
+| Step 3 | `speakToMakeSomethingHappen` | Articulate the core principle: "mutual consultation helps us reach the fairest decision" 🎙️ | mutual consultation helps us reach the fairest decision | `mutual consultation helps us reach the fairest decision` | Wonderful! You said "mutual consultation helps us reach the fairest decision"! 🌟🎉 |
+| Step 4 | `conversationRolePlay` | Pip asks: "How does consultation resolve stubborn deadlocks?" Discuss: "mutual consultation helps us reach the fairest decision" 💬 | Pip asks: "How does consultation resolve stubborn deadlocks?" | `mutual consultation helps us reach the fairest decision` | Pip smiles: "mutual consultation helps us reach the fairest decision! Excellent!" 🦜❤️ |
+| Step 5 | `listenAndTouch` | Mastery accomplished! Solidify insight on Pip! 🎖️ | Tap to finish! | `obj_pip_greeter` | MashaAllah! You learned Pip! 🌟⭐ |
 
 #### Lesson: Artificial Intelligence & Ethics 🤖 (`t5_l10_ai_and_human_wisdom`)
 - **Unit**: `unit_t5_technology` | **Estimated Duration**: ~10 mins
@@ -366,11 +361,11 @@ Every interaction is transcribed unsummarized, showing exact child-facing prompt
 
 | Step | Mechanic | Child-Facing Instruction | Audio Cue | Target / Speak Trigger | Success Reaction |
 |---|---|---|---|---|---|
-| Step 1 | `listenAndTouch` | Listen to the clues and find the Whiteboard. 📋 | Find the Whiteboard. | `obj_school_board` | Great listening! You found the Whiteboard! 📋 |
-| Step 2 | `speakToMakeSomethingHappen` | Share your view: "In my opinion, the Whiteboard is very important." 🗣️ | Say: In my opinion, the Whiteboard is very important. | `in my opinion the whiteboard is very important` | "In my opinion..." Thoughtful and articulate opinion! 🌟 |
-| Step 3 | `scenePlacement` | Put the Whiteboard in place with Desk. 🧩 | Place the Whiteboard with Desk | `obj_school_board` | Placed in the right spot! Context complete! ✨ |
-| Step 4 | `conversationRolePlay` | Pip asks why. Answer: "Because it helps people and makes things better." 💬 | Answer: Because it helps people and makes things better. | `because it helps people and makes things better` | Very thoughtful reasoning! That makes a lot of sense! ❤️ |
-| Step 5 | `listenAndTouch` | Tap Pip to complete today's discussion! ⭐🎓 | Tap Pip to finish! | `obj_school_desk` | Wonderful job today! Great speaking and thoughtful ideas! 🌟🏆 |
+| Step 1 | `listenAndTouch` | Analyze the setting and designate the Microscope. 🌟 | Microscope | `obj_school_science_microscope` | Observe details carefully through the scientific lens! 🔬✨ |
+| Step 2 | `dragAndDrop` | Align the Microscope toward the Desk. ✨ | Move the Microscope | `obj_school_science_microscope` | A neat student desk ready for study! 🪑✨ |
+| Step 3 | `speakToMakeSomethingHappen` | Articulate the core principle: "artificial intelligence is a powerful tool that requires moral oversight" 🎙️ | artificial intelligence is a powerful tool that requires moral oversight | `artificial intelligence is a powerful tool that requires moral oversight` | Wonderful! You said "artificial intelligence is a powerful tool that requires moral oversight"! 🌟🎉 |
+| Step 4 | `conversationRolePlay` | Teacher asks: "What role should human ethics play in AI development?" Discuss: "artificial intelligence is a powerful tool that requires moral oversight" 💬 | Teacher asks: "What role should human ethics play in AI development?" | `artificial intelligence is a powerful tool that requires moral oversight` | Pip smiles: "artificial intelligence is a powerful tool that requires moral oversight! Excellent!" 🦜❤️ |
+| Step 5 | `listenAndTouch` | Mastery accomplished! Solidify insight on Microscope! 🎖️ | Tap to finish! | `obj_school_science_microscope` | MashaAllah! You learned Microscope! 🌟⭐ |
 
 #### Lesson: Why Drinking Water Matters 💧🧠 (`t5_l14_hydration_and_cognitive_power`)
 - **Unit**: `unit_t5_health` | **Estimated Duration**: ~10 mins
@@ -380,11 +375,11 @@ Every interaction is transcribed unsummarized, showing exact child-facing prompt
 
 | Step | Mechanic | Child-Facing Instruction | Audio Cue | Target / Speak Trigger | Success Reaction |
 |---|---|---|---|---|---|
-| Step 1 | `listenAndTouch` | Pip explains: "Drinking clean water helps our brain focus and keeps our body healthy!" Touch the fresh water! 💧 | Touch the fresh water that keeps our body hydrated. | `obj_food_water` | Fresh, cool water! Essential for keeping our body and mind alert! 💧✨ |
-| Step 2 | `speakToMakeSomethingHappen` | Share your opinion: "Why is drinking water important? I think it helps our body stay healthy and active." 🗣️ | Say: Why is drinking water important? I think it helps our body stay healthy. | `why is drinking water important i think` | "I think it helps our body stay healthy..." Clear and thoughtful answer! 🌟 |
-| Step 3 | `scenePlacement` | Put a glass of fresh water on your study desk so you remember to drink. 🪵💧 | Place the water on the study desk | `obj_food_water` | Great habit! Having water nearby helps you stay alert while studying! 🪵✨ |
-| Step 4 | `conversationRolePlay` | Pip asks about taking care of ourselves. Answer: "Our body is a trust from Allah, so we must take care of it." 💬 | Answer: Our body is a trust from Allah, so we must take care of it. | `our body is a trust from allah` | Wonderful thought! Taking care of our health is a great blessing and trust! ❤️ |
-| Step 5 | `listenAndTouch` | Tap Pip to complete today's discussion! 🎓 | Tap Pip to complete the activity! | `obj_dining_pip` | Fantastic discussion! You shared thoughtful and mature ideas! 🌟🏆 |
+| Step 1 | `listenAndTouch` | Analyze the setting and designate the Fresh Water. 🌟 | Fresh Water | `obj_food_water` | Refreshing clean water! Sit down to drink! 💧🥤 |
+| Step 2 | `speakToMakeSomethingHappen` | Articulate the principle: "why is drinking water important i think it gives health and focus" 🎙️ | why is drinking water important i think it gives health and focus | `why is drinking water important i think it gives health and focus` | Poured into the clean drinking cup! 🥛✨ |
+| Step 3 | `scenePlacement` | Place the Water by the Cup! ✨ | why is drinking water important i think it gives health and focus | `obj_food_water` | Poured into the clean drinking cup! 🥛✨ |
+| Step 4 | `conversationRolePlay` | Doctor asks: "Why is water intake linked to mental clarity?" Discuss: "our body is a trust from allah so we hydrate well" 💬 | Doctor asks: "Why is water intake linked to mental clarity?" | `our body is a trust from allah so we hydrate well` | Pip smiles: "our body is a trust from allah so we hydrate well! Excellent!" 🦜❤️ |
+| Step 5 | `listenAndTouch` | Mastery accomplished! Solidify insight on Fresh Water! 🎖️ | Tap to finish! | `obj_food_water` | MashaAllah! You learned Fresh Water! 🌟⭐ |
 
 ---
 
@@ -395,49 +390,49 @@ Demonstrates the explicit developmental progression from concrete single-word im
 
 | Age Group | Lesson ID | Key Speaking Outcome | Core Mechanic | Child-Facing Prompt Sample | Target Utterance / Trigger |
 |---|---|---|---|---|---|
-| Age 3 (Track 1) | `t1_l13_sweet_red_apple` | Child says "Apple". | `speakToMakeSomethingHappen` | Apple! Can you say Apple? 🍎 | `apple` |
-| Age 5 (Track 2) | `t2_l08_water_please` | Child says polite request: "Can I have water, please?" | `speakToMakeSomethingHappen` | When you are thirsty, say: "Water, please!" 💧 | `water please` |
-| Age 7 (Track 3) | `t3_l10_can_i_have_water_please` | Child requests drinks politely in full complete sentence. | `speakToMakeSomethingHappen` | Speak the complete polite request: "Can I have some water, please?" 🗣️ | `can i have some water please` |
-| Age 9 (Track 4) | `t4_l10_preferring_fresh_fruit` | Student expresses comparative preferences: "I prefer apples over candy because..." | `speakToMakeSomethingHappen` | Explain your choice with a reason: "I prefer apples because they are healthy and fresh." 🗣️ | `i prefer apples because they are healthy` |
-| Age 11 (Track 5) | `t5_l14_hydration_and_cognitive_power` | Student explains with clear reasons: "Why is drinking water important? In my opinion..." | `speakToMakeSomethingHappen` | Share your opinion: "Why is drinking water important? I think it helps our body stay healthy and active." 🗣️ | `why is drinking water important i think` |
+| Age 3 (Track 1) | `t1_l13_sweet_red_apple` | Child says "Apple". | `speakToMakeSomethingHappen` | Apple! Can you say Apple? 🍎🎙️ | `apple` |
+| Age 5 (Track 2) | `t2_l08_water_please` | Child says polite request: "Can I have water, please?" | `speakToMakeSomethingHappen` | Make a polite request: "Water, please!" 🎙️ | `water please` |
+| Age 7 (Track 3) | `t3_l10_can_i_have_water_please` | Child requests drinks politely in full complete sentence. | `speakToMakeSomethingHappen` | Articulate clearly: "can i have some water please" 🎙️ | `can i have some water please` |
+| Age 9 (Track 4) | `t4_l10_preferring_fresh_fruit` | Student expresses comparative preferences: "I prefer apples over candy because..." | `speakToMakeSomethingHappen` | Express this perspective: "i prefer fresh apples because they are healthy" 🎙️ | `i prefer fresh apples because they are healthy` |
+| Age 11 (Track 5) | `t5_l14_hydration_and_cognitive_power` | Student explains with clear reasons: "Why is drinking water important? In my opinion..." | `speakToMakeSomethingHappen` | Articulate the principle: "why is drinking water important i think it gives health and focus" 🎙️ | `why is drinking water important i think it gives health and focus` |
 
 ### Theme: 2. MY HOME & LIVING SPACES
 
 | Age Group | Lesson ID | Key Speaking Outcome | Core Mechanic | Child-Facing Prompt Sample | Target Utterance / Trigger |
 |---|---|---|---|---|---|
-| Age 3 (Track 1) | `t1_l17_book_on_table` | Child echoes "Book". | `speakToMakeSomethingHappen` | Can you say Door? 🚪 | `door` |
-| Age 5 (Track 2) | `t2_l11_on_the_table` | Child says: "It is on the table." | `speakToMakeSomethingHappen` | Say the full phrase: "This is my Door!" 🗣️ | `this is my door` |
-| Age 7 (Track 3) | `t3_l04_there_is_a_lamp` | Child produces: "There is a lamp on the table." | `speakToMakeSomethingHappen` | Speak a complete sentence: "There is a Door here." 🗣️ | `there is a door` |
-| Age 9 (Track 4) | `t4_l07_my_morning_habits` | Student describes morning routine using "usually" and "always". | `speakToMakeSomethingHappen` | Say what you learned: "We practiced patience and finished the task." 🗣️ | `we practiced patience and finished the task` |
-| Age 11 (Track 5) | `t5_l16_sleep_and_memory_consolidation` | Student explains how adequate sleep enhances learning and mood. | `speakToMakeSomethingHappen` | Share your view: "In my opinion, the Apple is very important." 🗣️ | `in my opinion the apple is very important` |
+| Age 3 (Track 1) | `t1_l17_book_on_table` | Child echoes "Book". | `speakToMakeSomethingHappen` | Can you say "Book"? Good books help us learn! 📖🎙️ | `book` |
+| Age 5 (Track 2) | `t2_l11_on_the_table` | Child says: "It is on the table." | `speakToMakeSomethingHappen` | Explain the position: "It is on the table!" 🎙️ | `it is on the table` |
+| Age 7 (Track 3) | `t3_l04_there_is_a_lamp` | Child produces: "There is a lamp on the table." | `speakToMakeSomethingHappen` | Clearly articulate: "there is a lamp on the table" 🎙️ | `there is a lamp on the table` |
+| Age 9 (Track 4) | `t4_l07_my_morning_habits` | Student describes morning routine using "usually" and "always". | `speakToMakeSomethingHappen` | Express this perspective: "i usually wake up early and brush my teeth" 🎙️ | `i usually wake up early and brush my teeth` |
+| Age 11 (Track 5) | `t5_l16_sleep_and_memory_consolidation` | Student explains how adequate sleep enhances learning and mood. | `speakToMakeSomethingHappen` | Articulate the core principle: "adequate sleep consolidates memory and restores emotional resilience" 🎙️ | `adequate sleep consolidates memory and restores emotional resilience` |
 
 ### Theme: 3. ANIMALS & NATURE STEWARDSHIP
 
 | Age Group | Lesson ID | Key Speaking Outcome | Core Mechanic | Child-Facing Prompt Sample | Target Utterance / Trigger |
 |---|---|---|---|---|---|
-| Age 3 (Track 1) | `t1_l10_friendly_cat` | Child imitates "Meow". | `speakToMakeSomethingHappen` | Can you say Cat? Or make the sound! 🗣️ | `cat` |
-| Age 5 (Track 2) | `t2_l14_the_big_dog` | Child says: "This is a big dog." | `speakToMakeSomethingHappen` | Say the full phrase: "This is my Cat!" 🗣️ | `this is my cat` |
-| Age 7 (Track 3) | `t3_l16_caring_for_our_pets` | Child says: "We should give clean water and food to the cat." | `speakToMakeSomethingHappen` | Speak a complete sentence: "There is a Cat here." 🗣️ | `there is a cat` |
-| Age 9 (Track 4) | `t4_l24_planting_trees_for_future` | Student describes planting procedures and ecological value. | `speakToMakeSomethingHappen` | Give a reason: "I prefer the Big Tree because it is useful." 🗣️ | `i prefer the big tree because it is useful` |
-| Age 11 (Track 5) | `t5_l21_preserving_biodiversity` | Student explains the balance of ecosystems (Mizan). | `speakToMakeSomethingHappen` | Share your view: "In my opinion, the Big Tree is very important." 🗣️ | `in my opinion the big tree is very important` |
+| Age 3 (Track 1) | `t1_l10_friendly_cat` | Child imitates "Meow". | `speakToMakeSomethingHappen` | Can you make the cat sound? Say "Meow"! 🐱🎙️ | `meow` |
+| Age 5 (Track 2) | `t2_l14_the_big_dog` | Child says: "This is a big dog." | `speakToMakeSomethingHappen` | Describe the dog in a sentence: "This is a big dog." 🎙️ | `this is a big dog` |
+| Age 7 (Track 3) | `t3_l16_caring_for_our_pets` | Child says: "We should give clean water and food to the cat." | `speakToMakeSomethingHappen` | Clearly articulate: "we should give clean water and food to the cat" 🎙️ | `we should give clean water and food to the cat` |
+| Age 9 (Track 4) | `t4_l24_planting_trees_for_future` | Student describes planting procedures and ecological value. | `speakToMakeSomethingHappen` | Express this perspective: "planting trees provides cooling shade and clean air for all" 🎙️ | `planting trees provides cooling shade and clean air for all` |
+| Age 11 (Track 5) | `t5_l21_preserving_biodiversity` | Student explains the balance of ecosystems (Mizan). | `speakToMakeSomethingHappen` | Articulate the core principle: "every living creature plays an essential role in nature balance" 🎙️ | `every living creature plays an essential role in nature balance` |
 
 ### Theme: 4. SCHOOL & LEARNING COMMUNITY
 
 | Age Group | Lesson ID | Key Speaking Outcome | Core Mechanic | Child-Facing Prompt Sample | Target Utterance / Trigger |
 |---|---|---|---|---|---|
-| Age 3 (Track 1) | `t1_l21_build_blocks` | Child says "Blocks". | `speakToMakeSomethingHappen` | Can you say Ball? ⚽ | `ball` |
-| Age 5 (Track 2) | `t2_l16_this_is_my_pencil` | Child says: "This is my yellow pencil." | `speakToMakeSomethingHappen` | Say the full phrase: "This is my Whiteboard!" 🗣️ | `this is my whiteboard` |
-| Age 7 (Track 3) | `t3_l06_i_need_my_bag` | Child expresses necessity: "I need my school bag for class." | `speakToMakeSomethingHappen` | Speak a complete sentence: "There is a Door here." 🗣️ | `there is a door` |
-| Age 9 (Track 4) | `t4_l04_favorite_subjects_with_reasons` | Student shares favorite subjects with specific reasons. | `speakToMakeSomethingHappen` | Give a reason: "I prefer the Whiteboard because it is useful." 🗣️ | `i prefer the whiteboard because it is useful` |
-| Age 11 (Track 5) | `t5_l04_evaluating_scientific_evidence` | Student explains correlation vs causation in simple terms. | `speakToMakeSomethingHappen` | Share your view: "In my opinion, the Whiteboard is very important." 🗣️ | `in my opinion the whiteboard is very important` |
+| Age 3 (Track 1) | `t1_l21_build_blocks` | Child says "Blocks". | `speakToMakeSomethingHappen` | Can you say "Blocks"? Tower of blocks! 🧱🎙️ | `blocks` |
+| Age 5 (Track 2) | `t2_l16_this_is_my_pencil` | Child says: "This is my yellow pencil." | `speakToMakeSomethingHappen` | Say clearly: "This is my yellow pencil." 🎙️ | `this is my yellow pencil` |
+| Age 7 (Track 3) | `t3_l06_i_need_my_bag` | Child expresses necessity: "I need my school bag for class." | `speakToMakeSomethingHappen` | Clearly articulate: "i need my school bag for class" 🎙️ | `i need my school bag for class` |
+| Age 9 (Track 4) | `t4_l04_favorite_subjects_with_reasons` | Student shares favorite subjects with specific reasons. | `speakToMakeSomethingHappen` | Express this perspective: "science is my favorite subject because we explore nature" 🎙️ | `science is my favorite subject because we explore nature` |
+| Age 11 (Track 5) | `t5_l04_evaluating_scientific_evidence` | Student explains correlation vs causation in simple terms. | `speakToMakeSomethingHappen` | Articulate the core principle: "correlation does not imply causation in scientific experiments" 🎙️ | `correlation does not imply causation in scientific experiments` |
 
 ### Theme: 5. FEELINGS & SOCIAL EMPATHY
 
 | Age Group | Lesson ID | Key Speaking Outcome | Core Mechanic | Child-Facing Prompt Sample | Target Utterance / Trigger |
 |---|---|---|---|---|---|
-| Age 3 (Track 1) | `t1_l02_happy_or_sad` | Child says "Happy" with a smile. | `speakToMakeSomethingHappen` | Say Pip! Or tap to hear it! 🗣️ | `pip` |
-| Age 5 (Track 2) | `t2_l01_i_am_happy` | Child says: "I am happy today!" | `speakToMakeSomethingHappen` | Say the full phrase: "This is my Pip!" 🗣️ | `this is my pip` |
-| Age 7 (Track 3) | `t3_l17_play_with_us` | Child invites a peer: "Would you like to play with us?" | `speakToMakeSomethingHappen` | Speak a complete sentence: "There is a Ball here." 🗣️ | `there is a ball` |
-| Age 9 (Track 4) | `t4_l26_explaining_why_i_feel` | Student explains feelings and what caused them. | `speakToMakeSomethingHappen` | Give a reason: "I prefer the Big Tree because it is useful." 🗣️ | `i prefer the big tree because it is useful` |
-| Age 11 (Track 5) | `t5_l10_ai_and_human_wisdom` | Student debates benefits and ethical risks of AI tools. | `speakToMakeSomethingHappen` | Share your view: "In my opinion, the Whiteboard is very important." 🗣️ | `in my opinion the whiteboard is very important` |
+| Age 3 (Track 1) | `t1_l02_happy_or_sad` | Child says "Happy" with a smile. | `speakToMakeSomethingHappen` | Can you say Happy with a big smile? 😊🎙️ | `happy` |
+| Age 5 (Track 2) | `t2_l01_i_am_happy` | Child says: "I am happy today!" | `speakToMakeSomethingHappen` | Speak in a complete sentence: "I am happy today!" 🎙️ | `i am happy today` |
+| Age 7 (Track 3) | `t3_l17_play_with_us` | Child invites a peer: "Would you like to play with us?" | `speakToMakeSomethingHappen` | Clearly articulate: "would you like to play with us" 🎙️ | `would you like to play with us` |
+| Age 9 (Track 4) | `t4_l26_explaining_why_i_feel` | Student explains feelings and what caused them. | `speakToMakeSomethingHappen` | Express this perspective: "i felt excited because our team won the science fair" 🎙️ | `i felt excited because our team won the science fair` |
+| Age 11 (Track 5) | `t5_l10_ai_and_human_wisdom` | Student debates benefits and ethical risks of AI tools. | `speakToMakeSomethingHappen` | Articulate the core principle: "artificial intelligence is a powerful tool that requires moral oversight" 🎙️ | `artificial intelligence is a powerful tool that requires moral oversight` |
 

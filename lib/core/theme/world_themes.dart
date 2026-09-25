@@ -155,9 +155,31 @@ class WorldTheme {
         return deliciousFood;
       case 'world_nature':
         return natureWeather;
-      default:
-        return animalAdventure;
     }
+
+    if (worldId.contains('home') || worldId.contains('family') || worldId.contains('house')) {
+      return homeFamily;
+    }
+    if (worldId.contains('school') || worldId.contains('classroom') || worldId.contains('teacher')) {
+      return schoolClassroom;
+    }
+    if (worldId.contains('food') || worldId.contains('kitchen') || worldId.contains('market')) {
+      return deliciousFood;
+    }
+    if (worldId.contains('nature') || worldId.contains('weather') || worldId.contains('garden')) {
+      return natureWeather;
+    }
+    if (worldId.contains('animal') || worldId.contains('safari') || worldId.contains('pets')) {
+      return animalAdventure;
+    }
+
+    if (worldId.startsWith('world_t1')) return animalAdventure;
+    if (worldId.startsWith('world_t2')) return homeFamily;
+    if (worldId.startsWith('world_t3')) return schoolClassroom;
+    if (worldId.startsWith('world_t4')) return natureWeather;
+    if (worldId.startsWith('world_t5')) return deliciousFood;
+
+    return animalAdventure;
   }
 
   /// Determine world from activity ID prefix

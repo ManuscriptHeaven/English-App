@@ -160,7 +160,12 @@ class WorldDetailScreen extends ConsumerWidget {
   }
 
   void _navigateToActivity(BuildContext context, String activityId) {
-    if (activityId.endsWith('_vocab') ||
+    if (activityId.startsWith('t1_') ||
+        activityId.startsWith('t2_') ||
+        activityId.startsWith('t3_') ||
+        activityId.startsWith('t4_') ||
+        activityId.startsWith('t5_') ||
+        activityId.endsWith('_vocab') ||
         activityId == 'activity_animal_vocab' ||
         activityId == 'activity_animal_hunt' ||
         activityId == 'activity_listen_tap') {

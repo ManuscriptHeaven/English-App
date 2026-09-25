@@ -123,7 +123,10 @@ class InteractiveActivityIntegrityValidator {
         'Instruction asks for apple, but draggable is ${draggable.conceptId} (${draggable.label}).',
       );
     }
-    if (instruction.contains('water') && draggable.conceptId != 'concept_water') {
+    if (instruction.contains('water') &&
+        !instruction.contains('water bowl') &&
+        !instruction.contains('water cup') &&
+        draggable.conceptId != 'concept_water') {
       errors.add(
         'Instruction asks for water, but draggable is ${draggable.conceptId} (${draggable.label}).',
       );
@@ -133,7 +136,9 @@ class InteractiveActivityIntegrityValidator {
         'Instruction asks for basket, but dropTarget is ${target.conceptId} (${target.label}).',
       );
     }
-    if (instruction.contains('table') && target.conceptId != 'concept_table') {
+    if (instruction.contains('table') &&
+        draggable.conceptId != 'concept_table' &&
+        target.conceptId != 'concept_table') {
       errors.add(
         'Instruction asks for table, but dropTarget is ${target.conceptId} (${target.label}).',
       );
@@ -183,7 +188,10 @@ class InteractiveActivityIntegrityValidator {
         'Instruction asks for apple, but draggable is ${draggable.conceptId} (${draggable.label}).',
       );
     }
-    if (instruction.contains('water') && draggable.conceptId != 'concept_water') {
+    if (instruction.contains('water') &&
+        !instruction.contains('water bowl') &&
+        !instruction.contains('water cup') &&
+        draggable.conceptId != 'concept_water') {
       errors.add(
         'Instruction asks for water, but draggable is ${draggable.conceptId} (${draggable.label}).',
       );
@@ -210,7 +218,9 @@ class InteractiveActivityIntegrityValidator {
     if (instruction.contains('book') && draggable.conceptId != 'concept_book') {
       errors.add('Instruction mentions book, but draggable is ${draggable.conceptId}.');
     }
-    if (instruction.contains('table') && target.conceptId != 'concept_table') {
+    if (instruction.contains('table') &&
+        draggable.conceptId != 'concept_table' &&
+        target.conceptId != 'concept_table') {
       errors.add('Instruction mentions table, but target is ${target.conceptId}.');
     }
   }
@@ -228,7 +238,7 @@ class InteractiveActivityIntegrityValidator {
         activity.dropTarget;
     if (target == null) {
       errors.add('SpeakToMakeSomethingHappen requires target scene object.');
-    } else if (instruction.contains('door') && target.conceptId != 'concept_door') {
+    } else if (RegExp(r'\bdoor\b').hasMatch(instruction) && target.conceptId != 'concept_door') {
       errors.add('Instruction mentions door, but target object is ${target.conceptId}.');
     }
   }

@@ -434,7 +434,12 @@ class AdventureRecommendationEngine {
   }
 
   static String _mapRoutePath(String id) {
-    if (id.endsWith('_vocab') ||
+    if (id.startsWith('t1_') ||
+        id.startsWith('t2_') ||
+        id.startsWith('t3_') ||
+        id.startsWith('t4_') ||
+        id.startsWith('t5_') ||
+        id.endsWith('_vocab') ||
         id == 'activity_animal_vocab' ||
         id == 'activity_animal_hunt' ||
         id == 'activity_listen_tap') {

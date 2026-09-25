@@ -1,5 +1,6 @@
 import 'package:kids_english_adventure/core/experience/interactive_activity_integrity_validator.dart';
 import 'package:kids_english_adventure/features/curriculum/data/seed/v2/curriculum_content_v2.dart';
+import 'package:kids_english_adventure/features/curriculum/data/seed/v2/curriculum_v2_lesson_specs.dart';
 import 'package:kids_english_adventure/features/curriculum/domain/models/curriculum_track.dart';
 
 /// Result report from the V2 Content Differentiation & Completeness Validator.
@@ -53,8 +54,12 @@ class CurriculumContentV2Validator {
         );
       }
 
-      // 2. Validate Every Lesson Has >= 4 Interactions and Valid Semantic Objects
+      // 2. Validate Every Lesson Has >= 4 Interactions, an Explicit Spec, and Valid Semantic Objects
       for (final lesson in lessons) {
+        if (!CurriculumV2LessonSpecs.hasSpec(lesson.id)) {
+          issues.add('Lesson "${lesson.id}" has no explicit CurriculumLessonSpec in CurriculumV2LessonSpecs.');
+        }
+
         final activities = CurriculumContentV2.getActivitiesForLesson(lesson.id);
         totalInteractions += activities.length;
 

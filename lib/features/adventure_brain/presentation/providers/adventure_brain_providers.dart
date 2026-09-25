@@ -72,7 +72,7 @@ final childLearningProfileProvider = FutureProvider<ChildLearningProfile?>((ref)
 
 final adaptiveRecommendationProvider = FutureProvider<LearningRecommendation>((ref) async {
   final child = ref.watch(activeChildProfileProvider);
-  final currentWorld = ref.watch(selectedWorldProvider).value ?? _fallbackWorld;
+  final currentWorld = await ref.watch(selectedWorldProvider.future) ?? _fallbackWorld;
   final masteries = await ref.watch(childVocabularyMasteriesProvider.future);
 
   final lessons = currentWorld.chapters.isNotEmpty && currentWorld.chapters.first.units.isNotEmpty
@@ -83,15 +83,15 @@ final adaptiveRecommendationProvider = FutureProvider<LearningRecommendation>((r
     return LearningRecommendation(
       childId: 'anonymous',
       type: LearningRecommendationType.introduceNewVocabulary,
-      targetVocabularyIds: const ['vocab_elephant', 'vocab_lion'],
-      worldId: 'world_animal',
-      activityId: 'activity_animal_vocab',
+      targetVocabularyIds: const ['hello', 'wave'],
+      worldId: 'world_t1_hello_me',
+      activityId: 't1_l01_pip_says_hello',
       internalReason: 'Initial onboarding exploration.',
       childFriendlyPrompt: 'Let\'s start our learning journey! 🚀',
       generatedAt: DateTime.now(),
-      routePath: '/activity/vocabulary',
-      title: 'Animal Words Discovery',
-      subtitle: 'Discover animals',
+      routePath: '/lesson-session/t1_l01_pip_says_hello',
+      title: 'Pip Says Hello',
+      subtitle: 'Pip introduces himself with wave and hello',
     );
   }
 
@@ -109,7 +109,7 @@ final currentRecommendationProvider = FutureProvider<Recommendation>((ref) async
   final progress = ref.watch(activeChildProgressProvider).value;
   final contentMasteries = ref.watch(contentMasteriesProvider).value ?? [];
   final skillMasteries = ref.watch(skillMasteriesProvider).value ?? {};
-  final currentWorld = ref.watch(selectedWorldProvider).value ?? _fallbackWorld;
+  final currentWorld = await ref.watch(selectedWorldProvider.future) ?? _fallbackWorld;
   final settings = ref.watch(appSettingsProvider);
 
   final lessons = currentWorld.chapters.isNotEmpty && currentWorld.chapters.first.units.isNotEmpty
@@ -118,15 +118,15 @@ final currentRecommendationProvider = FutureProvider<Recommendation>((ref) async
 
   if (child == null) {
     return const Recommendation(
-      activityId: 'activity_animal_vocab',
+      activityId: 't1_l01_pip_says_hello',
       activityType: 'vocab',
-      worldId: 'world_animal',
-      skill: SkillType.vocabulary,
+      worldId: 'world_t1_hello_me',
+      skill: SkillType.speaking,
       reason: 'Initial onboarding exploration.',
       childFriendlyPrompt: 'Let\'s start our learning journey! 🚀',
-      title: 'Animal Words Discovery',
-      subtitle: 'Discover animals',
-      routePath: '/activity/vocabulary',
+      title: 'Pip Says Hello',
+      subtitle: 'Pip introduces himself with wave and hello',
+      routePath: '/lesson-session/t1_l01_pip_says_hello',
     );
   }
 

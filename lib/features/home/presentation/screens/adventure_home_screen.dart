@@ -15,7 +15,9 @@ import '../../../adventure_brain/domain/adaptive/learning_session.dart';
 import '../../../adventure_brain/presentation/providers/adventure_brain_providers.dart';
 import '../../../adventure_brain/presentation/widgets/session_progress_bar.dart';
 import '../../../child_profile/presentation/providers/child_profile_providers.dart';
+import '../../../curriculum/domain/models/curriculum_track.dart';
 import '../../../settings/presentation/providers/settings_providers.dart';
+import '../../../worlds/data/v2_curriculum_world_repository.dart';
 import '../../../worlds/presentation/providers/world_providers.dart';
 
 /// Child Adventure Home — Premium redesign.
@@ -250,14 +252,18 @@ class _AdventureHomeScreenState extends ConsumerState<AdventureHomeScreen>
                         childAge: activeChild.age,
                         isLoading: true,
                       ),
-                      error: (err, stack) => AdventureButton(
-                        text: 'START ADVENTURE 🚀',
-                        backgroundColor: AppColors.sunYellow,
-                        height: 72,
-                        childAge: activeChild.age,
-                        onPressed: () => context
-                            .push(RouteNames.worldDetailPath('world_animal')),
-                      ),
+                      error: (err, stack) {
+                        final track = CurriculumTrack.forAge(activeChild.age);
+                        final fallbackWorldId = worldsAsync.value?.firstOrNull?.id ??
+                            V2CurriculumWorldRepository.defaultWorldIdForTrack(track);
+                        return AdventureButton(
+                          text: 'START ADVENTURE 🚀',
+                          backgroundColor: AppColors.sunYellow,
+                          height: 72,
+                          childAge: activeChild.age,
+                          onPressed: () => context.push(RouteNames.worldDetailPath(fallbackWorldId)),
+                        );
+                      },
                       data: (rec) => AdventureButton(
                         text: 'CONTINUE ADVENTURE 🚀',
                         backgroundColor: AppColors.sunYellow,
@@ -324,8 +330,13 @@ class _AdventureHomeScreenState extends ConsumerState<AdventureHomeScreen>
       case 0: // Home — already here
         break;
       case 1: // Map
-        final worldId =
-            worlds != null && worlds.isNotEmpty ? worlds.first.id : 'world_animal';
+        final activeChild = ref.read(activeChildProfileProvider);
+        final track = activeChild != null
+            ? CurriculumTrack.forAge(activeChild.age)
+            : CurriculumTrack.track1LittleListeners;
+        final worldId = worlds != null && worlds.isNotEmpty
+            ? worlds.first.id
+            : V2CurriculumWorldRepository.defaultWorldIdForTrack(track);
         context.push(RouteNames.worldDetailPath(worldId));
         break;
       case 2: // Rewards

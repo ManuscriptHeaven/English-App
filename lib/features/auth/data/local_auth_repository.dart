@@ -14,7 +14,7 @@ class LocalAuthRepository implements IAuthRepository {
   }
 
   void _seedDefaultAccount() {
-    final now = DateTime(2026, 8, 22);
+    final now = DateTime.now();
     final defaultParent = ParentAccount(
       id: 'parent_1',
       email: 'parent@adventure.kids',
