@@ -10,6 +10,7 @@ import '../../../../core/widgets/adventure_trail_map.dart';
 import '../../../../core/widgets/pip_character_guide.dart';
 import '../../../../core/widgets/state_views.dart';
 import '../../../child_profile/presentation/providers/child_profile_providers.dart';
+import '../../domain/models/lesson.dart';
 import '../providers/world_providers.dart';
 
 /// Illustrated Adventure Map Screen displaying interactive trail nodes for children.
@@ -69,14 +70,24 @@ class WorldDetailScreen extends ConsumerWidget {
                 final completedIds = activeChild?.completedLessonIds ?? [];
                 final activities = world.chapters.isNotEmpty && world.chapters.first.units.isNotEmpty
                     ? world.chapters.first.units.first.lessons
-                    : [];
+                    : <Lesson>[];
+
+                // Calculate world-local progress
+                final completedInThisWorld = activities.where((l) => completedIds.contains(l.id)).length;
+                final totalInThisWorld = activities.length;
+                final isWorldCompleted = totalInThisWorld > 0 && completedInThisWorld == totalInThisWorld;
 
                 // Find current active lesson index
                 int currentIndex = 0;
-                for (int i = 0; i < activities.length; i++) {
-                  if (!completedIds.contains(activities[i].id)) {
-                    currentIndex = i;
-                    break;
+                if (isWorldCompleted) {
+                  // Do not reset visually to Step 1: all nodes are marked completed
+                  currentIndex = activities.length;
+                } else {
+                  for (int i = 0; i < activities.length; i++) {
+                    if (!completedIds.contains(activities[i].id)) {
+                      currentIndex = i;
+                      break;
+                    }
                   }
                 }
 
@@ -104,7 +115,7 @@ class WorldDetailScreen extends ConsumerWidget {
                       child: Row(
                         children: [
                           PipCharacterGuide(
-                            state: PipState.speaking,
+                            state: isWorldCompleted ? PipState.celebrating : PipState.speaking,
                             characterSize: 58,
                             showSpeechBubble: false,
                           ),
@@ -126,18 +137,64 @@ class WorldDetailScreen extends ConsumerWidget {
                           Container(
                             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                             decoration: BoxDecoration(
-                              color: AppColors.sunLight,
+                              color: isWorldCompleted ? const Color(0xFFE8F5E9) : AppColors.sunLight,
                               borderRadius: BorderRadius.circular(999),
-                              border: Border.all(color: AppColors.sunYellow, width: 1.5),
+                              border: Border.all(
+                                color: isWorldCompleted ? const Color(0xFF4CAF50) : AppColors.sunYellow,
+                                width: 1.5,
+                              ),
                             ),
                             child: Text(
-                              '${completedIds.length}/${activities.length} ⭐',
-                              style: AppTypography.labelLarge.copyWith(color: AppColors.sunDark, fontWeight: FontWeight.bold),
+                              '$completedInThisWorld/$totalInThisWorld ⭐',
+                              style: AppTypography.labelLarge.copyWith(
+                                color: isWorldCompleted ? const Color(0xFF2E7D32) : AppColors.sunDark,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ],
                       ),
                     ),
+
+                    // World Completed Celebration Banner
+                    if (isWorldCompleted)
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                        margin: const EdgeInsets.fromLTRB(16, 0, 16, 8),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFE8F5E9),
+                          borderRadius: BorderRadius.circular(16),
+                          border: Border.all(color: const Color(0xFF4CAF50), width: 1.5),
+                        ),
+                        child: Row(
+                          children: [
+                            const Text('🎉', style: TextStyle(fontSize: 24)),
+                            const SizedBox(width: 10),
+                            Expanded(
+                              child: Text(
+                                'World Completed! Excellent work! 🌟',
+                                style: AppTypography.bodySmall.copyWith(
+                                  color: const Color(0xFF2E7D32),
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            TextButton.icon(
+                              onPressed: () => context.push(RouteNames.trackMap),
+                              icon: const Icon(Icons.map_rounded, size: 18, color: Color(0xFF2E7D32)),
+                              label: const Text(
+                                'Track Map',
+                                style: TextStyle(
+                                  color: Color(0xFF2E7D32),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 13,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
 
                     // Illustrated Winding Trail Map
                     Expanded(

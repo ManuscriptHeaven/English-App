@@ -62,6 +62,7 @@ import 'package:kids_english_adventure/features/worlds/presentation/screens/home
 import 'package:kids_english_adventure/features/worlds/presentation/screens/school_challenge_screen.dart';
 import 'package:kids_english_adventure/features/worlds/presentation/screens/world_challenge_screen.dart';
 import 'package:kids_english_adventure/features/worlds/presentation/screens/world_detail_screen.dart';
+import 'package:kids_english_adventure/features/worlds/presentation/screens/track_world_map_screen.dart';
 
 /// Top-level GoRouter instance configured for kids app navigation.
 class AppRouter {
@@ -87,6 +88,10 @@ class AppRouter {
       GoRoute(
         path: RouteNames.home,
         builder: (context, state) => const AdventureHomeScreen(),
+      ),
+      GoRoute(
+        path: RouteNames.trackMap,
+        builder: (context, state) => const TrackWorldMapScreen(),
       ),
       GoRoute(
         path: RouteNames.worldDetail,

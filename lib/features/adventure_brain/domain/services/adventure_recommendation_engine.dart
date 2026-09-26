@@ -29,6 +29,7 @@ class AdventureRecommendationEngine {
     required Map<SkillType, SkillMastery> skillMasteries,
     required World currentWorld,
     required List<Lesson> availableActivities,
+    List<World>? trackWorlds,
     int dailyScreenTimeLimitMinutes = 30,
     required DateTime now,
   }) {
@@ -97,9 +98,39 @@ class AdventureRecommendationEngine {
     }
 
     // ----------------------------------------------------
-    // PRIORITY 5: Next Uncompleted Curriculum Step
+    // PRIORITY 5: Next Uncompleted Curriculum Step (Across Child's Entire Track)
     // ----------------------------------------------------
     final completedIds = child.completedLessonIds;
+
+    // First scan across the entire track in sequential order
+    if (trackWorlds != null && trackWorlds.isNotEmpty) {
+      for (final world in trackWorlds) {
+        final worldLessons = world.chapters
+            .expand((c) => c.units)
+            .expand((u) => u.lessons)
+            .toList();
+        for (final lesson in worldLessons) {
+          if (!completedIds.contains(lesson.id)) {
+            return Recommendation(
+              activityId: lesson.id,
+              activityType: _mapLessonType(lesson.id),
+              worldId: world.id,
+              skill: _mapLessonSkill(lesson.id),
+              reason: 'Next sequential milestone in child curriculum track.',
+              childFriendlyPrompt: 'Ready for the next adventure? Let\'s go! 🚀',
+              priority: RecommendationPriority.curriculumProgression,
+              estimatedDurationMinutes: 4,
+              difficultyLevel: _mapAgeDifficulty(child.ageGroup),
+              valueConnectionId: lesson.connectedValueId,
+              title: lesson.title,
+              subtitle: lesson.subtitle,
+              routePath: _mapRoutePath(lesson.id),
+            );
+          }
+        }
+      }
+    }
+
     final nextLesson = availableActivities.firstWhere(
       (l) => !completedIds.contains(l.id),
       orElse: () => availableActivities.isNotEmpty ? availableActivities.last : _fallbackLesson,

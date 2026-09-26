@@ -330,14 +330,7 @@ class _AdventureHomeScreenState extends ConsumerState<AdventureHomeScreen>
       case 0: // Home — already here
         break;
       case 1: // Map
-        final activeChild = ref.read(activeChildProfileProvider);
-        final track = activeChild != null
-            ? CurriculumTrack.forAge(activeChild.age)
-            : CurriculumTrack.track1LittleListeners;
-        final worldId = worlds != null && worlds.isNotEmpty
-            ? worlds.first.id
-            : V2CurriculumWorldRepository.defaultWorldIdForTrack(track);
-        context.push(RouteNames.worldDetailPath(worldId));
+        context.push(RouteNames.trackMap);
         break;
       case 2: // Rewards
         context.push(RouteNames.rewards);

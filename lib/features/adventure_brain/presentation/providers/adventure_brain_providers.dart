@@ -111,6 +111,7 @@ final currentRecommendationProvider = FutureProvider<Recommendation>((ref) async
   final skillMasteries = ref.watch(skillMasteriesProvider).value ?? {};
   final currentWorld = await ref.watch(selectedWorldProvider.future) ?? _fallbackWorld;
   final settings = ref.watch(appSettingsProvider);
+  final trackWorlds = await ref.watch(worldsListProvider.future);
 
   final lessons = currentWorld.chapters.isNotEmpty && currentWorld.chapters.first.units.isNotEmpty
       ? currentWorld.chapters.first.units.first.lessons
@@ -137,6 +138,7 @@ final currentRecommendationProvider = FutureProvider<Recommendation>((ref) async
     skillMasteries: skillMasteries,
     currentWorld: currentWorld,
     availableActivities: lessons,
+    trackWorlds: trackWorlds,
     dailyScreenTimeLimitMinutes: settings.dailyScreenTimeLimitMinutes,
     now: DateTime.now(),
   );

@@ -5,6 +5,7 @@ class RouteNames {
   static const String childSelection = '/child-selection';
   static const String createChild = '/create-child';
   static const String home = '/home';
+  static const String trackMap = '/track-map';
   static const String worldDetail = '/world/:id';
   static const String lesson = '/lesson/:id';
   static const String story = '/story/:id';

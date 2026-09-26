@@ -1,6 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kids_english_adventure/core/experience/age_experience_profile.dart';
-import 'package:kids_english_adventure/core/experience/interactive_activity_engine.dart';
 import 'package:kids_english_adventure/features/curriculum/data/seed/v2/curriculum_content_v2.dart';
 import 'package:kids_english_adventure/features/curriculum/data/seed/v2/curriculum_v2_lesson_specs.dart';
 
@@ -9,6 +8,14 @@ void main() {
     test('1. Central CurriculumV2LessonSpecs registry contains all 150 lessons with 0 fallbacks', () {
       final allLessons = CurriculumContentV2.getAllLessons();
       expect(allLessons.length, equals(150));
+
+      final allLessonIds = allLessons.map((l) => l.id).toSet();
+      final specIds = CurriculumV2LessonSpecs.specs.keys.toSet();
+
+      final missingInSpecs = allLessonIds.difference(specIds);
+      final extraInSpecs = specIds.difference(allLessonIds);
+      expect(missingInSpecs, isEmpty, reason: 'All curriculum lessons must have specs');
+      expect(extraInSpecs, isEmpty, reason: 'No unused specs');
       expect(CurriculumV2LessonSpecs.count, equals(150));
 
       for (final lesson in allLessons) {
@@ -87,7 +94,7 @@ void main() {
       expect(l15Acts[0].targetObjectId, isNot(equals('obj_food_apple')));
     });
 
-    test('4. Handcrafted specifications generate 5 validated steps per lesson for all tracks', () {
+    test('4. Handcrafted specifications generate age-appropriate step counts (4-9 steps) with zero fallback', () {
       for (int age = 3; age <= 12; age += 2) {
         final profile = AgeExperienceProfile.forAge(age);
         final track = CurriculumContentV2.getTrackForAge(age);
@@ -95,12 +102,76 @@ void main() {
 
         for (final lesson in lessons) {
           final acts = CurriculumContentV2.getActivitiesForLesson(lesson.id);
-          expect(acts.length, equals(5), reason: 'Lesson ${lesson.id} must generate 5 activity steps.');
-          expect(acts[0].mechanicType, equals(ActivityMechanicType.listenAndTouch));
+          final int minSteps = (age <= 4) ? 4 : (age <= 6 ? 5 : (age <= 8 ? 5 : 6));
+          final int maxSteps = (age <= 4) ? 6 : (age <= 6 ? 7 : (age <= 8 ? 8 : 9));
+
+          expect(
+            acts.length,
+            inInclusiveRange(minSteps, maxSteps),
+            reason: 'Lesson ${lesson.id} (Age $age) must generate between $minSteps and $maxSteps steps.',
+          );
           expect(acts[0].targetObjectId, isNotEmpty);
           expect(acts[0].ageProfile.age, equals(profile.age));
         }
       }
+    });
+
+    test('5. Exhaustive semantic validation across ALL 150 lessons (Strict object existence & purged jargon)', () {
+      final allLessons = CurriculumContentV2.getAllLessons();
+      expect(allLessons.length, equals(150));
+
+      for (final lesson in allLessons) {
+        final spec = CurriculumV2LessonSpecs.getSpec(lesson.id)!;
+        // 1. Strict validation must pass without throwing
+        expect(() => spec.validate(), returnsNormally, reason: 'Spec for ${lesson.id} must be strictly valid');
+
+        final scene = spec.sceneFactory();
+        expect(scene.sceneId, equals(spec.sceneId));
+
+        // 2. Step-by-step scene binding checks
+        for (final step in spec.steps) {
+          expect(
+            scene.objects.any((o) => o.objectId == step.targetObjectId),
+            isTrue,
+            reason: 'Target object ${step.targetObjectId} must exist in ${spec.sceneId}',
+          );
+          if (step.draggableObjectId != null) {
+            expect(
+              scene.objects.any((o) => o.objectId == step.draggableObjectId),
+              isTrue,
+              reason: 'Draggable object ${step.draggableObjectId} must exist in ${spec.sceneId}',
+            );
+          }
+          if (step.targetDestinationId != null && step.targetDestinationId!.isNotEmpty) {
+            expect(
+              scene.objects.any((o) => o.objectId == step.targetDestinationId),
+              isTrue,
+              reason: 'Destination object ${step.targetDestinationId} must exist in ${spec.sceneId}',
+            );
+          }
+        }
+      }
+
+      // 3. Verify Track 5 purged university jargon
+      final t5l04 = CurriculumV2LessonSpecs.getSpec('t5_l04_evaluating_scientific_evidence')!;
+      expect(t5l04.speakingTarget.toLowerCase(), isNot(contains('correlation does not imply causation')));
+      expect(t5l04.speakingTarget.toLowerCase(), contains('just because two things happen together'));
+
+      final t5l06 = CurriculumV2LessonSpecs.getSpec('t5_l06_interdisciplinary_thinking')!;
+      expect(t5l06.speakingTarget.toLowerCase(), isNot(contains('interdisciplinary')));
+      expect(t5l06.speakingTarget.toLowerCase(), contains('help people and do good'));
+
+      final t5l10 = CurriculumV2LessonSpecs.getSpec('t5_l10_ai_and_human_wisdom')!;
+      expect(t5l10.speakingTarget.toLowerCase(), isNot(contains('moral oversight')));
+      expect(t5l10.speakingTarget.toLowerCase(), contains('fairly and safely'));
+
+      final t5l13 = CurriculumV2LessonSpecs.getSpec('t5_l13_protecting_privacy_online')!;
+      expect(t5l13.dialoguePrompt.toLowerCase(), isNot(contains('digital footprint')));
+      expect(t5l13.speakingTarget.toLowerCase(), contains('what we post online stays there'));
+
+      final t5l16 = CurriculumV2LessonSpecs.getSpec('t5_l16_sleep_and_memory_consolidation')!;
+      expect(t5l16.speakingTarget.toLowerCase(), isNot(contains('emotional resilience')));
+      expect(t5l16.speakingTarget.toLowerCase(), contains('remember things and keeps us feeling happy'));
     });
   });
 }

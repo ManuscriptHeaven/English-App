@@ -24,7 +24,22 @@ final worldsListProvider = FutureProvider<List<World>>((ref) async {
 final selectedWorldIdProvider = StateProvider<String>((ref) {
   final child = ref.watch(activeChildProfileProvider);
   final track = child != null ? CurriculumTrack.forAge(child.age) : CurriculumTrack.track1LittleListeners;
-  return V2CurriculumWorldRepository.defaultWorldIdForTrack(track);
+  final defaultId = V2CurriculumWorldRepository.defaultWorldIdForTrack(track);
+  if (child == null || child.completedLessonIds.isEmpty) {
+    return defaultId;
+  }
+
+  final repo = ref.watch(worldRepositoryProvider);
+  if (repo is V2CurriculumWorldRepository) {
+    final trackWorlds = repo.getWorldsForTrack(track);
+    for (final world in trackWorlds) {
+      final lessons = world.chapters.expand((c) => c.units).expand((u) => u.lessons);
+      if (lessons.any((l) => !child.completedLessonIds.contains(l.id))) {
+        return world.id;
+      }
+    }
+  }
+  return defaultId;
 });
 
 final selectedWorldProvider = FutureProvider<World?>((ref) async {

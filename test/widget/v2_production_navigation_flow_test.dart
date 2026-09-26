@@ -12,9 +12,10 @@ import 'package:kids_english_adventure/features/curriculum/domain/models/curricu
 import 'package:kids_english_adventure/features/games/presentation/screens/interactive_session_screen.dart';
 import 'package:kids_english_adventure/features/home/presentation/screens/adventure_home_screen.dart';
 import 'package:kids_english_adventure/features/worlds/presentation/providers/world_providers.dart';
+import 'package:kids_english_adventure/features/worlds/presentation/screens/track_world_map_screen.dart';
 import 'package:kids_english_adventure/features/worlds/presentation/screens/world_detail_screen.dart';
 
-/// Builds a real GoRouter instance mirroring production routing for Home, World Map, and Interactive Session.
+/// Builds a real GoRouter instance mirroring production routing for Home, Track Map, World Detail, and Interactive Session.
 GoRouter _createTestRouter({String initialLocation = RouteNames.home}) {
   return GoRouter(
     initialLocation: initialLocation,
@@ -22,6 +23,10 @@ GoRouter _createTestRouter({String initialLocation = RouteNames.home}) {
       GoRoute(
         path: RouteNames.home,
         builder: (context, state) => const AdventureHomeScreen(),
+      ),
+      GoRoute(
+        path: RouteNames.trackMap,
+        builder: (context, state) => const TrackWorldMapScreen(),
       ),
       GoRoute(
         path: RouteNames.worldDetail,
@@ -84,15 +89,15 @@ void main() {
 
   group('P0 #1: V2 Production Navigation Flow Suite (Ages 3, 5, 7, 9, 11)', () {
     final testProfiles = [
-      (age: 3, track: CurriculumTrack.track1LittleListeners, expectedPrefix: 't1_', firstLessonId: 't1_l01_pip_says_hello', expectedWorldId: 'world_t1_hello_me'),
-      (age: 5, track: CurriculumTrack.track2LittleSpeakers, expectedPrefix: 't2_', firstLessonId: 't2_l01_i_am_happy', expectedWorldId: 'world_t2_me'),
-      (age: 7, track: CurriculumTrack.track3YoungSpeakers, expectedPrefix: 't3_', firstLessonId: 't3_l01_my_name_and_age', expectedWorldId: 'world_t3_me_family'),
-      (age: 9, track: CurriculumTrack.track4GrowingCommunicators, expectedPrefix: 't4_', firstLessonId: 't4_l01_my_passions_and_goals', expectedWorldId: 'world_t4_identity'),
-      (age: 11, track: CurriculumTrack.track5ConfidentCommunicators, expectedPrefix: 't5_', firstLessonId: 't5_l01_personal_philosophy', expectedWorldId: 'world_t5_identity'),
+      (age: 3, track: CurriculumTrack.track1LittleListeners, expectedPrefix: 't1_', firstLessonId: 't1_l01_pip_says_hello', expectedWorldId: 'world_t1_hello_me', worldTitle: 'Hello & Me'),
+      (age: 5, track: CurriculumTrack.track2LittleSpeakers, expectedPrefix: 't2_', firstLessonId: 't2_l01_i_am_happy', expectedWorldId: 'world_t2_me', worldTitle: 'Me & Feelings'),
+      (age: 7, track: CurriculumTrack.track3YoungSpeakers, expectedPrefix: 't3_', firstLessonId: 't3_l01_my_name_and_age', expectedWorldId: 'world_t3_me_family', worldTitle: 'Me & Family'),
+      (age: 9, track: CurriculumTrack.track4GrowingCommunicators, expectedPrefix: 't4_', firstLessonId: 't4_l01_my_passions_and_goals', expectedWorldId: 'world_t4_identity', worldTitle: 'My Identity'),
+      (age: 11, track: CurriculumTrack.track5ConfidentCommunicators, expectedPrefix: 't5_', firstLessonId: 't5_l01_personal_philosophy', expectedWorldId: 'world_t5_identity', worldTitle: 'Identity & Dreams'),
     ];
 
     for (final testCase in testProfiles) {
-      testWidgets('Age ${testCase.age} (${testCase.track.shortName}): Home -> Tap Map -> World Trail -> Tap Step 1 -> Opens V2 InteractiveSessionScreen (${testCase.expectedPrefix}*)', (WidgetTester tester) async {
+      testWidgets('Age ${testCase.age} (${testCase.track.shortName}): Home -> Tap Map -> Track World Map -> Select World 1 -> Tap Step 1 -> Opens V2 Session', (WidgetTester tester) async {
         tester.view.physicalSize = const Size(1080, 2400);
         tester.view.devicePixelRatio = 2.0;
         addTearDown(() => tester.view.resetPhysicalSize());
@@ -128,16 +133,25 @@ void main() {
         await tester.tap(mapNavFinder);
         await _pumpSettle(tester);
 
-        // 3. Verify WorldDetailScreen is displayed with trail nodes
+        // 3. Verify TrackWorldMapScreen is displayed with active track worlds
+        expect(find.byType(TrackWorldMapScreen), findsOneWidget);
+        expect(find.textContaining(testCase.worldTitle), findsAtLeastNWidgets(1));
+
+        // 4. Tap the first world card
+        final worldCardFinder = find.textContaining(testCase.worldTitle).first;
+        await tester.tap(worldCardFinder);
+        await _pumpSettle(tester);
+
+        // 5. Verify WorldDetailScreen is displayed with trail nodes
         expect(find.byType(WorldDetailScreen), findsOneWidget);
         expect(find.text('Step 1'), findsOneWidget);
 
-        // 4. Real user UI tap: Tap the first lesson node ("Step 1") on the adventure trail
+        // 6. Real user UI tap: Tap the first lesson node ("Step 1") on the adventure trail
         final step1Finder = find.text('Step 1');
         await tester.tap(step1Finder);
         await _pumpSettle(tester);
 
-        // 5. Verify InteractiveSessionScreen opened with the correct V2 lesson
+        // 7. Verify InteractiveSessionScreen opened with the correct V2 lesson
         expect(find.byType(InteractiveSessionScreen), findsOneWidget);
         final sessionWidget = tester.widget<InteractiveSessionScreen>(find.byType(InteractiveSessionScreen));
 
@@ -147,7 +161,7 @@ void main() {
           reason: 'Expected lessonId starting with ${testCase.expectedPrefix} for age ${testCase.age}, got: ${sessionWidget.session.lessonId}',
         );
         expect(sessionWidget.session.lessonId, equals(testCase.firstLessonId));
-        expect(sessionWidget.session.activities.length, equals(5));
+        expect(sessionWidget.session.activities.length, inInclusiveRange(4, 9));
       });
 
       testWidgets('Age ${testCase.age} (${testCase.track.shortName}): Home Screen Primary CTA tap opens V2 InteractiveSessionScreen directly (${testCase.expectedPrefix}*)', (WidgetTester tester) async {
@@ -195,7 +209,7 @@ void main() {
           reason: 'Expected recommendation starting with ${testCase.expectedPrefix} for age ${testCase.age}, got: ${sessionWidget.session.lessonId}',
         );
         expect(sessionWidget.session.lessonId, equals(testCase.firstLessonId));
-        expect(sessionWidget.session.activities.length, equals(5));
+        expect(sessionWidget.session.activities.length, inInclusiveRange(4, 9));
       });
     }
   });
