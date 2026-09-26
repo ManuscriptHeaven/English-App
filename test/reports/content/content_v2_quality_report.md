@@ -11,11 +11,11 @@
 | Young Speakers (Track 3 — Young Speakers) | Age 7–8 | 32 | 196 | 6 | 7 | 6.13 |
 | Growing Communicators (Track 4 — Growing Communicators) | Age 9–10 | 32 | 225 | 7 | 8 | 7.03 |
 | Confident Communicators (Track 5 — Confident Communicators) | Age 11–12 | 32 | 224 | 7 | 7 | 7.00 |
-| **Total Curriculum** | **Ages 3–12** | **150** | **933** | **4** | **7** | **6.22** |
+| **Total Curriculum** | **Ages 3–12** | **150** | **933** | **4** | **8** | **6.22** |
 
 ## 2. Sequence Repetition Analysis (Template Breaking Verification)
 Previously, over 90% of lessons adhered to an identical 5-step template (`listenAndTouch` -> `placement` -> `speak` -> `roleplay` -> `listenAndTouch`).
-To deliver natural, developmentally responsive teaching, each track now incorporates 3 distinct sequence archetypes varying in length (4 to 7 interactions) and mechanic flow.
+To deliver natural, developmentally responsive teaching, each track now incorporates distinct sequence archetypes varying in length (4 to 8 interactions) and mechanic flow.
 
 - **Total Distinct Sequences**: 22
 - **Most Common Sequence Frequency**: 39 lessons (26.0%) — dramatically reduced from >90%
@@ -74,6 +74,7 @@ All cultural and religious phrases have been audited and assigned formal governa
 | Respect for Elders & Neighbors | Greeting neighbors, speaking with gentle tone | `VALUE_ONLY` | `APPROVED_UNIVERSAL` | High moral standard taught in universal civil society and Islam. |
 | Environmental Stewardship | Conserving water, planting trees, picking litter | `VALUE_ONLY` | `APPROVED_UNIVERSAL` | Global environmental ethics and Islamic stewardship (*Khilafah*). |
 | *"Our body is a trust from Allah"* | Track 5 L14 dialogue response on health & hydration | `DIRECT_RELIGIOUS_CONTENT` | `STATUS: PENDING_QUALIFIED_ISLAMIC_REVIEW` | Direct theological assertion of *Amanah*. Awaiting final formal signoff from certified curriculum scholar. |
+| *"May Allah bless..."* | Track 4 L23 & Track 5 L32 moral encouragement & supplication | `DIRECT_RELIGIOUS_CONTENT` | `STATUS: PENDING_QUALIFIED_ISLAMIC_REVIEW` | Direct religious du'a / supplication. Awaiting final formal signoff from certified curriculum scholar. |
 
 ## 5. QA Browser Safety Verification
 - **Implementation Check**: `lib/features/settings/presentation/screens/settings_screen.dart` lines 347–370.
@@ -82,8 +83,8 @@ All cultural and religious phrases have been audited and assigned formal governa
 
 ## 6. Unresolved Content Concerns & Recommendations for Reviewers
 1. **Speech Recognition Thresholds**: Age 3–4 Little Listeners have optional speech imitation with fallback tap triggers to avoid speech frustration.
-2. **Theological Review Gate**: The phrase *"Our body is a trust from Allah"* in Track 5 L14 should be explicitly reviewed by the board's Islamic curriculum specialist to confirm exact wording meets organizational standards.
+2. **Theological Review Gate**: The phrases *"Our body is a trust from Allah"* (Track 5 L14) and *"May Allah bless..."* (Track 4 L23, Track 5 L32) remain cataloged under `STATUS: PENDING_QUALIFIED_ISLAMIC_REVIEW`. They must be formally signed off by certified Islamic curriculum scholars before commercial release.
 3. **Voice Audio Recordings**: Voice actors for Track 5 should be instructed to deliver instructions warmly and naturally, avoiding teacher-lecture cadence.
 
 ---
-### FINAL STATUS: READY FOR HUMAN CURRICULUM CONTENT REVIEW
+### FINAL STATUS: READY FOR FULL LAPTOP CURRICULUM REVIEW

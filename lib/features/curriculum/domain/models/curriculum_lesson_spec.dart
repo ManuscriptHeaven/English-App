@@ -98,13 +98,37 @@ class CurriculumLessonSpec extends Equatable {
       steps.firstWhere((s) => s.expectedResponse != null, orElse: () => steps.first).expectedResponse ?? '';
   List<ActivityMechanicType> get activitySequence => steps.map((s) => s.mechanic).toList();
 
-  /// Validates this specification by building activities against its scene. Throws [StateError] on mismatch.
+  /// Validates this specification by building activities against its scene and enforcing all semantic contracts.
   void validate([AgeExperienceProfile? profile]) {
+    final scene = sceneFactory();
+    if (scene.sceneId != sceneId) {
+      throw StateError(
+        'Spec error in lesson $lessonId: sceneFactory returned sceneId "${scene.sceneId}" but expected "$sceneId"',
+      );
+    }
+
+    // 1. Unique stepIds per lesson
+    final stepIds = <String>{};
+    for (final step in steps) {
+      if (!stepIds.add(step.stepId)) {
+        throw StateError('Spec error in lesson $lessonId: duplicate stepId "${step.stepId}"');
+      }
+    }
+
+    // 2. Primary concept must be represented in lesson steps or scene
+    final hasPrimary = steps.any((s) => s.learningConceptId == primaryConceptId) ||
+        scene.objects.any((o) => o.conceptId == primaryConceptId);
+    if (!hasPrimary) {
+      throw StateError(
+        'Spec error in lesson $lessonId: primaryConceptId "$primaryConceptId" is not represented in steps or scene',
+      );
+    }
+
     buildActivities(profile ?? AgeExperienceProfile.forAge(5));
   }
 
   /// Compiles explicit step specs into concrete [InteractiveActivityConfig] instances.
-  /// Throws [StateError] immediately if any referenced object or scene is invalid.
+  /// Throws [StateError] immediately if any referenced object, destination, or mechanic contract is invalid.
   List<InteractiveActivityConfig> buildActivities(AgeExperienceProfile profile) {
     final scene = sceneFactory();
     if (scene.sceneId != sceneId) {
@@ -150,6 +174,50 @@ class CurriculumLessonSpec extends Equatable {
                   ),
                 )
               : null;
+
+      // 4. Strict validation: dragAndDrop / scenePlacement / feedCharacter must have targetDestinationId
+      if (step.mechanic == ActivityMechanicType.dragAndDrop ||
+          step.mechanic == ActivityMechanicType.scenePlacement ||
+          step.mechanic == ActivityMechanicType.feedCharacter) {
+        if (step.targetDestinationId == null || step.targetDestinationId!.trim().isEmpty) {
+          throw StateError(
+            'Spec error in lesson $lessonId step ${step.stepId}: ${step.mechanic.name} requires a targetDestinationId',
+          );
+        }
+      }
+
+      // 5. Strict validation: feedCharacter source cannot be receiver
+      if (step.mechanic == ActivityMechanicType.feedCharacter) {
+        final src = step.draggableObjectId ?? step.targetObjectId;
+        if (src == step.targetDestinationId) {
+          throw StateError(
+            'Spec error in lesson $lessonId step ${step.stepId}: feedCharacter source cannot be same as receiver ($src)',
+          );
+        }
+      }
+
+      // 6. Strict validation: speakToMakeSomethingHappen requires speakingTarget
+      if (step.mechanic == ActivityMechanicType.speakToMakeSomethingHappen) {
+        if (step.speakingTarget == null || step.speakingTarget!.trim().isEmpty) {
+          throw StateError(
+            'Spec error in lesson $lessonId step ${step.stepId}: speakToMakeSomethingHappen requires speakingTarget',
+          );
+        }
+      }
+
+      // 7. Strict validation: conversationRolePlay requires dialoguePrompt + expectedResponse
+      if (step.mechanic == ActivityMechanicType.conversationRolePlay) {
+        if (step.dialoguePrompt == null || step.dialoguePrompt!.trim().isEmpty) {
+          throw StateError(
+            'Spec error in lesson $lessonId step ${step.stepId}: conversationRolePlay requires dialoguePrompt',
+          );
+        }
+        if (step.expectedResponse == null || step.expectedResponse!.trim().isEmpty) {
+          throw StateError(
+            'Spec error in lesson $lessonId step ${step.stepId}: conversationRolePlay requires expectedResponse',
+          );
+        }
+      }
 
       // 4. Strict validation: distractors (if specified) must exist in scene
       final List<InteractiveSceneObject> distractorObjs = [];

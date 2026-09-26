@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kids_english_adventure/core/experience/age_experience_profile.dart';
+import 'package:kids_english_adventure/core/experience/interactive_activity_engine.dart';
 import 'package:kids_english_adventure/core/experience/interactive_activity_integrity_validator.dart';
 import 'package:kids_english_adventure/core/experience/interactive_session_composer.dart';
 import 'package:kids_english_adventure/features/curriculum/data/seed/curriculum_seed_data.dart';
@@ -75,27 +76,34 @@ void main() {
     test('6. Real Differentiation Spiral on "Food & Drinks" across all 5 age groups', () {
       // Age 3: single word imitation
       final t1Acts = CurriculumContentV2.getActivitiesForLesson('t1_l13_sweet_red_apple');
-      expect(t1Acts[0].instructionOverride, contains('Apple!'));
-      expect(t1Acts[3].speakTriggerPhrase, equals('apple'));
+      final t1Speak = t1Acts.firstWhere((a) => a.mechanicType == ActivityMechanicType.speakToMakeSomethingHappen || a.id.contains('speak'));
+      expect(t1Speak.speakTriggerPhrase, equals('apple'));
 
       // Age 5: functional 2-word phrase
       final t2Acts = CurriculumContentV2.getActivitiesForLesson('t2_l08_water_please');
-      expect(t2Acts[2].speakTriggerPhrase, equals('water please'));
-      expect(t2Acts[3].rolePlayExpectedResponse, equals('thank you'));
+      final t2Speak = t2Acts.firstWhere((a) => a.mechanicType == ActivityMechanicType.speakToMakeSomethingHappen || a.id.contains('speak'));
+      final t2RolePlay = t2Acts.firstWhere((a) => a.mechanicType == ActivityMechanicType.conversationRolePlay || a.id.contains('roleplay'));
+      expect(t2Speak.speakTriggerPhrase, equals('water please'));
+      expect(t2RolePlay.rolePlayExpectedResponse, equals('water please'));
 
       // Age 7: complete sentence & polite request
       final t3Acts = CurriculumContentV2.getActivitiesForLesson('t3_l10_can_i_have_water_please');
-      expect(t3Acts[1].speakTriggerPhrase, equals('can i have some water please'));
-      expect(t3Acts[3].rolePlayExpectedResponse, contains('yes please thank you'));
+      final t3Speak = t3Acts.firstWhere((a) => a.mechanicType == ActivityMechanicType.speakToMakeSomethingHappen || a.id.contains('speak'));
+      final t3RolePlay = t3Acts.firstWhere((a) => a.mechanicType == ActivityMechanicType.conversationRolePlay || a.id.contains('roleplay'));
+      expect(t3Speak.speakTriggerPhrase, equals('can i have some water please'));
+      expect(t3RolePlay.rolePlayExpectedResponse, contains('yes please thank you'));
 
       // Age 9: comparative preferences & nutritional reason
       final t4Acts = CurriculumContentV2.getActivitiesForLesson('t4_l10_preferring_fresh_fruit');
-      expect(t4Acts[1].speakTriggerPhrase, contains('because they are healthy'));
+      final t4Speak = t4Acts.firstWhere((a) => a.mechanicType == ActivityMechanicType.speakToMakeSomethingHappen || a.id.contains('speak'));
+      expect(t4Speak.speakTriggerPhrase, contains('because fruit gives lasting energy'));
 
       // Age 11: reasoned discourse & health stewardship
       final t5Acts = CurriculumContentV2.getActivitiesForLesson('t5_l14_hydration_and_cognitive_power');
-      expect(t5Acts[1].speakTriggerPhrase, contains('why is drinking water important i think'));
-      expect(t5Acts[3].rolePlayExpectedResponse, contains('our body is a trust from allah'));
+      final t5Speak = t5Acts.firstWhere((a) => a.mechanicType == ActivityMechanicType.speakToMakeSomethingHappen || a.id.contains('speak'));
+      final t5RolePlay = t5Acts.firstWhere((a) => a.mechanicType == ActivityMechanicType.conversationRolePlay || a.id.contains('roleplay'));
+      expect(t5Speak.speakTriggerPhrase, contains('drinking water helps our brain stay focused'));
+      expect(t5RolePlay.rolePlayExpectedResponse, contains('drink a glass of water and take a rest'));
     });
 
     test('7. Functional Conversation Library contains 18+ topics with required structure', () {
@@ -146,7 +154,7 @@ void main() {
           title: lesson.title,
         );
 
-        expect(session.activities.length, equals(5));
+        expect(session.activities.length, inInclusiveRange(4, 9));
         expect(session.title, equals(lesson.title));
         expect(() => InteractiveActivityIntegrityValidator.validateSession(session), returnsNormally);
       }
@@ -287,6 +295,8 @@ void main() {
       final allUnits = CurriculumContentV2.getAllUnits();
 
       int totalInteractions = 0;
+      int globalMin = 999;
+      int globalMax = 0;
       final trackMetrics = <CurriculumTrack, Map<String, dynamic>>{};
       final sequenceCounts = <String, int>{};
 
@@ -302,6 +312,8 @@ void main() {
           totalInteractions += acts.length;
           if (acts.length < minInteractions) minInteractions = acts.length;
           if (acts.length > maxInteractions) maxInteractions = acts.length;
+          if (acts.length < globalMin) globalMin = acts.length;
+          if (acts.length > globalMax) globalMax = acts.length;
 
           final seqKey = acts.map((a) => a.mechanicType.name).join(' -> ');
           sequenceCounts[seqKey] = (sequenceCounts[seqKey] ?? 0) + 1;
@@ -486,12 +498,12 @@ void main() {
         final avgFormatted = (m['avg'] as double).toStringAsFixed(2);
         sb2.writeln('| ${track.shortName} (${track.title}) | ${track.ageRange} | ${m['lessonCount']} | ${m['interactionCount']} | ${m['min']} | ${m['max']} | $avgFormatted |');
       }
-      sb2.writeln('| **Total Curriculum** | **Ages 3–12** | **${allLessons.length}** | **$totalInteractions** | **4** | **7** | **${(totalInteractions / allLessons.length).toStringAsFixed(2)}** |');
+      sb2.writeln('| **Total Curriculum** | **Ages 3–12** | **${allLessons.length}** | **$totalInteractions** | **$globalMin** | **$globalMax** | **${(totalInteractions / allLessons.length).toStringAsFixed(2)}** |');
       sb2.writeln();
 
       sb2.writeln('## 2. Sequence Repetition Analysis (Template Breaking Verification)');
       sb2.writeln('Previously, over 90% of lessons adhered to an identical 5-step template (`listenAndTouch` -> `placement` -> `speak` -> `roleplay` -> `listenAndTouch`).');
-      sb2.writeln('To deliver natural, developmentally responsive teaching, each track now incorporates 3 distinct sequence archetypes varying in length (4 to 7 interactions) and mechanic flow.');
+      sb2.writeln('To deliver natural, developmentally responsive teaching, each track now incorporates distinct sequence archetypes varying in length ($globalMin to $globalMax interactions) and mechanic flow.');
       sb2.writeln();
       sb2.writeln('- **Total Distinct Sequences**: ${sequenceCounts.length}');
       final mostCommon = sortedSequences.first;
@@ -537,6 +549,7 @@ void main() {
       sb2.writeln('| Respect for Elders & Neighbors | Greeting neighbors, speaking with gentle tone | `VALUE_ONLY` | `APPROVED_UNIVERSAL` | High moral standard taught in universal civil society and Islam. |');
       sb2.writeln('| Environmental Stewardship | Conserving water, planting trees, picking litter | `VALUE_ONLY` | `APPROVED_UNIVERSAL` | Global environmental ethics and Islamic stewardship (*Khilafah*). |');
       sb2.writeln('| *"Our body is a trust from Allah"* | Track 5 L14 dialogue response on health & hydration | `DIRECT_RELIGIOUS_CONTENT` | `STATUS: PENDING_QUALIFIED_ISLAMIC_REVIEW` | Direct theological assertion of *Amanah*. Awaiting final formal signoff from certified curriculum scholar. |');
+      sb2.writeln('| *"May Allah bless..."* | Track 4 L23 & Track 5 L32 moral encouragement & supplication | `DIRECT_RELIGIOUS_CONTENT` | `STATUS: PENDING_QUALIFIED_ISLAMIC_REVIEW` | Direct religious du\'a / supplication. Awaiting final formal signoff from certified curriculum scholar. |');
       sb2.writeln();
 
       sb2.writeln('## 5. QA Browser Safety Verification');
@@ -547,11 +560,11 @@ void main() {
 
       sb2.writeln('## 6. Unresolved Content Concerns & Recommendations for Reviewers');
       sb2.writeln('1. **Speech Recognition Thresholds**: Age 3–4 Little Listeners have optional speech imitation with fallback tap triggers to avoid speech frustration.');
-      sb2.writeln('2. **Theological Review Gate**: The phrase *"Our body is a trust from Allah"* in Track 5 L14 should be explicitly reviewed by the board\'s Islamic curriculum specialist to confirm exact wording meets organizational standards.');
+      sb2.writeln('2. **Theological Review Gate**: The phrases *"Our body is a trust from Allah"* (Track 5 L14) and *"May Allah bless..."* (Track 4 L23, Track 5 L32) remain cataloged under `STATUS: PENDING_QUALIFIED_ISLAMIC_REVIEW`. They must be formally signed off by certified Islamic curriculum scholars before commercial release.');
       sb2.writeln('3. **Voice Audio Recordings**: Voice actors for Track 5 should be instructed to deliver instructions warmly and naturally, avoiding teacher-lecture cadence.');
       sb2.writeln();
       sb2.writeln('---');
-      sb2.writeln('### FINAL STATUS: READY FOR HUMAN CURRICULUM CONTENT REVIEW');
+      sb2.writeln('### FINAL STATUS: READY FOR FULL LAPTOP CURRICULUM REVIEW');
 
       File('test/reports/content/content_v2_quality_report.md').writeAsStringSync(sb2.toString());
 

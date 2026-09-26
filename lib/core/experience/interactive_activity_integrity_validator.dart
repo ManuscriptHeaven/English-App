@@ -118,25 +118,24 @@ class InteractiveActivityIntegrityValidator {
     }
 
     // Semantic instruction matching
-    if (instruction.contains('apple') && draggable.conceptId != 'concept_apple') {
+    final lower = instruction.toLowerCase();
+    if (lower.contains('apple') && !lower.contains('apple slices') && draggable.conceptId != 'concept_apple') {
       errors.add(
         'Instruction asks for apple, but draggable is ${draggable.conceptId} (${draggable.label}).',
       );
     }
-    if (instruction.contains('water') &&
-        !instruction.contains('water bowl') &&
-        !instruction.contains('water cup') &&
-        draggable.conceptId != 'concept_water') {
+    final asksToDragWater = RegExp(r'\b(drag|bring|pour|move|place|put)\s+(the\s+)?(fresh\s+|clean\s+|pure\s+|cool\s+)?water\b(?!\s*(bowl|cup|bottle|trough))').hasMatch(lower);
+    if (asksToDragWater && draggable.conceptId != 'concept_water') {
       errors.add(
         'Instruction asks for water, but draggable is ${draggable.conceptId} (${draggable.label}).',
       );
     }
-    if (instruction.contains('basket') && target.conceptId != 'concept_basket') {
+    if (lower.contains('basket') && target.conceptId != 'concept_basket') {
       errors.add(
         'Instruction asks for basket, but dropTarget is ${target.conceptId} (${target.label}).',
       );
     }
-    if (instruction.contains('table') &&
+    if (lower.contains('table') &&
         draggable.conceptId != 'concept_table' &&
         target.conceptId != 'concept_table') {
       errors.add(
@@ -173,25 +172,24 @@ class InteractiveActivityIntegrityValidator {
       );
     }
 
-    if (instruction.contains('rabbit') && receiver.conceptId != 'concept_rabbit') {
+    final lower = instruction.toLowerCase();
+    if (lower.contains('rabbit') && receiver.conceptId != 'concept_rabbit') {
       errors.add(
         'Instruction asks to feed rabbit, but receiver is ${receiver.conceptId} (${receiver.label}).',
       );
     }
-    if (instruction.contains('pip') && receiver.conceptId != 'concept_pip') {
+    if (lower.contains('pip') && receiver.conceptId != 'concept_pip') {
       errors.add(
         'Instruction asks to give to Pip, but receiver is ${receiver.conceptId} (${receiver.label}).',
       );
     }
-    if (instruction.contains('apple') && draggable.conceptId != 'concept_apple') {
+    if (lower.contains('apple') && draggable.conceptId != 'concept_apple') {
       errors.add(
         'Instruction asks for apple, but draggable is ${draggable.conceptId} (${draggable.label}).',
       );
     }
-    if (instruction.contains('water') &&
-        !instruction.contains('water bowl') &&
-        !instruction.contains('water cup') &&
-        draggable.conceptId != 'concept_water') {
+    final asksToFeedWater = RegExp(r'\b(give|feed|offer|bring)\s+(the\s+)?(fresh\s+|clean\s+|pure\s+|cool\s+)?water\b(?!\s*(bowl|cup|bottle|trough))').hasMatch(lower);
+    if (asksToFeedWater && draggable.conceptId != 'concept_water') {
       errors.add(
         'Instruction asks for water, but draggable is ${draggable.conceptId} (${draggable.label}).',
       );
@@ -253,10 +251,13 @@ class InteractiveActivityIntegrityValidator {
       errors.add('ListenAndTouch targetObjectId "${activity.targetObjectId}" not found in scene.');
       return;
     }
-    if (instruction.contains('apple') && target.conceptId != 'concept_apple') {
+    final lower = instruction.toLowerCase();
+    final asksForApple = RegExp(r'\b(touch|tap|find)\s+(the\s+)?(sweet\s+|red\s+|crisp\s+|green\s+|fresh\s+)?apple\b').hasMatch(lower);
+    if (asksForApple && target.conceptId != 'concept_apple') {
       errors.add('Instruction mentions apple, but target is ${target.conceptId}.');
     }
-    if (instruction.contains('water') && target.conceptId != 'concept_water') {
+    final asksForWater = RegExp(r'\b(touch|tap|find)\s+(the\s+)?(fresh\s+|clean\s+|pure\s+|cool\s+|clear\s+|refreshing\s+)?water\b(?!\s*(bowl|cup|bottle|trough|plants|well|river|stream))').hasMatch(lower);
+    if (asksForWater && target.conceptId != 'concept_water') {
       errors.add('Instruction mentions water, but target is ${target.conceptId}.');
     }
   }

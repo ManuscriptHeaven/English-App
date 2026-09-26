@@ -368,12 +368,12 @@ Every interaction is transcribed unsummarized, showing exact child-facing prompt
 
 | Step | Mechanic | Child-Facing Instruction | Audio Cue | Target / Speak Trigger | Success Reaction |
 |---|---|---|---|---|---|
-| Step 1 | `listenAndTouch` | Talking things through solves disagreements! Touch Pip! 🦜✨ | Touch Pip | `obj_pip_greeter` | Consultation brings good ideas from everyone! 🦜✨ |
+| Step 1 | `listenAndTouch` | Talking things through solves disagreements! Touch Pip! 🦜✨ | Touch Pip | `obj_pip_greeter` | Talking things over brings good ideas from everyone! 🦜✨ |
 | Step 2 | `dragAndDrop` | Bring the happy face to Pip to show that discussion brings peace! 😊🦜 | Bring happy face to Pip | `obj_happy_face` | Listening to different opinions creates harmony! 🦜😊 |
 | Step 3 | `listenAndTouch` | Touch the mirror to reflect on listening without interrupting! 🪞 | Touch the mirror | `obj_avatar_mirror` | A patient listener understands other perspectives! 🪞👂 |
 | Step 4 | `listenAndTouch` | Touch the friendly smile! Cooperation is better than arguing! 😄 | Touch the smile | `obj_avatar_smile` | Working together finds the fairest answer! 😄🤝 |
 | Step 5 | `speakToMakeSomethingHappen` | State your approach: "When we disagree, we should sit down and talk things through calmly." 🎙️🕊️ | Say When we disagree we talk calmly | `when we disagree we should sit down and talk things through calmly` | Mature resolution! "Talk things through calmly!" 🕊️🎉 |
-| Step 6 | `conversationRolePlay` | Pip asks: "How can our team decide when two friends want different things?" 💬 | How should the team decide? | `we should vote and listen to each other` | Pip agrees: "Mutual consultation leads to the best outcome!" 🦜👏 |
+| Step 6 | `conversationRolePlay` | Pip asks: "How can our team decide when two friends want different things?" 💬 | How should the team decide? | `we should vote and listen to each other` | Pip agrees: "Talking together helps us make the best decision!" 🦜👏 |
 | Step 7 | `listenAndTouch` | Touch Pip! 🦜🌟 | Touch Pip | `obj_pip_greeter` | MashaAllah! Natural peacemaker! 🌟⭐ |
 
 #### Lesson: Artificial Intelligence & Ethics 🤖 (`t5_l10_ai_and_human_wisdom`)

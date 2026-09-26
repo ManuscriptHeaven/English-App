@@ -11,6 +11,9 @@ import 'package:kids_english_adventure/features/child_profile/presentation/provi
 import 'package:kids_english_adventure/features/curriculum/domain/models/curriculum_track.dart';
 import 'package:kids_english_adventure/features/games/presentation/screens/interactive_session_screen.dart';
 import 'package:kids_english_adventure/features/home/presentation/screens/adventure_home_screen.dart';
+import 'package:kids_english_adventure/features/adventure_brain/domain/models/recommendation.dart';
+import 'package:kids_english_adventure/features/adventure_brain/domain/services/adventure_recommendation_engine.dart';
+import 'package:kids_english_adventure/features/worlds/data/v2_curriculum_world_repository.dart';
 import 'package:kids_english_adventure/features/worlds/presentation/providers/world_providers.dart';
 import 'package:kids_english_adventure/features/worlds/presentation/screens/track_world_map_screen.dart';
 import 'package:kids_english_adventure/features/worlds/presentation/screens/world_detail_screen.dart';
@@ -213,4 +216,85 @@ void main() {
       });
     }
   });
+
+  group('P0 Section D: True Cross-World Sequential Progression (Deterministic Domain Integration)', () {
+    final progressionCases = [
+      (
+        age: 3,
+        track: CurriculumTrack.track1LittleListeners,
+        completed: ['t1_l01_pip_says_hello', 't1_l02_happy_or_sad', 't1_l03_wave_goodbye'],
+        expectedNextId: 't1_l04_touch_your_nose',
+        expectedWorldId: 'world_t1_body',
+        expectedRoute: RouteNames.interactiveSessionPath('t1_l04_touch_your_nose'),
+      ),
+      (
+        age: 5,
+        track: CurriculumTrack.track2LittleSpeakers,
+        completed: ['t2_l01_i_am_happy', 't2_l02_my_name_is', 't2_l03_who_is_this'],
+        expectedNextId: 't2_l04_this_is_my_mother',
+        expectedWorldId: 'world_t2_family',
+        expectedRoute: RouteNames.interactiveSessionPath('t2_l04_this_is_my_mother'),
+      ),
+      (
+        age: 7,
+        track: CurriculumTrack.track3YoungSpeakers,
+        completed: ['t3_l01_my_name_and_age', 't3_l02_where_i_live', 't3_l03_these_are_my_brothers'],
+        expectedNextId: 't3_l04_there_is_a_lamp',
+        expectedWorldId: 'world_t3_home',
+        expectedRoute: RouteNames.interactiveSessionPath('t3_l04_there_is_a_lamp'),
+      ),
+      (
+        age: 9,
+        track: CurriculumTrack.track4GrowingCommunicators,
+        completed: ['t4_l01_my_passions_and_goals', 't4_l02_family_traditions', 't4_l03_standing_for_good_values'],
+        expectedNextId: 't4_l04_favorite_subjects_with_reasons',
+        expectedWorldId: 'world_t4_school',
+        expectedRoute: RouteNames.interactiveSessionPath('t4_l04_favorite_subjects_with_reasons'),
+      ),
+      (
+        age: 11,
+        track: CurriculumTrack.track5ConfidentCommunicators,
+        completed: ['t5_l01_personal_philosophy', 't5_l02_role_models_and_virtues', 't5_l03_long_term_aspirations'],
+        expectedNextId: 't5_l04_evaluating_scientific_evidence',
+        expectedWorldId: 'world_t5_school',
+        expectedRoute: RouteNames.interactiveSessionPath('t5_l04_evaluating_scientific_evidence'),
+      ),
+    ];
+
+    for (final pCase in progressionCases) {
+      test('Age ${pCase.age} (${pCase.track.shortName}): Completing World 1 advances recommendation to World 2 first lesson (${pCase.expectedNextId})', () {
+        final child = ChildProfile(
+          id: 'child_cross_world_${pCase.age}',
+          parentId: 'parent_v2',
+          name: 'Learner ${pCase.age}',
+          age: pCase.age,
+          completedLessonIds: pCase.completed,
+          avatar: const Avatar(id: 'av_1', name: 'Learner', assetPath: 'assets/avatar.png'),
+        );
+
+        final trackWorlds = V2CurriculumWorldRepository().getWorldsForTrack(pCase.track);
+        final currentWorld = trackWorlds.first;
+        final availableActivities = currentWorld.chapters
+            .expand((c) => c.units)
+            .expand((u) => u.lessons)
+            .toList();
+
+        final rec = AdventureRecommendationEngine.getNextRecommendation(
+          child: child,
+          contentMasteries: const [],
+          skillMasteries: const {},
+          currentWorld: currentWorld,
+          availableActivities: availableActivities,
+          trackWorlds: trackWorlds,
+          now: DateTime.now(),
+        );
+
+        expect(rec.activityId, equals(pCase.expectedNextId));
+        expect(rec.worldId, equals(pCase.expectedWorldId));
+        expect(rec.routePath, equals(pCase.expectedRoute));
+        expect(rec.priority, equals(RecommendationPriority.curriculumProgression));
+      });
+    }
+  });
 }
+
